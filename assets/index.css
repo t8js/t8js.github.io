@@ -1,8 +1,9 @@
 :root {
     --color: white;
-    --background: #513874;
+    --background: #3e2b59;
     --logo-color: turquoise;
     --link-color: turquoise; /* #52ef9e; */
+    --smaller-font-size: .85em;
 
     font: normal 100%/1.25 sans-serif;
     color: var(--color);
@@ -47,19 +48,15 @@ header {
     flex-basis: 25%;
 }
 header h1 {
-    font-size: 5em;
+    font-size: 8em;
     font-style: italic;
     line-height: 1;
     color: var(--logo-color);
-    text-shadow: 0 0 .12em var(--logo-color);
+    text-shadow: 0 0 .075em var(--logo-color);
     margin: -.2em 0 0;
-}
-header h1 span {
-    display: inline-block;
     transform: scaleY(.65);
 }
 header p {
-    font-size: .85em;
     margin: 0;
 }
 header p span {
@@ -75,7 +72,17 @@ main {
 
     border-left: var(--border);
 }
+main section + section {
+    margin-top: 2.5em;
+}
+main h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0 0 1rem 0;
+}
 main ul {
+    --icon-size: .8em;
+
     list-style: none;
     padding: 0;
     margin: 0;
@@ -84,7 +91,8 @@ main li + li {
     margin-top: 1em;
 }
 main li a {
-    font-size: 1.3em;
+    font-size: 1.5em;
+    position: relative;
 }
 main li a span {
     font-weight: bold;
@@ -92,6 +100,18 @@ main li a span {
 main li .description {
     display: none;
     margin-top: .1em;
+}
+main li a[href^="https://github.com/"]::after {
+    content: "";
+    display: block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    background: url("gh.svg") 50% 50%/contain no-repeat;
+    position: absolute;
+    right: -.5em;
+    top: 55%;
+    transform: translate(100%, -50%);
+    opacity: .5;
 }
 @media (max-width: 600px) {
     .layout {
@@ -111,6 +131,9 @@ main li .description {
         text-align: center;
         border-left: none;
         border-top: var(--border);
+    }
+    main section {
+        margin-top: .5em;
     }
     main li {
         margin-top: .75em;
