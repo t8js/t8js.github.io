@@ -71,7 +71,9 @@ header p span.sep {
     display: none;
 }
 main {
-    border-left: .075em solid;
+    --border: .075em solid;
+
+    border-left: var(--border);
 }
 main ul {
     list-style: none;
@@ -108,7 +110,7 @@ main li .description {
     main {
         text-align: center;
         border-left: none;
-        border-top: .075em solid;
+        border-top: var(--border);
     }
     main li {
         margin-top: .75em;
