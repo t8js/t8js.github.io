@@ -11,7 +11,7 @@
 
 <div class="layout">
 <header>
-    <h1>t8</h1>
+    <h1 class="loading text"><span>t8</span></h1>
     <p>
         <span>terseness territory</span>
         <span class="sep">|</span>
@@ -38,6 +38,7 @@
 </main>
 </div>
 
+<script>{let logo=new Image(),h=document.querySelector('h1');logo.height='80';logo.alt=h.textContent;logo.onload=()=>{h.querySelector('span').innerHTML=logo.outerHTML;h.className='image';};logo.onerror=()=>{h.classList.remove('loading');};logo.src='assets/logo.png';}</script>
 <script src="assets/stats.js"></script>
 </body>
 </html>
