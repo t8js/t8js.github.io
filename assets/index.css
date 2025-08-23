@@ -5,7 +5,7 @@
     --link-color: turquoise; /* #52ef9e; */
     --smaller-font-size: .85em;
 
-    font: normal 100%/1.25 system-ui, sans-serif;
+    font: normal 100%/1.25 sans-serif;
     color: var(--color);
     background: var(--background);
 }
