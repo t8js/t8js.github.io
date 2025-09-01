@@ -66,7 +66,7 @@ header h1.loading {
     opacity: 0;
 }
 header h1.text + p {
-    margin: -2rem 0 0;
+    margin: -1.05rem 0 0;
 }
 header h1.image {
     height: 1.2em;
