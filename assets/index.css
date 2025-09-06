@@ -118,11 +118,14 @@ main ul {
     padding: 0;
     margin: 0;
 }
+main ul + ul {
+    margin-top: 2em;
+}
 main li + li {
-    margin-top: 1em;
+    margin-top: .75em;
 }
 main li a {
-    font-size: 1.25em;
+    font-size: 1.15em;
     position: relative;
 }
 main li a span {
