@@ -7,6 +7,7 @@
       "dir": "react-router",
       "root": "/react-router/",
       "title": "T8 React Router",
+      "repo": "https://github.com/t8js/react-router",
       "source": "https://raw.githubusercontent.com/t8js/react-router/refs/heads/main/README.md",
       "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_react.html"
     },
@@ -14,6 +15,7 @@
       "dir": "react-store",
       "root": "/react-store/",
       "title": "T8 React Store",
+      "repo": "https://github.com/t8js/react-store",
       "source": "https://raw.githubusercontent.com/t8js/react-store/refs/heads/main/README.md",
       "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_react.html",
       "singlePage": true
@@ -22,6 +24,7 @@
       "dir": "react-pending",
       "root": "/react-pending/",
       "title": "T8 React Pending",
+      "repo": "https://github.com/t8js/react-pending",
       "source": "https://raw.githubusercontent.com/t8js/react-pending/refs/heads/main/README.md",
       "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_react.html"
     },
@@ -29,6 +32,7 @@
       "dir": "sdk-factory",
       "root": "/sdk-factory/",
       "title": "T8 SDK Factory",
+      "repo": "https://github.com/t8js/sdk-factory",
       "source": "https://raw.githubusercontent.com/t8js/sdk-factory/refs/heads/main/README.md",
       "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_vanilla.html"
     }
