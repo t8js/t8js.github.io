@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="t8">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Overview | T8 React Store</title>
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/base.css">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/section.css">
-<link rel="icon" type="image/png" href="/assets/t8.png">
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview | T8 React Store</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  
+  
 </head>
 <body>
 <div class="layout">
@@ -48,7 +48,7 @@
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/rtng37?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Live counter demo</a><br>
 <a href="https://codesandbox.io/p/sandbox/tq852v?file=%252Fsrc%252FApp.tsx" target="_blank">Tic-tac-toe</a></p>
-<p>🔹 The shared state setup with <code>@t8/react-store</code> is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
+<p>🔹 The shared state setup shown above is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
 <p>🔹 The <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store state updates. The common use case is when a component makes use of the store state setter without using the store state value.</p>
 <h2>Single store or multiple stores</h2>
 <p>An application can have as many stores as needed, whether on a single React Context or multiple Contexts.</p>
