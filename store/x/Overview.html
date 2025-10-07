@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="t8" style="--color-scheme: #5900c8">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview | T8 Store</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  
+  
+</head>
+<body>
+<div class="layout">
+<div class="body">
+<main>
+<h1><a href="/store/" class="name">T8 Store</a></h1>
+<h2>Initialization</h2>
+<pre><code class="language-js">import { Store } from "@t8/store";
+
+let store = new Store({ counter: 0 });
+</code></pre>
+<h2>Manipulation</h2>
+<pre><code class="language-js">let state = store.getState();
+console.log(state.counter); // 0
+
+store.setState({ counter: 100 });
+console.log(state.counter); // 100
+
+store.setState(state =&gt; ({ ...state, counter: state.counter + 1 }));
+console.log(state.counter); // 101
+</code></pre>
+<h2>Subscription to updates</h2>
+<pre><code class="language-js">let unsubscribe = store.onUpdate((nextState, prevState) =&gt; {
+  console.log(nextState, prevState);
+});
+
+unsubscribe();
+</code></pre>
+<hr>
+<ul>
+<li><a href="https://github.com/t8js/react-store" target="_blank">React store</a></li>
+</ul>
+
+<p class="pagenav">
+  <span class="prev">
+    <span class="icon">←</span>
+    <a href="/store/">Intro</a>
+  </span>
+  <span class="sep">|</span>
+  <span class="repo next"><a href="https://github.com/t8js/store" target="_blank">GitHub</a> <span class="icon">✦</span></span>
+</p>
+</main>
+<hr>
+<nav>
+
+<section class="ref">
+  <ul>
+    <li><a href="https://github.com/t8js/store" target="_blank">GitHub</a></li>
+    
+  </ul>
+</section>
+
+<section class="related">
+  <p class="title">Also with vanilla TS/JS</p>
+  <ul>
+    <li><a href="https://github.com/t8js/router#readme" data-name="@t8/router">T8 <strong>Router</strong></a></li>
+    
+  </ul>
+  <p class="title">With React</p>
+  <ul>
+    <li><a href="/react-router" data-name="@t8/react-router">T8 <strong>React Router</strong></a></li>
+    <li><a href="/react-store" data-name="@t8/react-store">T8 <strong>React Store</strong></a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 <strong>React Pending</strong></a></li>
+  </ul>
+</section>
+
+</nav>
+</div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
+<script>
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.com/metrika/tag.js", "ym");
+ym(103784239, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true});
+</script>
+<noscript><div><img src="https://mc.yandex.com/watch/103784239" style="position:absolute;left:-9999px;" alt=""></div></noscript>
+</body>
+</html>

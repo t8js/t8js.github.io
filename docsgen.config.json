@@ -30,6 +30,24 @@
       "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_react.html"
     },
     {
+      "dir": "router",
+      "root": "/router/",
+      "title": "T8 Router",
+      "htmlTitle": "<a href=\"/\">T8</a> Router",
+      "repo": "https://github.com/t8js/router",
+      "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_vanilla.html",
+      "singlePage": true
+    },
+    {
+      "dir": "store",
+      "root": "/store/",
+      "title": "T8 Store",
+      "htmlTitle": "<a href=\"/\">T8</a> Store",
+      "repo": "https://github.com/t8js/store",
+      "nav": "https://raw.githubusercontent.com/t8js/t8js.github.io/refs/heads/main/assets/nav_vanilla.html",
+      "singlePage": true
+    },
+    {
       "dir": "sdk-factory",
       "root": "/sdk-factory/",
       "title": "T8 SDK Factory",
