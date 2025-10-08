@@ -23,7 +23,8 @@
       "dir": "react-pending",
       "htmlTitle": "<a href=\"/\">T8</a> React Pending",
       "repo": "https://github.com/t8js/react-pending",
-      "nav": "/assets/nav_react.html"
+      "nav": "/assets/nav_react.html",
+      "singlePage": true
     },
     {
       "dir": "router",

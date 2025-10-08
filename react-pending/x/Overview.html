@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Pending: Usage">
-  <title>Usage | T8 React Pending</title>
+  <meta name="description" content="T8 React Pending: Overview">
+  <title>Overview | T8 React Pending</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
@@ -14,66 +14,60 @@
 <div class="body">
 <main>
 <h1><a href="/react-pending/" class="name">T8 React Pending</a></h1>
-<h2 id="usage">Usage</h2>
+<h2>Example</h2>
 <p>Objective: Track the pending state of the async <code>fetchItems()</code> action to tell the user whether the UI is busy or encountered an error (preferably without rewriting the action and the app's state management).</p>
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
-  const ItemList = () =&gt; {
+  export const ItemList = () =&gt; {
     const [items, setItems] = useState([]);
-    // the custom string key parameter tags the action's state so
-    // that another component can access this state by the same tag
 +   const [state, withState] = usePendingState("fetch-items");
 
     useEffect(() =&gt; {
-      // wrapping fetchItems() to track the async action's state
 -     fetchItems().then(setItems);
 +     withState(fetchItems()).then(setItems);
     }, [fetchItems, withState]);
 
-+   if (!state.complete)
-+     return &lt;p&gt;Loading...&lt;/p&gt;;
-
-+   if (state.error)
-+     return &lt;p&gt;An error occurred&lt;/p&gt;;
++   if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
++   if (state.error) return &lt;p&gt;An error occurred&lt;/p&gt;;
 
     return &lt;ul&gt;{items.map(/* ... */)}&lt;/ul&gt;;
   };
+</code></pre>
+<pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
-  const Status = () =&gt; {
-    // reading the "fetch-items" state updated in ItemList
+  export const Status = () =&gt; {
 +   const [state] = usePendingState("fetch-items");
 
-    if (!state.initialized)
-      return "Initial";
-
-    if (!state.complete)
-      return "Busy";
-
-    if (state.error)
-      return "Error";
+    if (!state.initialized) return "";
+    if (!state.complete) return "Busy";
+    if (state.error) return "Error";
 
     return "OK";
   };
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/rrr9cl?file=%2Fsrc%2FItemList.tsx" target="_blank">Live demo</a></p>
-<p>🔹 If the action's state is only used within a single component, it can be used locally by omitting the custom string key parameter of the <code>usePendingState()</code> hook.</p>
-<pre><code class="language-diff">- const [state, withState] = usePendingState("fetch-items");
-+ const [state, withState] = usePendingState();
+<p>🔹 In this example, the action's value (the <code>items</code> array) is stored in the component's local state, but it can be stored in any app state of the developer's choice.</p>
+<h2>Shared and local pending state</h2>
+<p>Omit the custom string key parameter of <code>usePendingState()</code> to scope the pending state locally within a single component:</p>
+<pre><code class="language-diff">- const [state, withState] = usePendingState("fetch-items"); // shared
++ const [state, withState] = usePendingState(); // local
 </code></pre>
-<p>🔹 In the example above, the action's value (the <code>items</code> array) is stored in the component's local state, but it can certainly live in the app's shared state of the developer's choice instead.</p>
-<p>🔹 Silently tracking the action's pending state, e.g. with background or optimistic updates (preventing <code>state.complete</code> from switching to <code>false</code> in the pending state):</p>
+<h2>Silent tracking of background and optimistic updates</h2>
 <pre><code class="language-diff">- withState(fetchItems())
 + withState(fetchItems(), { silent: true })
 </code></pre>
-<p>🔹 Revealing the action's pending state after a delay (e.g. to avoid flashing a process indicator when the action is likely to complete by the end of the delay):</p>
+<p>🔹 This option prevents <code>state.complete</code> from switching to <code>false</code> in the pending state.</p>
+<h2>Delayed pending state</h2>
 <pre><code class="language-diff">- withState(fetchItems())
 + withState(fetchItems(), { delay: 500 })
 </code></pre>
-<p>🔹 Allowing the action's Promise value to reject explicitly (e.g. in order to provide the action with a custom rejection handler) along with exposing <code>state.error</code> that goes by default:</p>
+<p>🔹 Use case: avoiding flashing a process indicator when the action is likely to complete by the end of a short delay.</p>
+<h2>Custom rejection handler</h2>
 <pre><code class="language-diff">- withState(fetchItems())
 + withState(fetchItems(), { throws: true }).catch(handleError)
 </code></pre>
-<p>🔹 Providing an isolated instance of initial shared action state, e.g. for tests or SSR (it can be unnecessary for client-side rendering where the default context value is sufficient, but it can also be used to separate action states of larger self-contained portions of a web app):</p>
+<p>🔹 This option allows the async action to reject explicitly, along with exposing <code>state.error</code> that goes by default.</p>
+<h2>Providing blank initial pending state</h2>
 <pre><code class="language-diff">+ import { PendingStateProvider } from "@t8/react-pending";
 
 - &lt;App/&gt;
@@ -81,7 +75,8 @@
 +   &lt;App/&gt;
 + &lt;/PendingStateProvider&gt;
 </code></pre>
-<p>🔹 Setting a custom initial action state (which is fully optional):</p>
+<p>🔹 <code>&lt;PendingStateProvider&gt;</code> creates an isolated instance of initial shared action state. Prime use cases: tests, SSR. It isn't required with client-side rendering, but it can be used to separate action states of larger self-contained portions of a web app.</p>
+<h2>Providing custom initial pending state</h2>
 <pre><code class="language-diff">+ const initialState = {
 +   "fetch-items": { initialized: true, complete: true },
 + };
@@ -91,7 +86,8 @@
     &lt;App/&gt;
   &lt;/PendingStateProvider&gt;
 </code></pre>
-<p>With an explicit value or without, the <code>&lt;PendingStateProvider&gt;</code>'s nested components will only respond to updates in the particular action states they subscribed to by means of <code>usePendingState("action-key")</code>.</p>
+<p>🔹 While fully optional, this setup allows to override the initial state received from <code>usePendingState(stateKey)</code>.</p>
+<p>🔹 With an explicit value or without, the <code>&lt;PendingStateProvider&gt;</code>'s nested components will only respond to updates in the particular action states they subscribed to by means of <code>usePendingState(stateKey)</code>.</p>
 
 <p class="pagenav">
   <span class="prev">

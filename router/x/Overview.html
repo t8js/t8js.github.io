@@ -19,7 +19,7 @@
 
 let route = new Route();
 </code></pre>
-<p>🔹 The <code>new Route(location)</code> constructor accepts an optional URL location. If omitted, it's the browser's current URL.</p>
+<p>🔹 The <code>new Route(location)</code> constructor accepts an optional URL location. In the browser, the current URL is implied if <code>location</code> is omitted.</p>
 <h2>Navigation</h2>
 <pre><code class="language-diff">- window.location.assign("/intro");
 + route.assign("/intro");
@@ -50,13 +50,13 @@ let route = new Route();
 <h2>Route matching</h2>
 <pre><code class="language-js">console.log(route.href === "/intro");
 console.log(route.href.startsWith("/sections/"));
-console.log(/\/sections\/\d+\/?/.test(route.href));
+console.log(/^\/sections\/\d+\/?/.test(route.href));
 </code></pre>
 <pre><code class="language-js">let { ok, params } = route.match(/^\/sections\/(?&lt;id&gt;\d+)\/?/);
 
 console.log(ok, params.id);
 </code></pre>
-<p>🔹 Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <code>url-shape</code>, to the <code>route.match(pattern)</code> method.</p>
+<p>🔹 Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <em>url-shape</em>, to the <code>route.match(pattern)</code> method.</p>
 <h2>Converting HTML links to SPA route links</h2>
 <pre><code class="language-js">route.observe(document);
 </code></pre>

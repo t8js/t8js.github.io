@@ -49,6 +49,7 @@
 <a href="https://codesandbox.io/p/sandbox/tq852v?file=%252Fsrc%252FApp.tsx" target="_blank">Tic-tac-toe</a></p>
 <p>🔹 The shared state setup shown above is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
 <p>🔹 The <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store state updates. The common use case is when a component makes use of the store state setter without using the store state value.</p>
+<p>🔹 Note that updating the store state doesn't change the store reference sitting in the React Context and therefore doesn't cause updates of the entire React Context. Only the components subscribed to store state updates by means of <code>useStore()</code> will be notified to re-render.</p>
 <h2>Single store or multiple stores</h2>
 <p>An application can have as many stores as needed, whether on a single React Context or multiple Contexts.</p>
 <pre><code class="language-js">let AppContext = createContext({
