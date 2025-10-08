@@ -2,7 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/t8js/docsgen/refs/heads/main/schema.json",
   "baseColor": "#5900c8",
   "favicon": "/assets/t8.png",
-  "ymid": 103784239,
+  "append": {
+    "body": "<script src=\"/assets/stats.js\"></script>"
+  },
   "entries": [
     {
       "dir": "react-router",
