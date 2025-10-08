@@ -1,0 +1,13 @@
+{
+  "name": "@t8/website",
+  "description": "T8 website",
+  "homepage": "https://t8.js.org",
+  "version": "0.0.0",
+  "scripts": {
+    "pull": "npx @t8/docsgen"
+  },
+  "type": "module",
+  "license": "ISC",
+  "author": "axtk",
+  "private": true
+}
