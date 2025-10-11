@@ -5,6 +5,11 @@
   "append": {
     "body": "<script src=\"/assets/stats.js\"></script>"
   },
+  "linkMap": {
+    "https://github.com/t8js/react-store": "/react-store",
+    "https://github.com/t8js/react-router": "/react-router",
+    "https://github.com/t8js/react-pending": "/react-pending"
+  },
   "entries": [
     {
       "dir": "react-router",
