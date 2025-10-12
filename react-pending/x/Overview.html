@@ -14,7 +14,7 @@
 <div class="body">
 <main>
 <h1><a href="/react-pending/" class="name">T8 React Pending</a></h1>
-<h2>Example</h2>
+<h2 id="Example">Example</h2>
 <p>Objective: Track the pending state of the async <code>fetchItems()</code> action to tell the user whether the UI is busy or encountered an error (preferably without rewriting the action and the app's state management).</p>
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
@@ -47,27 +47,27 @@
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/rrr9cl?file=%2Fsrc%2FItemList.tsx" target="_blank">Live demo</a></p>
 <p>🔹 In this example, the action's value (the <code>items</code> array) is stored in the component's local state, but it can be stored in any app state of the developer's choice.</p>
-<h2>Shared and local pending state</h2>
+<h2 id="Shared_and_local_pending_state">Shared and local pending state</h2>
 <p>Omit the custom string key parameter of <code>usePendingState()</code> to scope the pending state locally within a single component:</p>
 <pre><code class="language-diff">- const [state, withState] = usePendingState("fetch-items"); // shared
 + const [state, withState] = usePendingState(); // local
 </code></pre>
-<h2>Silent tracking of background and optimistic updates</h2>
+<h2 id="Silent_tracking_of_background_and_optimistic_updates">Silent tracking of background and optimistic updates</h2>
 <pre><code class="language-diff">- withState(fetchItems())
 + withState(fetchItems(), { silent: true })
 </code></pre>
 <p>🔹 This option prevents <code>state.complete</code> from switching to <code>false</code> in the pending state.</p>
-<h2>Delayed pending state</h2>
+<h2 id="Delayed_pending_state">Delayed pending state</h2>
 <pre><code class="language-diff">- withState(fetchItems())
 + withState(fetchItems(), { delay: 500 })
 </code></pre>
 <p>🔹 Use case: avoiding flashing a process indicator when the action is likely to complete by the end of a short delay.</p>
-<h2>Custom rejection handler</h2>
+<h2 id="Custom_rejection_handler">Custom rejection handler</h2>
 <pre><code class="language-diff">- withState(fetchItems())
 + withState(fetchItems(), { throws: true }).catch(handleError)
 </code></pre>
 <p>🔹 This option allows the async action to reject explicitly, along with exposing <code>state.error</code> that goes by default.</p>
-<h2>Providing blank initial pending state</h2>
+<h2 id="Providing_blank_initial_pending_state">Providing blank initial pending state</h2>
 <pre><code class="language-diff">+ import { PendingStateProvider } from "@t8/react-pending";
 
 - &lt;App/&gt;
@@ -76,7 +76,7 @@
 + &lt;/PendingStateProvider&gt;
 </code></pre>
 <p>🔹 <code>&lt;PendingStateProvider&gt;</code> creates an isolated instance of initial shared action state. Prime use cases: tests, SSR. It isn't required with client-side rendering, but it can be used to separate action states of larger self-contained portions of a web app.</p>
-<h2>Providing custom initial pending state</h2>
+<h2 id="Providing_custom_initial_pending_state">Providing custom initial pending state</h2>
 <pre><code class="language-diff">+ const initialState = {
 +   "fetch-items": { initialized: true, complete: true },
 + };
@@ -100,7 +100,19 @@
 </main>
 <hr>
 <nav>
-
+<section><ul>
+<li data-id="Overview"><strong>Overview</strong>
+  <ul>
+    <li><a href="/react-pending/x/Overview#Example">Example</a></li>
+    <li><a href="/react-pending/x/Overview#Shared_and_local_pending_state">Shared and local pending state</a></li>
+    <li><a href="/react-pending/x/Overview#Silent_tracking_of_background_and_optimistic_updates">Silent tracking of background and optimistic updates</a></li>
+    <li><a href="/react-pending/x/Overview#Delayed_pending_state">Delayed pending state</a></li>
+    <li><a href="/react-pending/x/Overview#Custom_rejection_handler">Custom rejection handler</a></li>
+    <li><a href="/react-pending/x/Overview#Providing_blank_initial_pending_state">Providing blank initial pending state</a></li>
+    <li><a href="/react-pending/x/Overview#Providing_custom_initial_pending_state">Providing custom initial pending state</a></li>
+  </ul>
+</li>
+</ul></section>
 <section class="ref">
   <ul>
     <li><a href="https://github.com/t8js/react-pending" target="_blank">GitHub</a></li>

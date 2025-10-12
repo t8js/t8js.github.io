@@ -14,13 +14,13 @@
 <div class="body">
 <main>
 <h1><a href="/router/" class="name">T8 Router</a></h1>
-<h2>Initialization</h2>
+<h2 id="Initialization">Initialization</h2>
 <pre><code class="language-js">import { Route } from "@t8/router";
 
 let route = new Route();
 </code></pre>
 <p>🔹 The <code>new Route(location)</code> constructor accepts an optional URL location. In the browser, the current URL is implied if <code>location</code> is omitted.</p>
-<h2>Navigation</h2>
+<h2 id="Navigation">Navigation</h2>
 <pre><code class="language-diff">- window.location.assign("/intro");
 + route.assign("/intro");
 
@@ -30,7 +30,7 @@ let route = new Route();
 - console.log(window.location.href);
 + console.log(route.href);
 </code></pre>
-<h2>Events &amp; Middleware</h2>
+<h2 id="Events_&amp;_Middleware">Events &amp; Middleware</h2>
 <pre><code class="language-js">route.on("navigationstart", href =&gt; {
   if (hasUnsavedChanges)
     return false; // prevents navigation
@@ -47,7 +47,7 @@ let route = new Route();
 });
 </code></pre>
 <p>🔹 Both event handlers, acting like routing middleware, are immediately called when they are added if the route is already in the navigation-complete state.</p>
-<h2>Route matching</h2>
+<h2 id="Route_matching">Route matching</h2>
 <pre><code class="language-js">console.log(route.href === "/intro");
 console.log(route.href.startsWith("/sections/"));
 console.log(/^\/sections\/\d+\/?/.test(route.href));
@@ -57,7 +57,7 @@ console.log(/^\/sections\/\d+\/?/.test(route.href));
 console.log(ok, params.id);
 </code></pre>
 <p>🔹 Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <em>url-shape</em>, to the <code>route.match(pattern)</code> method.</p>
-<h2>Converting HTML links to SPA route links</h2>
+<h2 id="Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</h2>
 <pre><code class="language-js">route.observe(document);
 </code></pre>
 <p>The above line turns all <code>&lt;a&gt;</code> and <code>&lt;area&gt;</code> elements in the <code>document</code> to SPA route links enabling navigation without page reloads via the History API.</p>
@@ -79,7 +79,17 @@ console.log(ok, params.id);
 </main>
 <hr>
 <nav>
-
+<section><ul>
+<li data-id="Overview"><strong>Overview</strong>
+  <ul>
+    <li><a href="/router/x/Overview#Initialization">Initialization</a></li>
+    <li><a href="/router/x/Overview#Navigation">Navigation</a></li>
+    <li><a href="/router/x/Overview#Events_%26_Middleware">Events &amp; Middleware</a></li>
+    <li><a href="/router/x/Overview#Route_matching">Route matching</a></li>
+    <li><a href="/router/x/Overview#Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a></li>
+  </ul>
+</li>
+</ul></section>
 <section class="ref">
   <ul>
     <li><a href="https://github.com/t8js/router" target="_blank">GitHub</a></li>

@@ -16,7 +16,7 @@
 <div class="body">
 <main>
 <h1><a href="/react-router/" class="name">T8 React Router</a></h1>
-<h2 id="lazy-routes">Lazy routes</h2>
+<h2>Lazy routes</h2>
 <p>Lazy routes are routes whose content is loaded on demand, when the route is visited.</p>
 <p>Enabling lazy routes doesn't require a specific routing setup. It's a combination of the <a href="/react-router/x/Routing">route matching</a> and lazily loaded React components (with <code>React.lazy()</code> and React's <code>&lt;Suspense&gt;</code>), processed by a code-splitting-capable build tool (like Esbuild, Webpack, Rollup, Vite):</p>
 <pre><code class="language-diff">+ import { Suspense } from "react";

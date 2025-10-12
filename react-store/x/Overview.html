@@ -14,7 +14,7 @@
 <div class="body">
 <main>
 <h1><a href="/react-store/" class="name">T8 React Store</a></h1>
-<h2>Shared state setup</h2>
+<h2 id="Shared_state_setup">Shared state setup</h2>
 <p>Moving the local state to the full-fledged shared state:</p>
 <pre><code class="language-diff">+ import { Store, useStore } from "@t8/react-store";
 +
@@ -48,10 +48,10 @@
 <a href="https://codesandbox.io/p/sandbox/tq852v?file=%252Fsrc%252FApp.tsx" target="_blank">Tic-tac-toe</a></p>
 <p>🔹 The shared state setup shown above is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
 <p>🔹 The <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store state updates. The common use case is when a component makes use of the store state setter without using the store state value.</p>
-<h2>Single store or multiple stores</h2>
+<h2 id="Single_store_or_multiple_stores">Single store or multiple stores</h2>
 <p>An application can have as many stores as needed.</p>
 <p>🔹 Splitting data into multiple stores is one of the strategies to maintain more targeted subscriptions to data changes in components. The other strategy is filtering store updates at the component level, which is discussed below.</p>
-<h2>Filtering store updates</h2>
+<h2 id="Filtering_store_updates">Filtering store updates</h2>
 <p>When only the store state setter is required, without the store state value, we can opt out from subscription to store state changes by passing <code>false</code> as the parameter of <code>useStore()</code>:</p>
 <pre><code class="language-js">let [, setState] = useState(store, false);
 </code></pre>
@@ -70,7 +70,7 @@
   );
 };
 </code></pre>
-<h2>Providing shared state</h2>
+<h2 id="Providing_shared_state">Providing shared state</h2>
 <p>Shared state can be provided to the app by means of a regular React Context provider:</p>
 <pre><code class="language-ts">import { createContext } from "react";
 
@@ -103,17 +103,17 @@ let AppContext = createContext({
 };
 </code></pre>
 <p>🔹 Note that updating the store state doesn't change the store reference sitting in the React Context and therefore doesn't cause updates of the entire Context. Only the components subscribed to updates in the particular store by means of <code>useStore(store)</code> will be notified to re-render.</p>
-<h2>Store data</h2>
+<h2 id="Store_data">Store data</h2>
 <p>A store can contain data of any type.</p>
 <p>Live demos:<br>
 <a href="https://codesandbox.io/p/sandbox/rtng37?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Primitive value state</a><br>
 <a href="https://codesandbox.io/p/sandbox/y7wt2j?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Object value state</a></p>
-<h2>With Immer</h2>
+<h2 id="With_Immer">With Immer</h2>
 <p>Immer can be used with <code>useStore()</code> just the same way as <a href="https://immerjs.github.io/immer/example-setstate#usestate--immer" target="_blank">with <code>useState()</code></a> to facilitate deeply nested data changes.</p>
 <p><a href="https://codesandbox.io/p/sandbox/rn4qsr?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Live demo with Immer</a></p>
-<h2>Shared loading state</h2>
+<h2 id="Shared_loading_state">Shared loading state</h2>
 <p>The ready-to-use hook from the <a href="/react-pending">T8 React Pending</a> package helps manage shared async action state without disturbing the app's state management and actions' code.</p>
-<h2>Remount-persistent state</h2>
+<h2 id="Remount-persistent_state">Remount-persistent state</h2>
 <p>A standalone store initialized outside a component can be used by the component as remount-persistent state, whether used by other components or not.</p>
 
 <p class="pagenav">
@@ -127,7 +127,20 @@ let AppContext = createContext({
 </main>
 <hr>
 <nav>
-
+<section><ul>
+<li data-id="Overview"><strong>Overview</strong>
+  <ul>
+    <li><a href="/react-store/x/Overview#Shared_state_setup">Shared state setup</a></li>
+    <li><a href="/react-store/x/Overview#Single_store_or_multiple_stores">Single store or multiple stores</a></li>
+    <li><a href="/react-store/x/Overview#Filtering_store_updates">Filtering store updates</a></li>
+    <li><a href="/react-store/x/Overview#Providing_shared_state">Providing shared state</a></li>
+    <li><a href="/react-store/x/Overview#Store_data">Store data</a></li>
+    <li><a href="/react-store/x/Overview#With_Immer">With Immer</a></li>
+    <li><a href="/react-store/x/Overview#Shared_loading_state">Shared loading state</a></li>
+    <li><a href="/react-store/x/Overview#Remount-persistent_state">Remount-persistent state</a></li>
+  </ul>
+</li>
+</ul></section>
 <section class="ref">
   <ul>
     <li><a href="https://github.com/t8js/react-store" target="_blank">GitHub</a></li>

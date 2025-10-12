@@ -14,12 +14,12 @@
 <div class="body">
 <main>
 <h1><a href="/store/" class="name">T8 Store</a></h1>
-<h2>Initialization</h2>
+<h2 id="Initialization">Initialization</h2>
 <pre><code class="language-js">import { Store } from "@t8/store";
 
 let store = new Store({ counter: 0 });
 </code></pre>
-<h2>Manipulation</h2>
+<h2 id="Manipulation">Manipulation</h2>
 <pre><code class="language-js">let state = store.getState();
 console.log(state.counter); // 0
 
@@ -29,7 +29,7 @@ console.log(state.counter); // 100
 store.setState(state =&gt; ({ ...state, counter: state.counter + 1 }));
 console.log(state.counter); // 101
 </code></pre>
-<h2>Subscription to updates</h2>
+<h2 id="Subscription_to_updates">Subscription to updates</h2>
 <pre><code class="language-js">let unsubscribe = store.onUpdate((nextState, prevState) =&gt; {
   console.log(nextState, prevState);
 });
@@ -52,7 +52,15 @@ unsubscribe();
 </main>
 <hr>
 <nav>
-
+<section><ul>
+<li data-id="Overview"><strong>Overview</strong>
+  <ul>
+    <li><a href="/store/x/Overview#Initialization">Initialization</a></li>
+    <li><a href="/store/x/Overview#Manipulation">Manipulation</a></li>
+    <li><a href="/store/x/Overview#Subscription_to_updates">Subscription to updates</a></li>
+  </ul>
+</li>
+</ul></section>
 <section class="ref">
   <ul>
     <li><a href="https://github.com/t8js/store" target="_blank">GitHub</a></li>
