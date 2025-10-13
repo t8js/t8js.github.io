@@ -3,75 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Router: Routing">
-  <title>Routing | T8 React Router</title>
+  <meta name="description" content="T8 React Router: Nested routes">
+  <title>Nested routes | T8 React Router</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
-  <link rel="prefetch" href="/react-router/x/Navigation">
+  <link rel="prefetch" href="/react-router/x/Location_provider">
+  <link rel="prefetch" href="/react-router/x/Type_safety">
 </head>
 <body>
 <div class="layout">
 <div class="body">
 <main>
 <h1><a href="/react-router/" class="name">T8 React Router</a></h1>
-<h2>Routing</h2>
-<p>The following example shows the most essential parts of routing code. The route-matching function <code>withRoute(routePattern, x, y)</code> acts similarly to the conditional operator <code>matchesRoutePattern ? x : y</code> and is equally applicable to components and prop values. The route link component is similar to the HTML link tag.</p>
-<pre><code class="language-jsx">import { A, useRoute } from "@t8/react-router";
-import { Intro } from "./Intro";
-import { Section } from "./Section";
-
-let App = () =&gt; {
+<h2>Nested routes</h2>
+<p>Nested routes don't require special rendering rules. All routes are handled equally and independently from each other.</p>
+<pre><code class="language-js">let App = () =&gt; {
   let { withRoute } = useRoute();
 
   return (
     &lt;&gt;
-      &lt;header className={withRoute("/", "full", "compact")}&gt;
-        &lt;h1&gt;App&lt;/h1&gt;
-        &lt;nav&gt;
-          &lt;A href="/"&gt;Intro&lt;/A&gt;{" | "}
-          &lt;A href="/sections/1"&gt;Section 1&lt;/A&gt;
-        &lt;/nav&gt;
-      &lt;/header&gt;
-      {withRoute("/", &lt;Intro/&gt;)}
-      {withRoute(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
-        &lt;Section id={params.id}/&gt;
-      ))}
+      {withRoute("/about", &lt;About/&gt;)}
+      {withRoute("/about/contacts", &lt;Contacts/&gt;)}
+      // ...
     &lt;/&gt;
   );
 };
 </code></pre>
-<p><a href="https://codesandbox.io/p/sandbox/63xzd4?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
-<p>🔹 As mentioned above, <code>withRoute(routePattern, x, y)</code> acts similarly to the conditional operator <code>matchesRoutePattern ? x : y</code>: it returns <code>x</code> if the current URL matches <code>routePattern</code>, and <code>y</code> otherwise. Having the ternary function rather than the ternary conditional operator allows for additional flexibility, like omitting an <code>undefined</code> fallback parameter or resolving as a dynamic value based on <code>params</code> extracted from the route pattern, as seen in the example above.</p>
-<p>🔹 <code>withRoute()</code> calls are independent from each other, they don't have to maintain a certain order, they shouldn't be necessarily grouped in a single component (although they can be, as in the example above). Components with route-based logic can be split like any other components.</p>
-<p>🔹 Route-based rendering with the React's <code>&lt;Activity&gt;</code> component looks similar to what we've seen in the example above:</p>
-<pre><code class="language-jsx">// Without Activity
-{withRoute("/about", &lt;About/&gt;)}
+<p>In a <a href="/react-router/x/Type_safety">type-safe setup</a>, a URL schema of a nested route can inherit certain parameters from the parent route. Such relations (which might as well be other than direct nestedness) can be settled within the URL schema with the schema toolset.</p>
+<pre><code class="language-js">import { createURLSchema } from "url-shape";
+import { z } from "zod";
 
-// With Activity
-&lt;Activity mode={withRoute("/about", "visible", "hidden")}&gt;
-  &lt;About/&gt;
-&lt;/Activity&gt;
+let sectionParams = z.object({
+  sectionId: z.coerce.number(),
+});
+
+export const { url } = createURLSchema({
+  "/sections/:sectionId": {
+    params: sectionParams,
+  },
+  "/sections/:sectionId/stories/:storyId": {
+    params: z.object({
+      ...sectionParams.shape, // Shared params
+      storyId: z.string(),
+    }),
+  },
+});
 </code></pre>
+<p>In such a setup, arbitrary relations between the routes are seen and managed directly, allowing for fine-grained control, including sharing or filtering out certain parameters.</p>
 
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
-    <a href="/react-router/">Intro</a>
+    <a href="/react-router/x/Type_safety">Type safety</a>
   </span>
   <span class="sep">|</span>
-  <span class="next"><a href="/react-router/x/Navigation">Navigation</a> <span class="icon">→</span></span>
+  <span class="next"><a href="/react-router/x/Location_provider">Location provider</a> <span class="icon">→</span></span>
 </p>
 </main>
 <hr>
 <nav>
 <section><ul>
-<li data-id="Routing"><strong>Routing</strong></li>
+<li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Middleware"><a href="/react-router/x/Middleware">Middleware</a></li>
 <li data-id="URL_parameters"><a href="/react-router/x/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/x/Type_safety">Type safety</a></li>
-<li data-id="Nested_routes"><a href="/react-router/x/Nested_routes">Nested routes</a></li>
+<li data-id="Nested_routes"><strong>Nested routes</strong></li>
 <li data-id="Location_provider"><a href="/react-router/x/Location_provider">Location provider</a></li>
 <li data-id="Custom_routing_behavior"><a href="/react-router/x/Custom_routing_behavior">Custom routing behavior</a></li>
 <li data-id="Unknown_routes"><a href="/react-router/x/Unknown_routes">Unknown routes</a></li>
