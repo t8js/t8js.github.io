@@ -36,21 +36,35 @@
 
 <section class="intro">
 
+  <div class="section-content">
+    <p>🔹 Similar to <code>useState()</code></p>
+<pre><code class="language-diff">+ let store = new Store(0);
 
-  <div class="features section-content">
-    <h2>Features</h2>
-    <ul>
-<li>Similar to <code>useState()</code></li>
-<li>No boilerplate</li>
-<li>Painless transition from local state</li>
-<li>SSR-compatible</li>
-</ul>
+  let Counter = () =&gt; {
+-   let [counter, setCounter] = useState(0);
++   let [counter, setCounter] = useStore(store);
+
+    let handleClick = () =&gt; {
+      setCounter(value =&gt; value + 1);
+    };
+
+    return &lt;button onClick={handleClick}&gt;+ {counter}&lt;/button&gt;;
+  };
+</code></pre>
+<p>🔹 No boilerplate<br>
+🔹 Painless transition from local state<br>
+🔹 SSR- and CSR-compatible</p>
   </div>
+
 
 </section>
 
 </main>
 </div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
