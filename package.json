@@ -4,7 +4,8 @@
   "homepage": "https://t8.js.org",
   "version": "0.0.0",
   "scripts": {
-    "pull": "npx @t8/docsgen"
+    "pull": "npx @t8/docsgen",
+    "shape": "npx codeshape"
   },
   "type": "module",
   "license": "ISC",
