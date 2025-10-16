@@ -15,37 +15,66 @@
 <div class="layout">
 <main>
 <section class="intro-title">
-  <div class="badges">
-    <p><a href="https://www.npmjs.com/package/@t8/react-router"><span class="badge"><img src="https://flat.badgen.net/npm/v/@t8/react-router?labelColor=345&amp;color=46e" alt="npm"></span></a> <span class="badge"><img src="https://flat.badgen.net/bundlephobia/minzip/@t8/react-router/?label=minzip&amp;labelColor=345&amp;color=46e&amp;r=0" alt="Lightweight"></span> <span class="badge"><img src="https://flat.badgen.net/badge/TypeScript/%E2%9C%93?labelColor=345&amp;color=345" alt="TypeScript ✓"></span> <span class="badge"><img src="https://flat.badgen.net/badge/CSR/%E2%9C%93?labelColor=345&amp;color=345" alt="CSR ✓"></span> <span class="badge"><img src="https://flat.badgen.net/badge/SSR/%E2%9C%93?labelColor=345&amp;color=345" alt="SSR ✓"></span></p>
+  <div class="section-content">
+    <div class="badges">
+      <p><a href="https://www.npmjs.com/package/@t8/react-router"><span class="badge"><img src="https://flat.badgen.net/npm/v/@t8/react-router?labelColor=345&amp;color=46e" alt="npm"></span></a> <span class="badge"><img src="https://flat.badgen.net/bundlephobia/minzip/@t8/react-router/?label=minzip&amp;labelColor=345&amp;color=46e&amp;r=0" alt="Lightweight"></span> <span class="badge"><img src="https://flat.badgen.net/badge/TypeScript/%E2%9C%93?labelColor=345&amp;color=345" alt="TypeScript ✓"></span> <span class="badge"><img src="https://flat.badgen.net/badge/CSR/%E2%9C%93?labelColor=345&amp;color=345" alt="CSR ✓"></span> <span class="badge"><img src="https://flat.badgen.net/badge/SSR/%E2%9C%93?labelColor=345&amp;color=345" alt="SSR ✓"></span></p>
+    </div>
+    <h1><a href="/">T8</a> React Router</h1>
+    <div class="description">
+      <p><em>Concise router for React apps</em></p>
+    </div>
+    <p class="actions">
+      <a href="/react-router/start" class="primary button">Docs</a>
+      <span class="sep"> • </span>
+      <a href="https://github.com/t8js/react-router" class="button" target="_blank">GitHub</a>
+    </p>
+    
+    <p class="installation"><code>npm i @t8/react-router</code></p>
   </div>
-  <h1><a href="/">T8</a> React Router</h1>
-  <div class="description">
-    <p><em>Concise router for React apps</em></p>
-  </div>
-  <p class="actions">
-    <a href="/react-router/start" class="primary button">Docs</a>
-    <span class="sep"> • </span>
-    <a href="https://github.com/t8js/react-router" class="button" target="_blank">GitHub</a>
-  </p>
-  
-  <p class="installation"><code>npm i @t8/react-router</code></p>
   <script>document.querySelectorAll(".badges img").forEach(img=>{let c=img.closest(".badge");if(c){if(img.complete)c.classList.add("loaded");else{img.onload=()=>{c.classList.add("loaded");};img.onerror=()=>{c.classList.add("failed");};}}});</script>
 </section>
 
 <section class="intro">
-  <div class="features">
-    <h2>Features</h2>
-    <ul>
-<li>Concise and familiar APIs</li>
-<li>Middleware hooks and lazy routes</li>
-<li>Typed routes and URL parameters</li>
-<li>SSR- and CSR-compatible</li>
-</ul>
+
+  <div class="section-content">
+    <p>🔹 Concise and familiar APIs</p>
+<pre><code class="language-jsx">{withRoute("/about", &lt;About/&gt;)}
+// ≈ with "/about" ? &lt;About/&gt; : undefined
+</code></pre>
+<pre><code class="language-jsx">&lt;header className={withRoute("/", "full", "compact")}&gt;
+// ≈ with "/" ? "full" : "compact"
+</code></pre>
+<pre><code class="language-diff">- &lt;a href="/about"&gt;About&lt;/a&gt;
++ &lt;A href="/about"&gt;About&lt;/A&gt; // SPA route link
+</code></pre>
+<pre><code class="language-diff">- window.location.assign("/about");
++ route.assign("/about");
+</code></pre>
+<p>🔹 Middleware hooks</p>
+<pre><code class="language-jsx">useNavigationStart(callback);
+// e.g. to redirect or prevent navigation
+useNavigationComplete(callback);
+// e.g. to set document title
+</code></pre>
+<p>🔹 Typed routes and URL parameters</p>
+<pre><code class="language-jsx">let [state, setState] = useRouteState(url("/x/:id"));
+  // ^ { params: { id: number } }
+</code></pre>
+<p>🔹 Lazy routes</p>
+<pre><code class="language-jsx">{withRoute("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
+</code></pre>
+<p>🔹 SSR- and CSR-compatible</p>
   </div>
+
+
 </section>
 
 </main>
 </div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
