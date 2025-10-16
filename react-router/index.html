@@ -54,8 +54,9 @@
 <p>🔹 Middleware hooks</p>
 <pre><code class="language-jsx">useNavigationStart(callback);
 // e.g. to redirect or prevent navigation
+
 useNavigationComplete(callback);
-// e.g. to set document title
+// e.g. to set the document's title
 </code></pre>
 <p>🔹 Typed routes and URL parameters</p>
 <pre><code class="language-jsx">let [state, setState] = useRouteState(url("/sections/:id"));
