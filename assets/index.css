@@ -3,9 +3,9 @@
   --background: #3e2b59;
   --logo-color: turquoise;
   --link-color: turquoise; /* #52ef9e; */
-  --smaller-font-size: .85em;
+  --smaller-font-size: 0.85em;
 
-  font: normal 100%/1.25 sans-serif;
+  font: normal 100% / 1.25 sans-serif;
   color: var(--color);
   background: var(--background);
 }
@@ -30,7 +30,7 @@ a:visited,
 a:active {
   color: var(--link-color);
   text-decoration: none;
-  border-bottom: .05em solid;
+  border-bottom: 0.05em solid;
 }
 .layout {
   display: flex;
@@ -50,7 +50,7 @@ header {
 }
 header h1 {
   font-size: 6rem;
-  margin: -.45em 0 0;
+  margin: -0.45em 0 0;
   opacity: 1;
 }
 header h1.text span {
@@ -58,9 +58,9 @@ header h1.text span {
   font-style: italic;
   line-height: 1;
   color: var(--logo-color);
-  text-shadow: 0 0 .075em var(--logo-color);
-  transform: scaleY(.65);
-  margin-top: -.175em;
+  text-shadow: 0 0 0.075em var(--logo-color);
+  transform: scaleY(0.65);
+  margin-top: -0.175em;
 }
 header h1.loading {
   opacity: 0;
@@ -82,24 +82,24 @@ header h1.image img {
 header h1.image span {
   display: inline-block;
   width: 1em;
-  height: .625em;
-  margin-right: -.05em;
+  height: 0.625em;
+  margin-right: -0.05em;
   position: relative;
   overflow: hidden;
 }
 header h1.image + p {
-  margin: -.75em 0 0;
+  margin: -0.75em 0 0;
 }
 header p span {
   display: block;
   white-space: nowrap;
-  margin-top: .25em;
+  margin-top: 0.25em;
 }
 header p span.sep {
   display: none;
 }
 main {
-  --border: .075em solid;
+  --border: 0.075em solid;
 
   border-left: var(--border);
 }
@@ -112,7 +112,7 @@ main h2 {
   margin: 0 0 1rem 0;
 }
 main ul {
-  --icon-size: .8em;
+  --icon-size: 0.8em;
 
   list-style: none;
   padding: 0;
@@ -122,7 +122,7 @@ main ul + ul {
   margin-top: 2em;
 }
 main li + li {
-  margin-top: .75em;
+  margin-top: 0.75em;
 }
 main li a {
   font-size: 1.15em;
@@ -133,19 +133,19 @@ main li a span {
 }
 main li .description {
   display: none;
-  margin-top: .1em;
+  margin-top: 0.1em;
 }
 main li a[href^="https://github.com/"]::after {
   content: "";
   display: block;
   width: var(--icon-size);
   height: var(--icon-size);
-  background: url("gh.svg") 50% 50%/contain no-repeat;
+  background: url("gh.svg") 50% 50% / contain no-repeat;
   position: absolute;
-  right: -.5em;
+  right: -0.5em;
   top: 55%;
   transform: translate(100%, -50%);
-  opacity: .5;
+  opacity: 0.5;
 }
 @media (max-width: 600px) {
   .layout {
@@ -156,7 +156,7 @@ main li a[href^="https://github.com/"]::after {
   }
   header,
   main {
-    padding: 1.5em .75em 1.8em;
+    padding: 1.5em 0.75em 1.8em;
   }
   header {
     text-align: center;
@@ -170,10 +170,10 @@ main li a[href^="https://github.com/"]::after {
     border-top: var(--border);
   }
   main section {
-    margin-top: .5em;
+    margin-top: 0.5em;
   }
   main li {
-    margin-top: .75em;
+    margin-top: 0.75em;
   }
   main li + li {
     margin-top: 1.25em;
