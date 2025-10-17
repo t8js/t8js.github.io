@@ -39,11 +39,11 @@
 
   <div class="section-content">
     <p>🔹 Concise and familiar APIs</p>
-<pre><code class="language-jsx">{withRoute("/about", &lt;About/&gt;)}
-// ≈ with "/about" ? &lt;About/&gt; : undefined
+<pre><code class="language-jsx">{at("/about", &lt;About/&gt;)}
+// ≈ at "/about" ? &lt;About/&gt; : undefined
 </code></pre>
-<pre><code class="language-jsx">&lt;header className={withRoute("/", "full", "compact")}&gt;
-// ≈ with "/" ? "full" : "compact"
+<pre><code class="language-jsx">&lt;header className={at("/", "full", "compact")}&gt;
+// ≈ at "/" ? "full" : "compact"
 </code></pre>
 <pre><code class="language-diff">- &lt;a href="/about"&gt;About&lt;/a&gt;
 + &lt;A href="/about"&gt;About&lt;/A&gt; // SPA route link
@@ -63,7 +63,7 @@ useNavigationComplete(callback);
   // ^ { params: { id: number } }
 </code></pre>
 <p>🔹 Lazy routes</p>
-<pre><code class="language-jsx">{withRoute("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
+<pre><code class="language-jsx">{at("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
 </code></pre>
 <p>🔹 SSR- and CSR-compatible</p>
   </div>

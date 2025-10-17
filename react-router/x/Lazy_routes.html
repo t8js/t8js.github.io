@@ -19,21 +19,26 @@
 <h2>Lazy routes</h2>
 <p>Lazy routes are routes whose content is loaded on demand, when the route is visited.</p>
 <p>Enabling lazy routes doesn't require a specific routing setup. It's a combination of the <a href="/react-router/x/Routing">route matching</a> and lazily loaded React components (with <code>React.lazy()</code> and React's <code>&lt;Suspense&gt;</code>), processed by a code-splitting-capable build tool (like Esbuild, Webpack, Rollup, Vite):</p>
-<pre><code class="language-diff">+ import { Suspense } from "react";
+<pre><code class="language-diff">  import { useRoute } from "@t8/react-router";
++ import { Suspense } from "react";
 - import { Projects } from "./Projects";
 + import { Projects } from "./Projects.lazy";
 
-  let App = () =&gt; (
-    &lt;&gt;
-      // ...
-      {withRoute("/projects", (
--       &lt;Projects/&gt;
-+       &lt;Suspense fallback={&lt;p&gt;Loading...&lt;/p&gt;}&gt;
-+         &lt;Projects/&gt;
-+       &lt;/Suspense&gt;
-      ))}
-    &lt;/&gt;
-  );
+  let App = () =&gt; {
+    let { at } = useRoute();
+
+    return (
+      &lt;&gt;
+        // ...
+        {at("/projects", (
+-         &lt;Projects/&gt;
++         &lt;Suspense fallback={&lt;p&gt;Loading...&lt;/p&gt;}&gt;
++           &lt;Projects/&gt;
++         &lt;/Suspense&gt;
+        ))}
+      &lt;/&gt;
+    );
+  };
 </code></pre>
 <pre><code class="language-diff">+ // Projects.lazy.ts
 + import { lazy } from "react";

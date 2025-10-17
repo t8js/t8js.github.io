@@ -19,12 +19,12 @@
 <h2>Nested routes</h2>
 <p>Nested routes don't require special rendering rules. All routes are handled equally and independently from each other.</p>
 <pre><code class="language-js">let App = () =&gt; {
-  let { withRoute } = useRoute();
+  let { at } = useRoute();
 
   return (
     &lt;&gt;
-      {withRoute("/about", &lt;About/&gt;)}
-      {withRoute("/about/contacts", &lt;Contacts/&gt;)}
+      {at("/about", &lt;About/&gt;)}
+      {at("/about/contacts", &lt;Contacts/&gt;)}
       // ...
     &lt;/&gt;
   );

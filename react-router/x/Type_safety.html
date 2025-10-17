@@ -34,19 +34,19 @@ const { url } = createURLSchema({
 });
 
 let App = () =&gt; {
-  let { withRoute } = useRoute();
+  let { at } = useRoute();
 
   return (
     &lt;&gt;
-      &lt;header className={withRoute(url("/"), "full", "compact")}&gt;
+      &lt;header className={at(url("/"), "full", "compact")}&gt;
         &lt;h1&gt;App&lt;/h1&gt;
         &lt;nav&gt;
           &lt;A href={url("/")}&gt;Intro&lt;/A&gt;{" | "}
           &lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Start&lt;/A&gt;
         &lt;/nav&gt;
       &lt;/header&gt;
-      {withRoute(url("/"), &lt;Intro/&gt;)}
-      {withRoute(url("/sections/:id"), ({ params }) =&gt; (
+      {at(url("/"), &lt;Intro/&gt;)}
+      {at(url("/sections/:id"), ({ params }) =&gt; (
         &lt;Section id={params.id}/&gt;
       ))}
     &lt;/&gt;
@@ -63,7 +63,7 @@ let App = () =&gt; {
   }
 }
 </code></pre>
-<p>Adding this type declaration to an app effectively disallows using <code>string</code> and <code>RegExp</code> values for routes and route patterns (such as in the route link <code>href</code> prop, <code>route.assign(location)</code>, and the routing function <code>withRoute(routePattern, x, y)</code>), only allowing values returned from the URL builder with the same routing APIs.</p>
+<p>Adding this type declaration to an app effectively disallows using <code>string</code> and <code>RegExp</code> values for routes and route patterns (such as in the route link <code>href</code> prop, <code>route.assign(location)</code>, and the routing function <code>at(routePattern, x, y)</code>), only allowing values returned from the URL builder with the same routing APIs.</p>
 <p>🔹 A URL builder pattern (like <code>url("/sections/:id")</code>) can also be used with <code>useRouteState(pattern)</code> and <code>useRouteMatch(pattern)</code> to manipulate <a href="/react-router/x/URL_parameters">URL parameters</a> in a type-safe manner.</p>
 <p><a href="https://codesandbox.io/p/sandbox/qnd87w?file=%2Fsrc%2FShapeSection.tsx" target="_blank">Typed URL parameters state demo</a></p>
 <p>🔹 Recap: It's using a typed URL pattern (like with <code>url()</code> from <em>url-shape</em>) that enables type-safe route handling, which is an optional enhancement. Plain <code>string</code> routes and <code>RegExp</code> route patterns are handled with more generic typing as a baseline sufficient in many cases.</p>

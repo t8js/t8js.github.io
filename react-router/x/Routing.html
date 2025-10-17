@@ -16,25 +16,25 @@
 <main>
 <h1><a href="/react-router/" class="name">T8 React Router</a></h1>
 <h2>Routing</h2>
-<p>The following example shows the most essential parts of routing code. The route-matching function <code>withRoute(routePattern, x, y)</code> acts similarly to the conditional operator <code>matchesRoutePattern ? x : y</code> and is equally applicable to components and prop values. The route link component is similar to the HTML link tag.</p>
+<p>The following example runs through the essential parts of routing code. The route-matching function <code>at(route, x, y)</code> acts similarly to the conditional operator <code>atRoute ? x : y</code> and is equally applicable to components and prop values. The route link component acts and looks similar to the HTML link tag.</p>
 <pre><code class="language-jsx">import { A, useRoute } from "@t8/react-router";
 import { Intro } from "./Intro";
 import { Section } from "./Section";
 
 let App = () =&gt; {
-  let { withRoute } = useRoute();
+  let { at } = useRoute();
 
   return (
     &lt;&gt;
-      &lt;header className={withRoute("/", "full", "compact")}&gt;
+      &lt;header className={at("/", "full", "compact")}&gt;
         &lt;h1&gt;App&lt;/h1&gt;
         &lt;nav&gt;
           &lt;A href="/"&gt;Intro&lt;/A&gt;{" | "}
           &lt;A href="/sections/1"&gt;Section 1&lt;/A&gt;
         &lt;/nav&gt;
       &lt;/header&gt;
-      {withRoute("/", &lt;Intro/&gt;)}
-      {withRoute(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
+      {at("/", &lt;Intro/&gt;)}
+      {at(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
         &lt;Section id={params.id}/&gt;
       ))}
     &lt;/&gt;
@@ -42,14 +42,14 @@ let App = () =&gt; {
 };
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/63xzd4?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
-<p>🔹 As mentioned above, <code>withRoute(routePattern, x, y)</code> acts similarly to the conditional operator <code>matchesRoutePattern ? x : y</code>: it returns <code>x</code> if the current URL matches <code>routePattern</code>, and <code>y</code> otherwise. Having the ternary function rather than the ternary conditional operator allows for additional flexibility, like omitting an <code>undefined</code> fallback parameter or resolving as a dynamic value based on <code>params</code> extracted from the route pattern, as seen in the example above.</p>
-<p>🔹 <code>withRoute()</code> calls are independent from each other, they don't have to maintain a certain order, they shouldn't be necessarily grouped in a single component (although they can be, as in the example above). Components with route-based logic can be split like any other components.</p>
+<p>🔹 As mentioned above, <code>at(route, x, y)</code> acts similarly to the conditional operator <code>atRoute ? x : y</code>: it returns <code>x</code> if the current URL matches <code>route</code>, and <code>y</code> otherwise. Having the ternary function rather than the ternary conditional operator allows for additional flexibility, like omitting an <code>undefined</code> fallback parameter or resolving as a dynamic value based on <code>params</code> extracted from the route pattern, as seen in the example above.</p>
+<p>🔹 <code>at()</code> calls are independent from each other, they don't have to maintain a certain order, they shouldn't be necessarily grouped in a single component (although they can be, as in the example above). Components with route-based logic can be split like any other components.</p>
 <p>🔹 Route-based rendering with the React's <code>&lt;Activity&gt;</code> component looks similar to what we've seen in the example above:</p>
 <pre><code class="language-jsx">// Without Activity
-{withRoute("/about", &lt;About/&gt;)}
+{at("/about", &lt;About/&gt;)}
 
 // With Activity
-&lt;Activity mode={withRoute("/about", "visible", "hidden")}&gt;
+&lt;Activity mode={at("/about", "visible", "hidden")}&gt;
   &lt;About/&gt;
 &lt;/Activity&gt;
 </code></pre>
