@@ -33,25 +33,15 @@
   <script>document.querySelectorAll(".badges img").forEach(img=>{let c=img.closest(".badge");if(c){if(img.complete)c.classList.add("loaded");else{img.onload=()=>{c.classList.add("loaded");};img.onerror=()=>{c.classList.add("failed");};}}});</script>
 </section>
 <section class="intro">
-  <div class="section-content">
-    <p><span class="li">🔹 Shared or local pending state tracking</span><br>
-<span class="li">🔹 Without rewrites in the app's shared state or async actions' internals</span><br>
-<span class="li">🔹 With a concise API</span></p>
-<pre><code class="language-diff">+ let [state, withState] = usePendingState("fetch-items");
-
-- fetchItems().then(setItems);
-+ withState(fetchItems()).then(setItems);
-
-+ if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
-</code></pre>
+  <div class="features section-content">
+    <h2>Features</h2>
+    <ul>
+<li>Shared or local pending state tracking</li>
+</ul>
   </div>
 </section>
 </main>
 </div>
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/code.css">
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
-<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
