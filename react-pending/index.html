@@ -34,9 +34,9 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <p>🔹 Shared or local pending state tracking
-🔹 Without rewrites in the app's shared state or async actions' internals
-🔹 With a concise API</p>
+    <p><span class="li">🔹 Shared or local pending state tracking</span><br>
+<span class="li">🔹 Without rewrites in the app's shared state or async actions' internals</span><br>
+<span class="li">🔹 With a concise API</span></p>
 <pre><code class="language-diff">+ let [state, withState] = usePendingState("fetch-items");
 
 - fetchItems().then(setItems);
