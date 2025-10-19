@@ -40,10 +40,10 @@
   <div class="section-content">
     <p>🔹 Concise routing API</p>
 <pre><code class="language-jsx">{at("/about", &lt;About/&gt;)}
-// ≈ at "/about" ? &lt;About/&gt; : undefined
+// at "/about" ? &lt;About/&gt; : undefined
 </code></pre>
 <pre><code class="language-jsx">&lt;header className={at("/", "full", "compact")}&gt;
-// ≈ at "/" ? "full" : "compact"
+// at "/" ? "full" : "compact"
 </code></pre>
 <p>🔹 Familiar navigation APIs</p>
 <pre><code class="language-diff">- &lt;a href="/about"&gt;About&lt;/a&gt;
@@ -59,7 +59,13 @@
 <pre><code class="language-jsx">useNavigationComplete(callback);
 // e.g. to set the document's title
 </code></pre>
-<p>🔹 Typed routes and URL parameters</p>
+<p>🔹 Typed routes and URL parameters, with incremental adoption</p>
+<pre><code class="language-js">let { url } = createURLSchema({
+  "/sections/:id": {
+    params: z.object({ id: z.number.coerce() }) // with Zod
+  }
+});
+</code></pre>
 <pre><code class="language-jsx">let [state, setState] = useRouteState(url("/sections/:id"));
   // ^ { params: { id: number } }
 </code></pre>
