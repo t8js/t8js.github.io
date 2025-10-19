@@ -33,13 +33,12 @@
   <script>document.querySelectorAll(".badges img").forEach(img=>{let c=img.closest(".badge");if(c){if(img.complete)c.classList.add("loaded");else{img.onload=()=>{c.classList.add("loaded");};img.onerror=()=>{c.classList.add("failed");};}}});</script>
 </section>
 <section class="intro">
-  <div class="features section-content">
-    <h2>Features</h2>
-    <ul>
+  <div class="section-content">
+    <div class="features"><ul>
 <li>Typed requests based on custom API schemas</li>
 <li>Environment-agnostic interface</li>
 <li>Zero dependencies</li>
-</ul>
+</ul></div>
   </div>
 </section>
 </main>

@@ -33,11 +33,19 @@
   <script>document.querySelectorAll(".badges img").forEach(img=>{let c=img.closest(".badge");if(c){if(img.complete)c.classList.add("loaded");else{img.onload=()=>{c.classList.add("loaded");};img.onerror=()=>{c.classList.add("failed");};}}});</script>
 </section>
 <section class="intro">
-  <div class="features section-content">
-    <h2>Features</h2>
-    <ul>
+  <div class="section-content">
+    <div class="features"><ul>
 <li>Shared or local pending state tracking</li>
-</ul>
+<li>Without rewrites in the app's shared state or async actions' internals</li>
+<li>With a concise API</li>
+</ul></div>
+    <div class="note"><pre><code class="language-diff">+ let [state, withState] = usePendingState("fetch-items");
+
+- fetchItems().then(setItems);
++ withState(fetchItems()).then(setItems);
+
++ if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
+</code></pre></div>
   </div>
 </section>
 </main>
