@@ -51,7 +51,6 @@ let userList = await api.users.getList();
 let firstUser = await api.users.getInfo({ params: { id: userList[0].id } });
 </code></pre>
 <p>For API methods controlled only with query parameters, there is also a shorthand option: the <code>getQueryEntry()</code> method, returning aliases accepting only query parameters, without the need to nest them into the <code>query</code> key.</p>
-
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -72,10 +71,8 @@ let firstUser = await api.users.getInfo({ params: { id: userList[0].id } });
 <section class="ref">
   <ul>
     <li><a href="https://github.com/t8js/sdk-factory" target="_blank">GitHub</a></li>
-    
   </ul>
 </section>
-
 <section class="related">
   <p class="title">Also with vanilla TS/JS</p>
   <ul>
@@ -89,7 +86,6 @@ let firstUser = await api.users.getInfo({ params: { id: userList[0].id } });
     <li><a href="/react-pending" data-name="@t8/react-pending">T8 <strong>React Pending</strong></a></li>
   </ul>
 </section>
-
 </nav>
 </div>
 </div>
