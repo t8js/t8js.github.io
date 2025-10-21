@@ -38,10 +38,41 @@
 <li>Concise API for SPA navigation</li>
 <li>Flexible URL pattern matching for URL-based rendering</li>
 </ul></div>
+    <div class="note"><p>🔹 Concise API for SPA navigation</p>
+<pre><code class="language-diff">  let route = new Route();
+
+- window.location.assign("/about");
++ route.assign("/about");
+
+  route.observe(document);
+</code></pre>
+<p>🔹 Flexible URL pattern matching for URL-based rendering</p>
+<pre><code class="language-js">header.className = route.href === "/intro" ? "full" : "compact";
+
+header.className = route.at("/intro", "full", "compact");
+// at "/intro" ? "full" : "compact"
+
+h1.textContent = route.at(
+  /^\/sections\/(?&lt;id&gt;\d+)\/?/,
+  ({ params }) =&gt; `Section ${params.id}`
+);
+// at "/sections/&lt;id&gt;" ? "Section &lt;id&gt;" : undefined
+</code></pre>
+<p>🔹 Navigation middleware</p>
+<pre><code class="language-js">route.on("navigationstart", callback);
+// e.g. to redirect or prevent navigation
+</code></pre>
+<pre><code class="language-js">route.on("navigationcomplete", callback);
+// e.g. to set the document's title
+</code></pre></div>
   </div>
 </section>
 </main>
 </div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.1/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
