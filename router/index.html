@@ -44,11 +44,11 @@ route.observe(document); // enable SPA links
 </code></pre>
 <p>🔹 Flexible URL pattern matching for URL-based rendering</p>
 <pre><code class="language-js">header.className = route.href === "/intro" ? "full" : "compact";
-
-header.className = route.at("/intro", "full", "compact");
+</code></pre>
+<pre><code class="language-js">header.className = route.at("/intro", "full", "compact");
 // at "/intro" ? "full" : "compact"
-
-h1.textContent = route.at(
+</code></pre>
+<pre><code class="language-js">h1.textContent = route.at(
   /^\/sections\/(?&lt;id&gt;\d+)\/?/,
   ({ params }) =&gt; `Section ${params.id}`
 );
