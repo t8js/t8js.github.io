@@ -48,7 +48,7 @@ route.observe(document); // enable SPA links
 <pre><code class="language-js">header.className = route.at("/", "full", "compact");
 // at "/" ? "full" : "compact"
 </code></pre>
-<pre><code class="language-js">h1.textContent = route.at(
+<pre><code class="language-js">let sectionTitle = route.at(
   /^\/sections\/(?&lt;id&gt;\d+)\/?/,
   ({ params }) =&gt; `Section ${params.id}`
 );
