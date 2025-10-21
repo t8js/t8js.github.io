@@ -30,6 +30,7 @@ let route = new Route();
 - console.log(window.location.href);
 + console.log(route.href);
 </code></pre>
+<p>🔹 The route navigation API is largely in line with the built-in navigation APIs. An instance of <code>Route</code> exposes: <code>.assign(url)</code>, <code>.replace(url)</code>, <code>.reload()</code>, <code>.href</code>, <code>.pathname</code>, <code>.search</code>, <code>.hash</code>, <code>.back()</code>, <code>.forward()</code>, <code>.go(delta)</code> — similar to the built-in APIs of <code>window.location</code> and <code>history</code> carried over to route-based SPA navigation.</p>
 <h2 id="Events_&amp;_Middleware">Events &amp; Middleware</h2>
 <pre><code class="language-js">route.on("navigationstart", href =&gt; {
   if (hasUnsavedChanges)
@@ -56,11 +57,20 @@ console.log(/^\/sections\/\d+\/?/.test(route.href));
 
 console.log(ok, params.id);
 </code></pre>
-<p>🔹 Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <em>url-shape</em>, to the <code>route.match(pattern)</code> method.</p>
+<pre><code class="language-js">header.className = route.at("/intro", "full", "compact");
+// at "/intro" ? "full" : "compact"
+
+h1.textContent = route.at(
+  /^\/sections\/(?&lt;id&gt;\d+)\/?/,
+  ({ params }) =&gt; `Section ${params.id}`
+);
+// at "/sections/&lt;id&gt;" ? "Section &lt;id&gt;" : undefined
+</code></pre>
+<p>🔹 Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <a href="https://github.com/t8js/url-shape#readme" target="_blank"><em>url-shape</em></a>, to <code>route.match(pattern)</code> or <code>route.at(pattern, x, y)</code>.</p>
 <h2 id="Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</h2>
 <pre><code class="language-js">route.observe(document);
 </code></pre>
-<p>The above line turns all <code>&lt;a&gt;</code> and <code>&lt;area&gt;</code> elements in the <code>document</code> to SPA route links enabling navigation without page reloads via the History API.</p>
+<p>The above line turns all <code>&lt;a&gt;</code> and <code>&lt;area&gt;</code> elements in the <code>document</code> to SPA route links enabling navigation without page reloads via the <code>route</code> object.</p>
 <p>🔹 <code>route.observe(container, elements)</code> accepts a container element (it can be <code>document</code>, as in the example above) and optionally <code>elements</code> (which can be a selector or HTML elements).</p>
 <hr>
 <ul>
