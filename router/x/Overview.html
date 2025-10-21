@@ -57,8 +57,8 @@ console.log(/^\/sections\/\d+\/?/.test(route.href));
 
 console.log(ok, params.id);
 </code></pre>
-<pre><code class="language-js">header.className = route.at("/intro", "full", "compact");
-// at "/intro" ? "full" : "compact"
+<pre><code class="language-js">header.className = route.at("/", "full", "compact");
+// at "/" ? "full" : "compact"
 
 h1.textContent = route.at(
   /^\/sections\/(?&lt;id&gt;\d+)\/?/,
