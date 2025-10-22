@@ -47,6 +47,9 @@
 </code></pre>
 <pre><code class="language-diff">- window.location.assign("/about");
 + route.assign("/about");
+
+- window.location.href = "/about";
++ route.href = "/about";
 </code></pre>
 <p>🔹 Middleware hooks</p>
 <pre><code class="language-jsx">useNavigationStart(callback);
