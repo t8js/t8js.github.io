@@ -42,8 +42,8 @@ route.observe(document); // enable SPA links
 <pre><code class="language-diff">- window.location.assign("/intro");
 + route.assign("/intro");
 
-- window.location.href
-+ route.href
+- window.location.href = "/intro";
++ route.href = "/intro";
 </code></pre>
 <p>🔹 Flexible URL pattern matching for URL-based rendering</p>
 <pre><code class="language-js">header.className = route.href === "/" ? "full" : "compact";
