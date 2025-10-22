@@ -59,7 +59,13 @@
 // e.g. to set the document's title
 </code></pre>
 <p>🔹 Typed routes and URL parameters</p>
-<pre><code class="language-jsx">let [state, setState] = useRouteState(url("/sections/:id"));
+<pre><code class="language-jsx">let { url } = createURLSchema({
+  "/sections/:id": {
+    params: z.object({ id: z.coerce.number() }) // With Zod
+  }
+});
+
+let [state, setState] = useRouteState(url("/sections/:id"));
   // ^ { params: { id: number } }
 </code></pre>
 <p>🔹 Lazy routes</p>
