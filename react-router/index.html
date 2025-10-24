@@ -60,9 +60,9 @@
 </code></pre>
 <p>🔹 Typed routes and URL parameters</p>
 <pre><code class="language-jsx">let { url } = createURLSchema({
-  "/sections/:id": {
+  "/sections/:id": z.object({
     params: z.object({ id: z.coerce.number() }) // With Zod
-  }
+  })
 });
 
 let [state, setState] = useRouteState(url("/sections/:id"));

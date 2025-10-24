@@ -39,15 +39,15 @@ let sectionParams = z.object({
 });
 
 export const { url } = createURLSchema({
-  "/sections/:sectionId": {
+  "/sections/:sectionId": z.object({
     params: sectionParams,
-  },
-  "/sections/:sectionId/stories/:storyId": {
+  }),
+  "/sections/:sectionId/stories/:storyId": z.object({
     params: z.object({
       ...sectionParams.shape, // Shared params
       storyId: z.string(),
     }),
-  },
+  }),
 });
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/htfslv?file=%252Fsrc%252FApp.tsx" target="_blank">Live typed nested routes demo</a></p>

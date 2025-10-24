@@ -17,20 +17,20 @@
 <main>
 <h1><a href="/react-router/" class="name">T8 React Router</a></h1>
 <h2>Type safety</h2>
-<p>Type-safe routing is as an optional enhancement. It's enabled by supporting route patterns created with a type-safe URL builder like <em>url-shape</em> together with a schema created with <em>zod</em> or <em>yup</em>. This approach allows for gradual or partial adoption of type-safe routing in an application.</p>
+<p>Type-safe routing is as an optional enhancement. It's enabled by supporting route patterns created with a type-safe URL builder like <em>url-shape</em> together with a schema created with a validation library implementing the <a href="https://github.com/standard-schema/standard-schema#readme" target="_blank">Standard Schema</a> spec, like <em>zod</em>, <em>valibot</em>, <em>arktype</em>, or <em>yup</em>. This approach allows for gradual or partial adoption of type-safe routing in an application.</p>
 <pre><code class="language-tsx">import { A, useRoute } from "@t8/react-router";
 import { createURLSchema } from "url-shape";
 import { z } from "zod";
 
 const { url } = createURLSchema({
-  "/": null, // Goes without parameters
-  "/sections/:id": {
+  "/": z.object({}), // Goes without parameters
+  "/sections/:id": z.object({
     // Path components
     params: z.object({
       id: z.coerce.number(),
     }),
     // Similarly a `query` schema can be added here
-  },
+  }),
 });
 
 let App = () =&gt; {
