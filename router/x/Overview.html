@@ -74,7 +74,9 @@ let sectionTitle = route.at(
 <pre><code class="language-js">route.observe(document);
 </code></pre>
 <p>The above line turns all <code>&lt;a&gt;</code> and <code>&lt;area&gt;</code> elements in the <code>document</code> to SPA route links enabling navigation without page reloads via the <code>route</code> object.</p>
-<p>🔹 <code>route.observe(container, elements)</code> accepts a container element (it can be <code>document</code>, as in the example above) and optionally <code>elements</code> (which can be a selector or HTML elements).</p>
+<p>🔹 <code>route.observe(container, elements)</code> accepts a container element (it can be <code>document</code>, as in the example above) and optionally <code>elements</code> (which can be a selector or HTML elements) specifying the SPA navigation links.</p>
+<pre><code class="language-js">route.observe(document.querySelector("#app"), "nav a");
+</code></pre>
 <hr>
 <ul>
 <li><a href="https://codesandbox.io/p/sandbox/n7y5rx?file=%2Fsrc%2Findex.ts" target="_blank">Basic usage example</a></li>
