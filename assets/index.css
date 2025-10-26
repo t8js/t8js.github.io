@@ -36,7 +36,7 @@ a:active {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 48em;
+  max-width: 54rem;
   justify-content: center;
   padding: 5vh 0 10vh;
   margin: 0 auto;
@@ -81,7 +81,7 @@ header p span.sep {
   display: none;
 }
 main {
-  --box-size: 14rem;
+  --box-size: 16rem;
   --icon-size: 0.8rem;
 
   display: grid;
@@ -120,7 +120,7 @@ main li {
 }
 main li a {
   display: flex;
-  min-height: 5.8rem;
+  min-height: 4.8rem;
   flex-direction: column;
   padding: .5rem .75rem;
   position: relative;
