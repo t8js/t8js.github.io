@@ -17,7 +17,7 @@
 <main>
 <h1><a href="/react-router/" class="name">T8 React Router</a></h1>
 <h2>Unknown routes</h2>
-<p>The fallback parameter of the route-matching function <code>at(route, x, y)</code> can be used as a way to handle unknown routes:</p>
+<p>The fallback parameter of the route-matching function <code>at(route, x, y)</code> can be used as a way to handle unknown routes, as shown in the example below. In a <a href="/react-router/x/Type_safety">type-safe setup</a>, unknown routes can be handled based on whether the given route belongs to the URL schema (e.g. with <code>validate(route)</code> from <a href="https://github.com/t8js/url-shape#readme" target="_blank"><em>url-shape</em></a>).</p>
 <pre><code class="language-jsx">import { A, useRoute } from "@t8/react-router";
 
 const routeMap = {
