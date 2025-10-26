@@ -81,8 +81,8 @@ header p span.sep {
   display: none;
 }
 main {
-  --box-size: 14em;
-  --icon-size: 0.8em;
+  --box-size: 14rem;
+  --icon-size: 0.8rem;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--box-size), 1fr));
@@ -119,17 +119,12 @@ main li {
   margin: 0;
 }
 main li a {
-  display: block;
-  font-size: 1.15em;
-  padding: 2rem .75rem .35rem;
+  display: flex;
+  min-height: 5.8rem;
+  flex-direction: column;
+  padding: .5rem .75rem;
   position: relative;
-}
-main li a span {
-  font-weight: bold;
-}
-main li .description {
-  display: none;
-  margin-top: 0.1em;
+  box-sizing: border-box;
 }
 main li a[href^="https://github.com/"]::after {
   content: "";
@@ -141,6 +136,20 @@ main li a[href^="https://github.com/"]::after {
   right: 0.35rem;
   top: 0.35rem;
   opacity: 0.25;
+}
+main li a .name {
+  display: block;
+  font-size: 1.15em;
+  margin-right: calc(var(--icon-size) + .5rem);
+}
+main li a .sep {
+  display: none;
+}
+main li a .description {
+  display: block;
+  font-size: .75rem;
+  color: color(from var(--color) srgb r g b / .5);
+  margin-top: .25rem;
 }
 @media (max-width: 600px) {
   :root {
@@ -158,5 +167,8 @@ main li a[href^="https://github.com/"]::after {
   }
   header {
     align-items: flex-start;
+  }
+  main li a {
+    min-height: 4.8rem;
   }
 }
