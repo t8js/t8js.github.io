@@ -45,6 +45,7 @@ header {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  font-family: monospace;
   padding: .75rem var(--padding-x);
   box-sizing: border-box;
 }
