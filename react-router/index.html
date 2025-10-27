@@ -66,7 +66,15 @@
 });
 
 let [state, setState] = useRouteState(url("/sections/:id"));
-  // ^ { params: { id: number } }
+  // ↑ { params: { id: number } }
+
+                          // ↓ { params: { id: number } }
+{at(url("/sections/:id"), ({ params }) =&gt; {
+  return &lt;Section id={params.id}/&gt;
+})}
+
+                             // ↓ { params: { id: number } }
+&lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Section 1&lt;/A&gt;
 </code></pre>
 <p>🔹 Lazy routes</p>
 <pre><code class="language-jsx">{at("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
