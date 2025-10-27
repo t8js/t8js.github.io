@@ -36,7 +36,7 @@ a:active {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 54rem;
+  max-width: 60rem;
   justify-content: center;
   padding: 5vh 0 10vh;
   margin: 0 auto;
@@ -82,11 +82,12 @@ header p span.sep {
   display: none;
 }
 main {
-  --box-size: 16rem;
+  --box-width: 18rem;
+  --box-height: 4.8em;
   --icon-size: 0.65em;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--box-size), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--box-width), 1fr));
   gap: 1rem;
   padding: 1rem var(--padding-x) 1.3rem;
   box-sizing: border-box;
@@ -113,7 +114,7 @@ main li {
 }
 main li a {
   display: flex;
-  min-height: 4.8em;
+  min-height: var(--box-height);
   flex-direction: column;
   padding: .5rem .75rem;
   box-sizing: border-box;
@@ -165,6 +166,8 @@ main li a .description {
     margin-left: 1rem;
   }
   main {
+    --box-height: auto;
+
     display: block;
     font-size: 1.2rem;
   }
@@ -183,7 +186,6 @@ main li a .description {
     border: none;
   }
   main li a {
-    min-height: auto;
     padding: 0;
   }
   main li a .name {
