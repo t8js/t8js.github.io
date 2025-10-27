@@ -1,5 +1,5 @@
 :root {
-  --color: white;
+  --color: color(from white srgb r g b / .5);
   --background: #3e2b59;
   --logo-color: turquoise;
   --link-color: turquoise; /* #52ef9e; */
@@ -68,7 +68,7 @@ header h1 img {
   transform: translate(-50%, -50%);
 }
 header p {
-  margin: 0 0 0 1.25rem;
+  margin: 0 0 0 1rem;
 }
 header p:last-child {
   flex: auto;
@@ -142,7 +142,7 @@ main li a .sep {
 main li a .description {
   display: block;
   font-size: .75em;
-  color: color(from var(--color) srgb r g b / .5);
+  color: var(--color);
   margin-top: .25em;
 }
 @media (max-width: 600px) {
@@ -161,9 +161,6 @@ main li a .description {
   }
   header {
     align-items: flex-start;
-  }
-  header p {
-    margin-left: 1rem;
   }
   main {
     --box-height: auto;
