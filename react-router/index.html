@@ -74,7 +74,7 @@ let { url } = createURLSchema({
   return &lt;Section id={params.id}/&gt;
 })}
 </code></pre>
-<pre><code class="language-jsx">&lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Section 1&lt;/A&gt;
+<pre><code class="language-jsx">&lt;A href={url("/sections/:id", { params: { id: 42 } })}&gt;Section 42&lt;/A&gt;
                              // ↑ { params: { id: number } }
 </code></pre>
 <p>🔹 Lazy routes</p>
