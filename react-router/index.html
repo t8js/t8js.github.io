@@ -58,23 +58,24 @@
 <pre><code class="language-jsx">useNavigationComplete(callback);
 // e.g. to set the document's title
 </code></pre>
-<p>🔹 Typed routes and URL parameters</p>
-<pre><code class="language-jsx">let { url } = createURLSchema({
-  "/sections/:id": z.object({
-    params: z.object({ id: z.coerce.number() }) // With Zod
+<p>🔹 Typed routes and URL parameters, as an optional enhancement</p>
+<pre><code class="language-jsx">   // ↓ type-safe URL pattern builder
+let { url } = createURLSchema({
+  "/sections/:id": z.object({ // with Zod
+    params: z.object({ id: z.coerce.number() })
   })
 });
-
-let [state, setState] = useRouteState(url("/sections/:id"));
+</code></pre>
+<pre><code class="language-jsx">let [state, setState] = useRouteState(url("/sections/:id"));
   // ↑ { params: { id: number } }
-
-                          // ↓ { params: { id: number } }
+</code></pre>
+<pre><code class="language-jsx">                          // ↓ { params: { id: number } }
 {at(url("/sections/:id"), ({ params }) =&gt; {
   return &lt;Section id={params.id}/&gt;
 })}
-
-                             // ↓ { params: { id: number } }
-&lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Section 1&lt;/A&gt;
+</code></pre>
+<pre><code class="language-jsx">&lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Section 1&lt;/A&gt;
+                             // ↑ { params: { id: number } }
 </code></pre>
 <p>🔹 Lazy routes</p>
 <pre><code class="language-jsx">{at("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
