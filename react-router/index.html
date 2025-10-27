@@ -35,11 +35,15 @@
 <section class="intro">
   <div class="section-content">
     <div class="intro"><p>🔹 Concise routing API</p>
+<pre><code class="language-jsx">&lt;header className={at("/", "full", "compact")}&gt;
+// at "/" ? "full" : "compact"
+</code></pre>
 <pre><code class="language-jsx">{at("/about", &lt;About/&gt;)}
 // at "/about" ? &lt;About/&gt; : undefined
 </code></pre>
-<pre><code class="language-jsx">&lt;header className={at("/", "full", "compact")}&gt;
-// at "/" ? "full" : "compact"
+<pre><code class="language-jsx">{at(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
+  &lt;Section id={params.id}/&gt;
+))}
 </code></pre>
 <p>🔹 Familiar navigation APIs</p>
 <pre><code class="language-diff">- &lt;a href="/about"&gt;About&lt;/a&gt;
@@ -66,16 +70,19 @@ let { url } = createURLSchema({
   })
 });
 </code></pre>
-<pre><code class="language-jsx">let [state, setState] = useRouteState(url("/sections/:id"));
-  // ↑ { params: { id: number } }
-</code></pre>
 <pre><code class="language-jsx">                          // ↓ { params: { id: number } }
-{at(url("/sections/:id"), ({ params }) =&gt; {
-  return &lt;Section id={params.id}/&gt;
-})}
+{at(url("/sections/:id"), ({ params }) =&gt; (
+  &lt;Section id={params.id}/&gt;
+))}
 </code></pre>
 <pre><code class="language-jsx">&lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Section 1&lt;/A&gt;
                              // ↑ { params: { id: number } }
+</code></pre>
+<p>🔹 URL parameters as state</p>
+<pre><code class="language-jsx">let [state, setState] = useRouteState("/");
+</code></pre>
+<pre><code class="language-jsx">// with type safety based on a custom URL schema
+let [state, setState] = useRouteState(url("/"));
 </code></pre>
 <p>🔹 Lazy routes</p>
 <pre><code class="language-jsx">{at("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
