@@ -40,6 +40,7 @@
 <pre><code class="language-jsx">{at(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
   &lt;Section id={params.id}/&gt;
 ))}
+// at "/sections/&lt;id&gt;" ? &lt;Section id={id}/&gt; : undefined
 </code></pre>
 <p>🔹 Familiar navigation APIs</p>
 <pre><code class="language-diff">- &lt;a href="/about"&gt;About&lt;/a&gt;
