@@ -163,6 +163,12 @@ main li a .description {
   header {
     align-items: flex-start;
   }
+  header h1 {
+    font-size: 4.8rem;
+  }
+  header p {
+    margin-left: .75rem;
+  }
   main {
     --box-height: auto;
 
