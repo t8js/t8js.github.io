@@ -68,7 +68,7 @@
 + withState(fetchItems(), { throws: true }).catch(handleError)
 </code></pre>
 <p>🔹 This option allows the async action to reject explicitly, along with exposing <code>state.error</code> that goes by default.</p>
-<h2 id="Providing_blank_initial_pending_state">Providing blank initial pending state</h2>
+<h2 id="Providing_blank_initial_pending_state">Providing blank initial pending&nbsp;state</h2>
 <pre><code class="language-diff">+ import { PendingStateProvider } from "@t8/react-pending";
 
 - &lt;App/&gt;
@@ -77,7 +77,7 @@
 + &lt;/PendingStateProvider&gt;
 </code></pre>
 <p>🔹 <code>&lt;PendingStateProvider&gt;</code> creates an isolated instance of initial shared action state. Prime use cases: tests, SSR. It isn't required with client-side rendering, but it can be used to separate action states of larger self-contained portions of a web app.</p>
-<h2 id="Providing_custom_initial_pending_state">Providing custom initial pending state</h2>
+<h2 id="Providing_custom_initial_pending_state">Providing custom initial pending&nbsp;state</h2>
 <pre><code class="language-diff">+ let initialState = {
 +   "fetch-items": { initialized: true, complete: true },
 + };
@@ -107,8 +107,8 @@
 <li><a href="/react-pending/x/Overview#Silent_tracking_of_background_and_optimistic_updates">Silent tracking of background and optimistic updates</a></li>
 <li><a href="/react-pending/x/Overview#Delayed_pending_state">Delayed pending state</a></li>
 <li><a href="/react-pending/x/Overview#Custom_rejection_handler">Custom rejection handler</a></li>
-<li><a href="/react-pending/x/Overview#Providing_blank_initial_pending_state">Providing blank initial pending state</a></li>
-<li><a href="/react-pending/x/Overview#Providing_custom_initial_pending_state">Providing custom initial pending state</a></li>
+<li><a href="/react-pending/x/Overview#Providing_blank_initial_pending_state">Providing blank initial pending&nbsp;state</a></li>
+<li><a href="/react-pending/x/Overview#Providing_custom_initial_pending_state">Providing custom initial pending&nbsp;state</a></li>
 </ul>
 <p class="title">Resources</p>
 <ul>
