@@ -46,6 +46,7 @@ header {
   align-items: flex-end;
   justify-content: center;
   font-family: monospace;
+  color: color(from white srgb r g b / .75);
   padding: .75rem var(--padding-x);
   box-sizing: border-box;
 }
