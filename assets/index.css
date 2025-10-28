@@ -102,7 +102,7 @@ main a,
 main a:hover,
 main a:visited,
 main a:active {
-  border: 0.05em solid color(from currentColor srgb r g b / .35);
+  border: 0.05em solid color(from currentColor srgb r g b / .5);
   transition: border-color .3s;
 }
 main a:hover {
