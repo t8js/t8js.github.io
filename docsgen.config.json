@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@t8/docsgen/schema.json",
-  "baseColor": "#5900c8",
+  "baseColor": "#3e2b59",
   "favicon": "/assets/t8.png",
   "append": {
     "body": "<script src=\"/assets/stats.js\"></script>"
