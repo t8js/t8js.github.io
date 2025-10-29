@@ -47,10 +47,10 @@
 + &lt;A href="/about"&gt;About&lt;/A&gt; // SPA route link
 </code></pre>
 <pre><code class="language-diff">- window.location.assign("/about");
-+ route.assign("/about");
++ route.assign("/about"); // SPA navigation
 
 - window.location.href = "/about";
-+ route.href = "/about";
++ route.href = "/about"; // SPA navigation
 </code></pre>
 <p>🔹 Middleware hooks</p>
 <pre><code class="language-jsx">useNavigationStart(callback);
