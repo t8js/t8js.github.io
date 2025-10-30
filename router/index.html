@@ -36,10 +36,10 @@
 route.observe(document); // switch links to SPA navigation mode
 </code></pre>
 <pre><code class="language-diff">- window.location.assign("/intro");
-+ route.assign("/intro");
++ route.assign("/intro"); // SPA navigation
 
 - window.location.href = "/intro";
-+ route.href = "/intro";
++ route.href = "/intro"; // SPA navigation
 </code></pre>
 <p>🔹 Flexible URL pattern matching for URL-based rendering</p>
 <pre><code class="language-js">header.className = route.href === "/" ? "full" : "compact";
@@ -64,7 +64,8 @@ route.observe(document); // switch links to SPA navigation mode
 </section>
 </main>
 </div>
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.2/dist/css/code.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
 <script>hljs.highlightAll()</script>
