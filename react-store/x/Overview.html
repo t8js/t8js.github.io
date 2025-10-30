@@ -115,11 +115,10 @@ let ItemCard = ({ id }) =&gt; {
 </code></pre>
 <p>🔹 Note that updating the store state doesn't change the store reference sitting in the React Context and therefore doesn't cause updates of the entire Context. Only the components subscribed to updates in the particular store by means of <code>useStore(store)</code> will be notified to re-render.</p>
 <h2 id="Store_data">Store data</h2>
-<p>A store can contain data of any type.</p>
+<p>A store can contain data of any type. With TypeScript, the type of a store containing data of type <code>T</code> is <code>Store&lt;T&gt;</code> which can be inferred from the data passed to <code>new Store(data)</code>.</p>
 <p>Live demos:<br>
 <a href="https://codesandbox.io/p/sandbox/rtng37?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Primitive value state</a><br>
 <a href="https://codesandbox.io/p/sandbox/y7wt2j?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Object value state</a></p>
-<p>With TypeScript, the type of the given store state <code>T</code> is either inferred from <code>data</code> passed to <code>new Store(data)</code> or it can be specified as <code>Store&lt;T&gt;</code>.</p>
 <h2 id="With_Immer">With Immer</h2>
 <p>Immer can be used with <code>useStore()</code> just the same way as <a href="https://immerjs.github.io/immer/example-setstate#usestate--immer" target="_blank">with <code>useState()</code></a> to facilitate deeply nested data changes.</p>
 <p><a href="https://codesandbox.io/p/sandbox/rn4qsr?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Live demo with Immer</a></p>
