@@ -5,11 +5,6 @@
   "append": {
     "body": "<script src=\"/assets/stats.js\"></script>"
   },
-  "linkMap": {
-    "https://github.com/t8js/react-store": "/react-store",
-    "https://github.com/t8js/react-router": "/react-router",
-    "https://github.com/t8js/react-pending": "/react-pending"
-  },
   "entries": [
     {
       "dir": "react-router",
@@ -58,5 +53,15 @@
       "repo": "https://github.com/t8js/sdk-factory",
       "nav": "/assets/nav_vanilla.html"
     }
-  ]
+  ],
+  "linkMap": {
+    "https://github.com/t8js/react-store": "/react-store",
+    "https://github.com/t8js/react-store#readme": "/react-store",
+    "https://github.com/t8js/react-router": "/react-router",
+    "https://github.com/t8js/react-router#readme": "/react-router",
+    "https://github.com/t8js/react-pending": "/react-pending",
+    "https://github.com/t8js/react-pending#readme": "/react-pending",
+    "https://github.com/t8js/url-shape": "/url-shape",
+    "https://github.com/t8js/url-shape#readme": "/url-shape"
+  }
 }

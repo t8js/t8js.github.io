@@ -54,7 +54,7 @@ let App = () =&gt; {
 };
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/vgt64k?file=%2Fsrc%2FApp.tsx" target="_blank">Type-safe routing live demo</a></p>
-<p>🔹 The <code>url()</code> function is a type-safe URL builder. It creates a URL with a URL pattern defined in the schema and typed parameters that are prevalidated against the given schema: typos and type mismatches are highlighted in a type-aware code editor. <a href="https://github.com/t8js/url-shape#readme" target="_blank">See <em>url-shape</em></a> for more details.</p>
+<p>🔹 The <code>url()</code> function is a type-safe URL builder. It creates a URL with a URL pattern defined in the schema and typed parameters that are prevalidated against the given schema: typos and type mismatches are highlighted in a type-aware code editor. <a href="/url-shape">See <em>url-shape</em></a> for more details.</p>
 <p>🔹 A URL schema doesn't have to cover the entire app. Standalone portions of an app can have their own URL schemas.</p>
 <p>🔹 Optionally, application-wide type safety can be achieved by disallowing URLs and URL patterns other than provided by the URL builder (the <code>url()</code> function in the example above):</p>
 <pre><code class="language-ts">declare module "@t8/react-router" {
