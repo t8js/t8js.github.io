@@ -46,6 +46,13 @@
       "singlePage": true
     },
     {
+      "dir": "url-shape",
+      "htmlTitle": "URL Shape",
+      "repo": "https://github.com/t8js/url-shape",
+      "nav": "/assets/nav_vanilla.html",
+      "singlePage": true
+    },
+    {
       "dir": "sdk-factory",
       "htmlTitle": "<a href=\"/\">T8</a> SDK Factory",
       "repo": "https://github.com/t8js/sdk-factory",
