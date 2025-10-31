@@ -51,7 +51,7 @@ let userList = await api.users.getList();
 let firstUser = await api.users.getInfo({ params: { id: userList[0].id } });
 </code></pre>
 <p>For API methods controlled only with query parameters, there is also a shorthand option: the <code>getQueryEntry()</code> method, returning aliases accepting only query parameters, without the need to nest them into the <code>query</code> key.</p>
-<p class="b1 pagenav">
+<p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
     <a href="/sdk-factory/x/Schema_definition">Schema definition</a>
