@@ -1,12 +1,13 @@
 :root {
-  --color: color(from white srgb r g b / 0.5);
+  --color: white;
   --background: #3e2b59;
-  --logo-color: turquoise;
   --link-color: turquoise; /* #52ef9e; */
   --padding-x: 2rem;
 
+  --content-color: color(from var(--color) srgb r g b / 0.5);
+
   font: normal 100% / 1.25 sans-serif;
-  color: var(--color);
+  color: var(--content-color);
   background: var(--background);
 }
 html {
@@ -45,7 +46,7 @@ header {
   display: flex;
   align-items: flex-end;
   font-family: monospace;
-  color: color(from white srgb r g b / 0.75);
+  color: color(from var(--color) srgb r g b / 0.75);
   padding: 0.75rem var(--padding-x);
   box-sizing: border-box;
 }
@@ -138,7 +139,7 @@ main li a .sep {
 main li a .description {
   display: block;
   font-size: 0.75em;
-  color: var(--color);
+  color: var(--content-color);
   margin-top: 0.25em;
 }
 @media (max-width: 600px) {
