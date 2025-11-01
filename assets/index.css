@@ -1,5 +1,5 @@
 :root {
-  --color: color(from white srgb r g b / .5);
+  --color: color(from white srgb r g b / 0.5);
   --background: #3e2b59;
   --logo-color: turquoise;
   --link-color: turquoise; /* #52ef9e; */
@@ -45,14 +45,14 @@ header {
   display: flex;
   align-items: flex-end;
   font-family: monospace;
-  color: color(from white srgb r g b / .75);
-  padding: .75rem var(--padding-x);
+  color: color(from white srgb r g b / 0.75);
+  padding: 0.75rem var(--padding-x);
   box-sizing: border-box;
 }
 header h1 {
   font-size: 6.4rem;
-  width: .8em;
-  height: .42em;
+  width: 0.8em;
+  height: 0.42em;
   line-height: 1;
   margin: 0;
   opacity: 1;
@@ -98,8 +98,8 @@ main a,
 main a:hover,
 main a:visited,
 main a:active {
-  border: 0.05em solid color(from var(--link-color) srgb r g b / .5);
-  transition: border-color .3s;
+  border: 0.05em solid color(from var(--link-color) srgb r g b / 0.5);
+  transition: border-color 0.3s;
 }
 main a:hover {
   border-color: var(--link-color);
@@ -112,7 +112,7 @@ main li a {
   display: flex;
   min-height: var(--box-height);
   flex-direction: column;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   box-sizing: border-box;
 }
 main li a[href^="https://github.com/"] .name::after {
@@ -122,7 +122,7 @@ main li a[href^="https://github.com/"] .name::after {
   height: var(--icon-size);
   background: url("gh.svg") 50% 50% / contain no-repeat;
   position: absolute;
-  right: calc(-1*(var(--icon-size) + 0.45em));
+  right: calc(-1 * (var(--icon-size) + 0.45em));
   top: 0.36em;
   opacity: 0.25;
 }
@@ -137,9 +137,9 @@ main li a .sep {
 }
 main li a .description {
   display: block;
-  font-size: .75em;
+  font-size: 0.75em;
   color: var(--color);
-  margin-top: .25em;
+  margin-top: 0.25em;
 }
 @media (max-width: 600px) {
   :root {
@@ -152,7 +152,7 @@ main li a .description {
     display: block;
     width: 100%;
     max-width: none;
-    padding: .75rem 0;
+    padding: 0.75rem 0;
     margin: 0;
   }
   header {
@@ -162,7 +162,7 @@ main li a .description {
     font-size: 4.8rem;
   }
   header p {
-    margin-left: .75rem;
+    margin-left: 0.75rem;
   }
   main {
     --box-height: auto;
@@ -172,7 +172,7 @@ main li a .description {
   }
   main ul {
     display: block;
-    margin-top: .5em;
+    margin-top: 0.5em;
   }
   main ul + ul,
   main li + li {
@@ -191,6 +191,6 @@ main li a .description {
     border-bottom: 0.05em solid;
   }
   main li a .description {
-    margin-top: .35em;
+    margin-top: 0.35em;
   }
 }
