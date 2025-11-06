@@ -27,7 +27,7 @@
 - import type { APISchema } from "./APISchema";
 + import { apiSchema, type APISchema } from "./apiSchema"; // defined with Zod
 
-  const getRequestHandler(endpoint: string): RequestHandler {
+  function getRequestHandler(endpoint: string): RequestHandler {
     return function(target, request) {
 +     try {
 +       schema[target]?.request?.parse(request);
@@ -90,7 +90,7 @@
     getRequestHandler("/api")
   );
 </code></pre>
-<p>Here's an example of what the API schema may look like:</p>
+<p>Here's an example of what the API schema definition with a validation library may look like:</p>
 <pre><code class="language-ts">import { z } from "zod";
 
 export const apiSchema = {
