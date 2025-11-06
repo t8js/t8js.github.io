@@ -28,7 +28,7 @@
 } from "@t8/sdk-factory";
 import type { APISchema } from "./APISchema";
 
-export const getRequestHandler(endpoint: string): RequestHandler {
+const getRequestHandler(endpoint: string): RequestHandler {
   return function(target, request) {
     let { method, url } = getRequestAction({ request, target, endpoint });
 
@@ -66,7 +66,7 @@ export const serverService = new RequestService&lt;APISchema&gt;(
 );
 
 // Assuming that the given API is proxied by the server to
-// the browser via '/api'
+// the browser via `/api`
 export const browserService = new RequestService&lt;APISchema&gt;(
   getRequestHandler("/api")
 );
