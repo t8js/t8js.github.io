@@ -21,7 +21,9 @@ let store = new Store({ counter: 0 });
 </code></pre>
 <p>🔹 Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(data)</code> rather than with a factory function.</p>
 <h2 id="Manipulation">Manipulation</h2>
-<pre><code class="language-js">let state = store.getState();
+<pre><code class="language-js">let store = new Store({ counter: 0 });
+
+let state = store.getState();
 console.log(state.counter); // 0
 
 store.setState({ counter: 100 });
