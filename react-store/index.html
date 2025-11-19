@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Store: Concise shared state management for React apps">
-  <title>T8 React Store | Concise shared state management for React apps</title>
+  <meta name="description" content="T8 React Store: useState()-like React app state management">
+  <title>T8 React Store | useState()-like React app state management</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.2/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.2/dist/css/index.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
@@ -18,7 +18,7 @@
   <div class="section-content">
     <h1><a href="/">T8</a> React Store</h1>
     <div class="description">
-      <p><em>Concise shared state management for React apps</em></p>
+      <p><em><code>useState()</code>-like React app state management</em></p>
     </div>
     <p class="actions">
       <a href="/react-store/start" class="primary">Docs</a>
@@ -30,8 +30,7 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p>🔹 Similar to <code>useState()</code></p>
-<pre><code class="language-diff">+ let store = new Store(0);
+    <div class="intro"><pre><code class="language-diff">+ let store = new Store(0);
 
   let Counter = () =&gt; {
 -   let [counter, setCounter] = useState(0);
@@ -43,10 +42,14 @@
 
     return &lt;button onClick={handleClick}&gt;+ {counter}&lt;/button&gt;;
   };
-</code></pre>
-<p><span class="li">🔹 No boilerplate</span><br>
-<span class="li">🔹 Painless transition from local state</span><br>
-<span class="li">🔹 SSR- and CSR-compatible</span></p></div>
+</code></pre></div>
+    <div class="features"><ul>
+<li>Similar to <code>useState()</code></li>
+<li>No boilerplate</li>
+<li>Quick transition from local state</li>
+<li>Easily integrates with Immer</li>
+<li>SSR- and CSR-compatible</li>
+</ul></div>
   </div>
 </section>
 </main>

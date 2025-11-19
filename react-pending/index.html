@@ -30,12 +30,8 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="features"><ul>
-<li>Shared or local pending state tracking</li>
-<li>Without rewrites in the app's shared state or async actions' internals</li>
-<li>With a concise API</li>
-</ul></div>
-    <div class="note"><pre><code class="language-diff">+ let [state, withState] = usePendingState("fetch-items");
+    <div class="intro"><p>Shared or local pending state tracking with a concise API without rewrites in the app's shared state or async actions' internals.</p>
+<pre><code class="language-diff">+ let [state, withState] = usePendingState("fetch-items");
 
 - fetchItems().then(setItems);
 + withState(fetchItems()).then(setItems);
