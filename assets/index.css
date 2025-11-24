@@ -46,7 +46,7 @@ a:active {
 header {
   display: flex;
   align-items: flex-end;
-  font-family: monospace;
+  font-size: .85em;
   color: color(from var(--color) srgb r g b / 0.75);
   padding: 0.75rem var(--padding-x);
   box-sizing: border-box;
