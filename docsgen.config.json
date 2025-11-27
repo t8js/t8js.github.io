@@ -41,7 +41,8 @@
     },
     {
       "dir": "url-shape",
-      "htmlTitle": "URL Shape",
+      "title": "URL Shape",
+      "htmlTitle": "URL&nbsp;Shape&nbsp;<sup><a href=\"/\">T8</a></sup>",
       "repo": "https://github.com/t8js/url-shape",
       "nav": "/assets/nav_vanilla.html",
       "singlePage": true
