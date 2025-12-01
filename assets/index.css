@@ -2,9 +2,13 @@
   --color: white;
   --background: #3e2b59;
   --link-color: turquoise; /* #52ef9e; */
-  --padding-x: 2rem;
-
   --content-color: color(from var(--color) srgb r g b / 0.5);
+
+  --padding-x: 2rem;
+  --max-layout-width: 60rem;
+  --box-width: 18rem;
+  --box-height: 4.8em;
+  --icon-size: 0.65em;
 
   font: normal 100% / 1.25 sans-serif;
   font-family:
@@ -40,7 +44,7 @@ a:active {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 60rem;
+  max-width: var(--max-layout-width);
   justify-content: center;
   padding: 5vh 0 10vh;
   margin: 0 auto;
@@ -82,10 +86,6 @@ header p span.sep {
   display: none;
 }
 main {
-  --box-width: 18rem;
-  --box-height: 4.8em;
-  --icon-size: 0.65em;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--box-width), 1fr));
   gap: 1rem;
