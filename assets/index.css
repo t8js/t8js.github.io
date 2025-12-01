@@ -5,9 +5,9 @@
   --content-color: color(from var(--color) srgb r g b / 0.5);
 
   --padding-x: 2rem;
-  --max-layout-width: 60rem;
-  --box-width: 18rem;
-  --box-height: 4.8em;
+  --max-layout-width: 72rem;
+  --box-width: 22rem;
+  --box-height: 5.6em;
   --icon-size: 0.65em;
 
   font: normal 100% / 1.25 sans-serif;
@@ -52,7 +52,6 @@ a:active {
 header {
   display: flex;
   align-items: flex-end;
-  font-size: 0.85em;
   color: color(from var(--color) srgb r g b / 0.75);
   padding: 0.75rem var(--padding-x);
   box-sizing: border-box;
@@ -132,7 +131,7 @@ main li a[href^="https://github.com/"] .name::after {
 }
 main li a .name {
   display: inline-block;
-  font-size: 1.15em;
+  font-size: 1.4em;
   align-self: flex-start;
   position: relative;
 }
@@ -141,7 +140,7 @@ main li a .sep {
 }
 main li a .description {
   display: block;
-  font-size: 0.75em;
+  font-size: 0.9em;
   color: var(--content-color);
   margin-top: 0.25em;
 }
@@ -161,9 +160,6 @@ main li a .description {
   }
   header {
     align-items: flex-start;
-  }
-  header h1 {
-    font-size: 4.8rem;
   }
   header p {
     margin-left: 0.75rem;
