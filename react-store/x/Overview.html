@@ -47,7 +47,7 @@
 <p><a href="https://codesandbox.io/p/sandbox/szhdnw?file=%252Fsrc%252FApp.tsx" target="_blank">Live counter demo</a><br>
 <a href="https://codesandbox.io/p/sandbox/tq852v?file=%252Fsrc%252FApp.tsx" target="_blank">Tic-tac-toe</a></p>
 <p>🔹 The shared state setup shown above is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
-<p>🔹 The <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store state updates. The common use case is when a component makes use of the store state setter without using the store state value.</p>
+<p>🔹 The optional <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store state updates. The common use case is when a component makes use of the store state setter without using the store state value.</p>
 <p>🔹 Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(data)</code> rather than with a factory function.</p>
 <h2 id="Single_store_or_multiple_stores">Single store or multiple stores</h2>
 <p>An application can have as many stores as needed.</p>
@@ -56,7 +56,7 @@
 <p>When only the store state setter is required, without the store state value, we can opt out from subscription to store state changes by passing <code>false</code> as the parameter of <code>useStore()</code>:</p>
 <pre><code class="language-js">let [, setState] = useState(store, false);
 </code></pre>
-<p>Apart from a boolean, <code>useStore(store, shouldUpdate)</code> accepts a function of <code>(nextState, prevState) =&gt; boolean</code> as the second parameter to filter store updates to respond to:</p>
+<p>Apart from a boolean, <code>useStore(store, shouldUpdate)</code> accepts a function of <code>(nextState, prevState) =&gt; boolean</code> as the optional second parameter to filter store updates to respond to:</p>
 <pre><code class="language-jsx">import { useStore } from "@t8/react-store";
 
 let ItemCard = ({ id }) =&gt; {
@@ -73,6 +73,7 @@ let ItemCard = ({ id }) =&gt; {
   );
 };
 </code></pre>
+<p>While <code>useStore(itemStore)</code> in this component would trigger a re-render in response to any changes in the <code>itemStore</code> (which can be fine with a small store), with <code>useStore(itemStore, hasRelevantUpdates)</code> the <code>ItemCard</code> component has a more targeted subscription to the store: a re-render will only be triggered if the <code>revision</code> property of the item with the given <code>id</code> has changed.</p>
 <h2 id="Providing_shared_state">Providing shared state</h2>
 <p>Shared state can be provided to the app by means of a regular React Context provider:</p>
 <pre><code class="language-diff">+ import { createContext, useContext } from "react";
@@ -115,7 +116,7 @@ let ItemCard = ({ id }) =&gt; {
 </code></pre>
 <p>🔹 Note that updating the store state doesn't change the store reference sitting in the React Context and therefore doesn't cause updates of the entire Context. Only the components subscribed to updates in the particular store by means of <code>useStore(store)</code> will be notified to re-render.</p>
 <h2 id="Store_data">Store data</h2>
-<p>A store can contain data of any type. With TypeScript, the type of a store containing data of type <code>T</code> is <code>Store&lt;T&gt;</code> which can be inferred from the data passed to <code>new Store(data)</code>.</p>
+<p>A store can contain data of any type. With TypeScript, the type of a store containing data of type <code>T</code> is <code>Store&lt;T&gt;</code> which can be inferred from <code>data</code> passed to <code>new Store(data)</code>.</p>
 <p>Live demos:<br>
 <a href="https://codesandbox.io/p/sandbox/rtng37?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Primitive value state</a><br>
 <a href="https://codesandbox.io/p/sandbox/y7wt2j?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Object value state</a></p>
