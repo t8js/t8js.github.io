@@ -147,6 +147,7 @@ main li a .description {
 @media (max-width: 600px) {
   :root {
     --padding-x: 1.5rem;
+    font-size: 90%;
   }
   body {
     align-items: flex-start;
