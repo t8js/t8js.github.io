@@ -60,20 +60,17 @@
 <pre><code class="language-jsx">import { useStore } from "@t8/react-store";
 
 let ItemCard = ({ id }) =&gt; {
-  // Definition of changes in the item
-  let hasRelevantUpdates = useCallback((nextItems, prevItems) =&gt; {
+  let [items, setItems] = useStore(itemStore, (nextItems, prevItems) =&gt; {
     // Assuming that items have a `revision` property
     return nextItems[id].revision !== prevItems[id].revision;
-  }, [id]);
-
-  let [items, setItems] = useStore(itemStore, hasRelevantUpdates);
+  });
 
   return (
     // Content
   );
 };
 </code></pre>
-<p>While <code>useStore(itemStore)</code> in this component would trigger a re-render in response to any changes in the <code>itemStore</code> (which can be fine with a small store), with <code>useStore(itemStore, hasRelevantUpdates)</code> the <code>ItemCard</code> component has a more targeted subscription to the store: a re-render will only be triggered if the <code>revision</code> property of the item with the given <code>id</code> has changed.</p>
+<p>While <code>useStore(itemStore)</code> in this component would trigger a re-render in response to any changes in the <code>itemStore</code> (which can be fine with a small store), with <code>useStore(itemStore, shouldUpdate)</code> the <code>ItemCard</code> component has a more targeted subscription to the store: in this example, a re-render will only be triggered if the <code>revision</code> property of the item with the given <code>id</code> has changed.</p>
 <h2 id="Providing_shared_state">Providing shared state</h2>
 <p>Shared state can be provided to the app by means of a regular React Context provider:</p>
 <pre><code class="language-diff">+ import { createContext, useContext } from "react";
