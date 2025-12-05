@@ -124,6 +124,12 @@ let ItemCard = ({ id }) =&gt; {
 <p>The ready-to-use hook from the <a href="/react-pending">T8 React Pending</a> package helps manage shared async action state without disturbing the app's state management and actions' code.</p>
 <h2 id="Remount-persistent_state">Remount-persistent state</h2>
 <p>A standalone store initialized outside a component can be used by the component as remount-persistent state, whether used by other components or not.</p>
+<h2 id="Persistence_across_page_reloads">Persistence across page reloads</h2>
+<pre><code class="language-js">import { Store, persist } from "@t8/react-store";
+
+let counterStore = persist(new Store(0), "counter");
+</code></pre>
+<p>Whenever it's updated, <code>counterStore</code> above will save its state to the <code>"counter"</code> key of <code>localStorage</code>. (Pass <code>true</code> as the third parameter of <code>persist()</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.) <code>counterStore</code> returned from <code>persist()</code> is the same store passed as the first parameter enhanced to be persistent across page reloads.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -145,6 +151,7 @@ let ItemCard = ({ id }) =&gt; {
 <li><a href="/react-store/x/Overview#With_Immer">With Immer</a></li>
 <li><a href="/react-store/x/Overview#Shared_loading_state">Shared loading state</a></li>
 <li><a href="/react-store/x/Overview#Remount-persistent_state">Remount-persistent state</a></li>
+<li><a href="/react-store/x/Overview#Persistence_across_page_reloads">Persistence across page reloads</a></li>
 </ul>
 <p class="title">Resources</p>
 <ul>
