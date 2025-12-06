@@ -16,3 +16,6 @@
     --aux-line-color: var(--aux-color);
   }
 }
+[data-layout="index"] p.glyph {
+  margin: 0;
+}
