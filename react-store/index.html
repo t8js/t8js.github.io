@@ -33,7 +33,20 @@
 <section class="intro">
   <div class="section-content">
     <div class="intro"><p><strong>Why?</strong> To fill the gap with a state management lib that at the same time: (1) has a simple API introducing as few new entities as possible, (2) closely follows the React's <code>useState()</code> pattern of initializing and manipulating the state to fulfill the common task of migration from local state to shared state quickly without sizable rewrites, (3) doesn't internally make use of global stores or other global variables by default and works smoothly with SSR with regular React Contexts.</p>
-<p><strong>Features</strong>: <code>useState()</code>-like API for shared state, quick transition from local state, no boilerplate, easily integrates with Immer, SSR- and CSR-compatible.</p></div>
+<p><strong>Features</strong>: <code>useState()</code>-like API for shared state, quick transition from local state, no boilerplate, easily integrates with Immer, SSR- and CSR-compatible.</p>
+<pre><code class="language-diff">+ let store = new Store(0);
+
+  let Counter = () =&gt; {
+-   let [counter, setCounter] = useState(0);
++   let [counter, setCounter] = useStore(store);
+
+    let handleClick = () =&gt; {
+      setCounter(value =&gt; value + 1);
+    };
+
+    return &lt;button onClick={handleClick}&gt;+ {counter}&lt;/button&gt;;
+  };
+</code></pre></div>
     <p class="pagenav">
       <span class="next"><a href="/react-store/start">To the docs</a> <span class="icon">→</span></span>
     </p>
@@ -41,6 +54,11 @@
 </section>
 </main>
 </div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
