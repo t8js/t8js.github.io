@@ -126,11 +126,11 @@ let ItemCard = ({ id }) =&gt; {
 <h2 id="Persistence_across_remounts">Persistence across remounts</h2>
 <p>A standalone store initialized outside a component can be used by the component as remount-persistent state, whether used by other components or not.</p>
 <h2 id="Persistence_across_page_reloads">Persistence across page reloads</h2>
+<p>Replacing <code>new Store(data)</code> with <code>new PersistentStore(data, storageKey)</code> as shown below gets the store's state value initially restored from and saved whenever updated to <code>storageKey</code> in <code>localStorage</code>. (Pass <code>{ session: true }</code> as the <code>options</code> parameter of <code>new PersistentStore(data, storageKey, options?)</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.) Otherwise, persistent stores work pretty much like regular stores described above.</p>
 <pre><code class="language-js">import { PersistentStore } from "@t8/react-store";
 
 let counterStore = new PersistentStore(0, "counter");
 </code></pre>
-<p>The store's state value is initially restored from and saved whenever updated to the <code>"counter"</code> key of <code>localStorage</code>. (Pass <code>{ session: true }</code> as the <code>options</code> parameter of <code>new PersistentStore(data, storageKey, options?)</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.) Otherwise, <code>counterStore</code> works pretty much like a regular store described above.</p>
 <p>The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be overridden by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options?)</code>. By default, they are <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
 <p class="pagenav">
   <span class="prev">
