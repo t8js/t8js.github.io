@@ -45,13 +45,14 @@ unsubscribe();
 
 let counterStore = new PersistentStore(0, "counter");
 </code></pre>
-<p>Whenever it's updated, <code>counterStore</code> above will save its state to the <code>"counter"</code> key of <code>localStorage</code>. (Pass <code>true</code> as the third parameter of <code>new PersistentStore()</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.)</p>
+<p>Whenever it's updated, <code>counterStore</code> above will save its state to the <code>"counter"</code> key of <code>localStorage</code>. (Pass <code>{ session: true }</code> as the third parameter of <code>new PersistentStore()</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.)</p>
 <p>The following call signals the store to read the state value from the browser storage, which can be used once or multiple times during the app session:</p>
 <pre><code class="language-js">counterStore.sync();
 </code></pre>
 <p>If it's desirable to sync a store just once regardless of the number of sync calls (that might come from multiple independent parts of the app), <code>syncOnce()</code> calls can be used instead:</p>
 <pre><code class="language-js">counterStore.syncOnce(); // Syncs once disregarding subsequent syncOnce() calls
 </code></pre>
+<p>The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be overridden by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options)</code>. By default, they are <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
