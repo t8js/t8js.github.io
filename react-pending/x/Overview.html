@@ -16,7 +16,8 @@
 <main>
 <h1><a href="/react-pending/">T8 React Pending</a></h1>
 <h2 id="Shared_pending_state">Shared pending state</h2>
-<p>Objective: Track the pending state of the asynchronous action <code>fetchItems()</code> to tell the user whether the UI is busy or encountered an error (preferably without rewriting the action and the app's state management). In our setup, there are two components rendering their content with regard to the current state of <code>fetchItems()</code>.</p>
+<p>Objective: Track the pending state of the asynchronous action <code>fetchItems()</code> to tell the user whether the UI is busy handling the async action or encountered an error, without rewriting the action and the app's state management.</p>
+<p>In our setup, there are two components rendering their content with regard to the current state of <code>fetchItems()</code>, so the pending state is shared between these components:</p>
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
   export let ItemList = () =&gt; {

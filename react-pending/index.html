@@ -33,12 +33,22 @@
 <section class="intro">
   <div class="section-content">
     <div class="intro"><p>Shared or local pending state tracking with a concise API without rewrites in the app's shared state or async actions' internals.</p>
-<pre><code class="language-diff">+ let [state, withState] = usePendingState("fetch-items");
+<pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
-- fetchItems().then(setItems);
-+ withState(fetchItems()).then(setItems);
+  export let ItemList = () =&gt; {
+    let [items, setItems] = useState([]);
++   let [state, withState] = usePendingState("fetch-items");
 
-+ if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
+    useEffect(() =&gt; {
+-     fetchItems().then(setItems);
++     withState(fetchItems()).then(setItems);
+    }, [fetchItems, withState]);
+
++   if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
++   if (state.error) return &lt;p&gt;An error occurred&lt;/p&gt;;
+
+    return &lt;ul&gt;{items.map(/* ... */)}&lt;/ul&gt;;
+  };
 </code></pre></div>
     <p class="pagenav">
       <span class="next"><a href="/react-pending/start">To the docs</a> <span class="icon">→</span></span>
