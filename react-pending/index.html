@@ -32,7 +32,7 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p>Shared or local pending state tracking with a concise API without rewrites in the app's shared state or async actions' internals.</p>
+    <div class="intro"><p><strong>Why?</strong> To manage the async action state, whether local or shared, without tightly coupling it with the app state. Decoupled pending state as described here acts like a lightweight scaffolding on top of the action's and component's successful scenario. It's easy to set up from scratch without rewriting the async actions and affecting the app state, and easy to manage further on since it's barely intertwined with other app's internals.</p>
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
   export let ItemList = () =&gt; {
