@@ -49,6 +49,7 @@
 <a href="https://codesandbox.io/p/sandbox/tq852v?file=%252Fsrc%252FApp.tsx" target="_blank">Tic-tac-toe</a></p>
 <p>🔹 The shared state setup shown above is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
 <p>🔹 The optional <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store state updates. The common use case is when a component makes use of the store state setter without using the store state value.</p>
+<p>🔹 With SSR, it's common practice to put shared values into React Context rather than module-level variables to avoid cross-request data sharing. The same applies to stores, see an example in the <a href="/react-store/x/Sharing_state_via_Context">Sharing state via Context</a> section below.</p>
 <p>🔹 Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(data)</code> rather than with a factory function.</p>
 <h2 id="Single_store_or_multiple_stores">Single store or multiple stores</h2>
 <p>An application can have as many stores as needed.</p>
@@ -72,7 +73,7 @@ let ItemCard = ({ id }) =&gt; {
 };
 </code></pre>
 <p>While <code>useStore(itemStore)</code> in this component would trigger a re-render in response to any changes in the <code>itemStore</code> (which can be fine with a small store), with <code>useStore(itemStore, shouldUpdate)</code> the <code>ItemCard</code> component has a more targeted subscription to the store: in this example, a re-render will only be triggered if the <code>revision</code> property of the item with the given <code>id</code> has changed.</p>
-<h2 id="Providing_shared_state">Providing shared state</h2>
+<h2 id="Sharing_state_via_Context">Sharing state via Context</h2>
 <p>Shared state can be provided to the app by means of a regular React Context provider:</p>
 <pre><code class="language-diff">+ import { createContext, useContext } from "react";
   import { Store, useStore } from "@t8/react-store";
@@ -131,7 +132,8 @@ let ItemCard = ({ id }) =&gt; {
 
 let counterStore = new PersistentStore(0, "counter");
 </code></pre>
-<p>The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be overridden by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options?)</code>. By default, they are <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
+<p>🔹 The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be redefined by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options?)</code>. By default, these options act like <code>JSON.stringify()</code> and <code>JSON.parse()</code> respectively.</p>
+<p>🔹 <code>PersistentStore</code> skips interaction with the browser storage in non-browser environments, which makes it equally usable with SSR.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -148,7 +150,7 @@ let counterStore = new PersistentStore(0, "counter");
 <ul><li><a href="/react-store/x/Overview#Shared_state_setup">Shared state setup</a></li>
 <li><a href="/react-store/x/Overview#Single_store_or_multiple_stores">Single store or multiple stores</a></li>
 <li><a href="/react-store/x/Overview#Filtering_store_updates">Filtering store updates</a></li>
-<li><a href="/react-store/x/Overview#Providing_shared_state">Providing shared state</a></li>
+<li><a href="/react-store/x/Overview#Sharing_state_via_Context">Sharing state via Context</a></li>
 <li><a href="/react-store/x/Overview#Store_data">Store data</a></li>
 <li><a href="/react-store/x/Overview#With_Immer">With Immer</a></li>
 <li><a href="/react-store/x/Overview#Shared_loading_state">Shared loading state</a></li>
