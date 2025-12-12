@@ -52,7 +52,7 @@ let counterStore = new PersistentStore(0, "counter");
 <p>If it's desirable to sync a store just once regardless of the number of sync calls (that might come from multiple independent parts of the app), <code>syncOnce()</code> calls can be used instead:</p>
 <pre><code class="language-js">counterStore.syncOnce(); // Syncs once disregarding subsequent syncOnce() calls
 </code></pre>
-<p>The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be overridden by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options)</code>. By default, they are <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
+<p>The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be redefined by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options)</code>. By default, these options act like <code>JSON.stringify()</code> and <code>JSON.parse()</code> respectively.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
