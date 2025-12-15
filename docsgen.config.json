@@ -5,9 +5,7 @@
     "head": "<link rel=\"stylesheet\" href=\"/assets/entry.css\">",
     "body": "<script src=\"/assets/stats.js\"></script>"
   },
-  "prepend": {
-    "cover": "<p class=\"glyph\"><svg viewBox=\"0 0 100 100\" role=\"img\" height=\"3em\"><title>Glyph</title><circle cx=\"50\" cy=\"50\" r=\"48\" stroke=\"currentColor\" stroke-width=\"4\" fill=\"none\"/><circle cx=\"50\" cy=\"50\" r=\"5\" stroke=\"none\" fill=\"currentColor\"/></svg></p>"
-  },
+  "firstLineDescription": true,
   "entries": [
     {
       "dir": "react-router",
