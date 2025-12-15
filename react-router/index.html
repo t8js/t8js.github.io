@@ -17,10 +17,9 @@
 <main>
 <section class="aux intro-title">
   <div class="section-content">
-    <p class="glyph"><svg viewBox="0 0 100 100" role="img" height="3em"><title>Glyph</title><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/><circle cx="50" cy="50" r="5" stroke="none" fill="currentColor"/></svg></p>
     <h1><a href="/">T8</a> React Router</h1>
     <div class="description">
-      <p><em>Concise router for React apps</em></p>
+      <p>Concise router for React apps</p>
     </div>
     <p class="actions">
       <a href="/react-router/start" class="primary">Docs</a>
@@ -32,61 +31,16 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p>🔹 Concise routing API</p>
-<pre><code class="language-jsx">&lt;header className={at("/", "full", "compact")}&gt;
-// at "/" ? "full" : "compact"
-</code></pre>
-<pre><code class="language-jsx">{at("/about", &lt;About/&gt;)}
-// at "/about" ? &lt;About/&gt; : undefined
-</code></pre>
-<pre><code class="language-jsx">{at(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
-  &lt;Section id={params.id}/&gt;
-))}
-// at "/sections/&lt;id&gt;" ? &lt;Section id={id}/&gt; : undefined
-</code></pre>
-<p>🔹 Familiar navigation APIs</p>
-<pre><code class="language-diff">- &lt;a href="/about"&gt;About&lt;/a&gt;
-+ &lt;A href="/about"&gt;About&lt;/A&gt; // SPA route link
-</code></pre>
-<pre><code class="language-diff">- window.location.assign("/about");
-+ route.assign("/about"); // SPA navigation
+    <div class="intro"><p><strong>Why?</strong> To make URL-based rendering as simple as regular conditional rendering, which it essentially is, with a single approach for both components and prop values. To repurpose well-known built-in navigation APIs for use with SPA navigation, also without reinventing an API for a link component. To manage URL parameters as state by following the React's state pattern. To keep SSR, routing middleware, and lazy routes simple. To make type safety an optional enhancement allowing for incremental adoption.</p>
+<pre><code>atRoute ? x : y
+→ at(route, x, y)
 
-- window.location.href = "/about";
-+ route.href = "/about"; // SPA navigation
-</code></pre>
-<p>🔹 Middleware hooks</p>
-<pre><code class="language-jsx">useNavigationStart(callback);
-// e.g. to redirect or prevent navigation
-</code></pre>
-<pre><code class="language-jsx">useNavigationComplete(callback);
-// e.g. to set the document's title
-</code></pre>
-<p>🔹 Typed routes and URL parameters, as an optional enhancement</p>
-<pre><code class="language-jsx">   // ↓ type-safe URL pattern builder
-let { url } = createURLSchema({
-  "/sections/:id": z.object({ // with Zod
-    params: z.object({ id: z.coerce.number() })
-  })
-});
-</code></pre>
-<pre><code class="language-jsx">                          // ↓ { id: number }
-{at(url("/sections/:id"), ({ params }) =&gt; (
-  &lt;Section id={params.id}/&gt;
-))}
-</code></pre>
-<pre><code class="language-jsx">&lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Section 1&lt;/A&gt;
-                             // ↑ { id: number }
-</code></pre>
-<p>🔹 URL parameters as state</p>
-<pre><code class="language-jsx">let [state, setState] = useRouteState("/");
-</code></pre>
-<pre><code class="language-jsx">// with type safety based on a custom URL schema
-let [state, setState] = useRouteState(url("/"));
-</code></pre>
-<p>🔹 Lazy routes</p>
-<pre><code class="language-jsx">{at("/about", &lt;Suspense&gt;&lt;About/&gt;&lt;/Suspense&gt;)}
-</code></pre>
-<p>🔹 SSR- and CSR-compatible</p></div>
+window.location.href = "/x";
+→ route.href = "/x";
+
+&lt;a href="/x"&gt;
+→ &lt;A href="/x"&gt;
+</code></pre></div>
     <p class="pagenav">
       <span class="next"><a href="/react-router/start">To the docs</a> <span class="icon">→</span></span>
     </p>
@@ -94,11 +48,6 @@ let [state, setState] = useRouteState(url("/"));
 </section>
 </main>
 </div>
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
-<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>

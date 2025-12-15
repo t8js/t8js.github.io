@@ -16,43 +16,49 @@
 <main>
 <h1><a href="/store/">T8 Store</a></h1>
 <h2 id="Initialization">Initialization</h2>
+<p>Stores accept data of any kind.</p>
 <pre><code class="language-js">import { Store } from "@t8/store";
 
-let store = new Store({ counter: 0 });
+// With a primitive value
+let store1 = new Store(0);
+
+// With a nonprimitive value
+let store2 = new Store({ counter: 0 });
 </code></pre>
-<p>🔹 Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(data)</code> rather than with a factory function.</p>
-<h2 id="Manipulation">Manipulation</h2>
+<p>Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(value)</code> rather than with a factory function.</p>
+<h2 id="Value_manipulation">Value manipulation</h2>
+<p>The store value can be read and updated with <code>getValue()</code> and <code>setValue(update)</code>. <code>setValue(update)</code> accepts either a new value or a function <code>(value) =&gt; nextValue</code> that returns a new store value based on the current store value.</p>
 <pre><code class="language-js">let store = new Store({ counter: 0 });
 
-let state = store.getState();
-console.log(state.counter); // 0
+let value = store.getValue();
+console.log(value.counter); // 0
 
-store.setState({ counter: 100 });
-console.log(state.counter); // 100
+store.setValue({ counter: 100 });
+console.log(value.counter); // 100
 
-store.setState(state =&gt; ({ ...state, counter: state.counter + 1 }));
-console.log(state.counter); // 101
+store.setValue((value) =&gt; ({ ...value, counter: value.counter + 1 }));
+console.log(value.counter); // 101
 </code></pre>
 <h2 id="Subscription_to_updates">Subscription to updates</h2>
-<pre><code class="language-js">let unsubscribe = store.onUpdate((nextState, prevState) =&gt; {
-  console.log(nextState, prevState);
+<p>A callback passed to the <code>onUpdate(callback)</code> method is called each time the store value is updated via <code>setValue(value)</code>.</p>
+<pre><code class="language-js">let unsubscribe = store.onUpdate((nextValue, prevValue) =&gt; {
+  console.log(nextValue, prevValue);
 });
-
-unsubscribe();
 </code></pre>
+<p><code>onUpdate(callback)</code> returns an unsubscription function. Once it's invoked, the given <code>callback</code> is removed from the store and no longer called when the store is updated.</p>
 <h2 id="Persistence_across_page_reloads">Persistence across page reloads</h2>
 <pre><code class="language-js">import { PersistentStore } from "@t8/store";
 
 let counterStore = new PersistentStore(0, "counter");
 </code></pre>
-<p>Whenever it's updated, <code>counterStore</code> above will save its state to the <code>"counter"</code> key of <code>localStorage</code>. (Pass <code>{ session: true }</code> as the third parameter of <code>new PersistentStore()</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.)</p>
-<p>The following call signals the store to read the state value from the browser storage, which can be used once or multiple times during the app session:</p>
+<p>Whenever updated, <code>counterStore</code> above will save its value to the <code>"counter"</code> key of <code>localStorage</code>. (Pass <code>{ session: true }</code> as the third parameter of <code>new PersistentStore()</code> to use <code>sessionStorage</code> instead of <code>localStorage</code>.)</p>
+<p>The following call signals the store to read the value from the browser storage, which can be used once or multiple times after creating the store:</p>
 <pre><code class="language-js">counterStore.sync();
 </code></pre>
-<p>If it's desirable to sync a store just once regardless of the number of sync calls (that might come from multiple independent parts of the app), <code>syncOnce()</code> calls can be used instead:</p>
+<p>If it's desirable to sync a store with the browser storage just once regardless of the number of sync calls (coming from multiple independent parts of the code, for example), <code>syncOnce()</code> calls can be used instead:</p>
 <pre><code class="language-js">counterStore.syncOnce(); // Syncs once disregarding subsequent syncOnce() calls
 </code></pre>
-<p>The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be redefined by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, storageKey, options)</code>. By default, these options act like <code>JSON.stringify()</code> and <code>JSON.parse()</code> respectively.</p>
+<p>The way the store value gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be redefined by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(value, storageKey, options)</code>. By default, these options act like <code>JSON.stringify()</code> and <code>JSON.parse()</code> respectively.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -67,7 +73,7 @@ let counterStore = new PersistentStore(0, "counter");
 <section>
 <p class="title">Contents</p>
 <ul><li><a href="/store/x/Overview#Initialization">Initialization</a></li>
-<li><a href="/store/x/Overview#Manipulation">Manipulation</a></li>
+<li><a href="/store/x/Overview#Value_manipulation">Value manipulation</a></li>
 <li><a href="/store/x/Overview#Subscription_to_updates">Subscription to updates</a></li>
 <li><a href="/store/x/Overview#Persistence_across_page_reloads">Persistence across page reloads</a></li>
 </ul>

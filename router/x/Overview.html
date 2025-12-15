@@ -16,11 +16,12 @@
 <main>
 <h1><a href="/router/">T8 Router</a></h1>
 <h2 id="Initialization">Initialization</h2>
+<p>A <code>Route</code> instance exposes methods for URL navigation without full-page reloads resembling the similar methods exposed by <code>window.location</code> for regular URL navigation.</p>
 <pre><code class="language-js">import { Route } from "@t8/router";
 
 let route = new Route();
 </code></pre>
-<p>🔹 The <code>new Route(location)</code> constructor accepts an optional URL location. In the browser, the current URL is implied if <code>location</code> is omitted.</p>
+<p>⬥ The <code>new Route(url)</code> constructor accepts an optional URL. In the browser, the current URL is implied if <code>url</code> is omitted.</p>
 <h2 id="Navigation">Navigation</h2>
 <pre><code class="language-diff">- window.location.assign("/intro");
 + route.assign("/intro");
@@ -34,9 +35,10 @@ let route = new Route();
 - console.log(window.location.href);
 + console.log(route.href);
 </code></pre>
-<p>🔹 The route navigation API is largely in line with the built-in navigation APIs. An instance of <code>Route</code> exposes: <code>.assign(url)</code>, <code>.replace(url)</code>, <code>.reload()</code>, <code>.href</code>, <code>.pathname</code>, <code>.search</code>, <code>.hash</code>, <code>.back()</code>, <code>.forward()</code>, <code>.go(delta)</code> — similar to the built-in APIs of <code>window.location</code> and <code>history</code> carried over to route-based SPA navigation.</p>
+<p>⬥ The route navigation API is largely in line with the built-in navigation APIs. An instance of <code>Route</code> exposes: <code>.assign(url)</code>, <code>.replace(url)</code>, <code>.reload()</code>, <code>.href</code>, <code>.pathname</code>, <code>.search</code>, <code>.hash</code>, <code>.back()</code>, <code>.forward()</code>, <code>.go(delta)</code> — similar to the built-in APIs of <code>window.location</code> and <code>history</code> carried over to route-based SPA navigation.</p>
 <h2 id="Events_&amp;_Middleware">Events &amp; Middleware</h2>
-<pre><code class="language-js">route.on("navigationstart", href =&gt; {
+<p>Subscription to the <code>Route</code>'s navigation events allows to hook into the course of the route navigation.</p>
+<pre><code class="language-js">route.on("navigationstart", (href) =&gt; {
   if (hasUnsavedChanges)
     return false; // prevents navigation
 
@@ -46,12 +48,12 @@ let route = new Route();
   }
 });
 </code></pre>
-<pre><code class="language-js">route.on("navigationcomplete", href =&gt; {
+<pre><code class="language-js">route.on("navigationcomplete", (href) =&gt; {
   if (href === "/intro")
     document.title = "Intro";
 });
 </code></pre>
-<p>🔹 Both event handlers, acting like routing middleware, are immediately called when they are added if the route is already in the navigation-complete state.</p>
+<p>⬥ Both event handlers, acting like routing middleware, are immediately called when they are added if the route is already in the navigation-complete state.</p>
 <h2 id="Route_matching">Route matching</h2>
 <pre><code class="language-js">console.log(route.href === "/intro");
 console.log(route.href.startsWith("/sections/"));
@@ -70,17 +72,19 @@ let sectionTitle = route.at(
 );
 // at "/sections/&lt;id&gt;" ? "Section &lt;id&gt;" : undefined
 </code></pre>
-<p>🔹 Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <a href="/url-shape"><em>url-shape</em></a>, to <code>route.match(pattern)</code> or <code>route.at(pattern, x, y)</code>.</p>
+<p>⬥ Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <a href="/url-shape"><em>url-shape</em></a>, to <code>route.match(pattern)</code> or <code>route.at(pattern, x, y)</code>.</p>
 <h2 id="Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</h2>
 <pre><code class="language-js">route.observe(document);
 </code></pre>
 <p>The above line turns all <code>&lt;a&gt;</code> and <code>&lt;area&gt;</code> elements in the <code>document</code> to SPA route links enabling navigation without page reloads via the <code>route</code> object.</p>
-<p>🔹 <code>route.observe(container, elements)</code> accepts a container element (it can be <code>document</code>, as in the example above) and optionally <code>elements</code> (which can be a selector or HTML elements) specifying the SPA navigation links.</p>
+<p>⬥ <code>route.observe(container, elements)</code> accepts a container element (it can be <code>document</code>, as in the example above) and optionally <code>elements</code> (which can be a selector or HTML elements) specifying the SPA navigation links.</p>
 <pre><code class="language-js">route.observe(document.querySelector("#app"), "nav a");
 </code></pre>
 <hr>
-<p><a href="https://codesandbox.io/p/sandbox/n7y5rx?file=%2Fsrc%2Findex.ts" target="_blank">Basic usage example</a><br>
-<a href="/react-router">T8 React Router</a></p>
+<ul>
+<li><a href="https://codesandbox.io/p/sandbox/n7y5rx?file=%2Fsrc%2Findex.ts" target="_blank">Basic usage example</a></li>
+<li><a href="/react-router">T8 React Router</a></li>
+</ul>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>

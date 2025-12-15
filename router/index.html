@@ -17,10 +17,9 @@
 <main>
 <section class="aux intro-title">
   <div class="section-content">
-    <p class="glyph"><svg viewBox="0 0 100 100" role="img" height="3em"><title>Glyph</title><circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="4" fill="none"/><circle cx="50" cy="50" r="5" stroke="none" fill="currentColor"/></svg></p>
     <h1><a href="/">T8</a> Router</h1>
     <div class="description">
-      <p><em>Vanilla JS/TS router for SPA navigation</em></p>
+      <p>Vanilla JS/TS router for SPA navigation and URL pattern matching</p>
     </div>
     <p class="actions">
       <a href="/router/start" class="primary">Docs</a>
@@ -32,7 +31,7 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p>🔹 Concise API for SPA navigation</p>
+    <div class="intro"><p>⬥ Concise API for SPA navigation</p>
 <pre><code class="language-js">let route = new Route();
 
 route.observe(document); // switch links to SPA navigation mode
@@ -43,7 +42,7 @@ route.observe(document); // switch links to SPA navigation mode
 - window.location.href = "/intro";
 + route.href = "/intro"; // SPA navigation
 </code></pre>
-<p>🔹 Flexible URL pattern matching for URL-based rendering</p>
+<p>⬥ Flexible URL pattern matching for URL-based rendering</p>
 <pre><code class="language-js">header.className = route.href === "/" ? "full" : "compact";
 </code></pre>
 <pre><code class="language-js">header.className = route.at("/", "full", "compact");
@@ -55,7 +54,7 @@ route.observe(document); // switch links to SPA navigation mode
 );
 // at "/sections/&lt;id&gt;" ? "Section &lt;id&gt;" : undefined
 </code></pre>
-<p>🔹 Navigation middleware</p>
+<p>⬥ Navigation middleware</p>
 <pre><code class="language-js">route.on("navigationstart", callback);
 // e.g. to redirect or prevent navigation
 </code></pre>

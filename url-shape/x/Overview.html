@@ -34,10 +34,10 @@ export const { url, validate } = createURLSchema({
   }),
 });
 </code></pre>
-<p>🔹 <code>createURLSchema()</code> accepts a URL schema defined with any validation lib supporting the <a href="https://github.com/standard-schema/standard-schema#readme" target="_blank">Standard Schema</a> spec, including Zod, ArkType, Valibot, or Yup.</p>
-<p>🔹 With Zod, mind the <code>.coerce</code> part in the schema for non-string parameters so that string URL components are converted to the preferred types.</p>
+<p>⬥ <code>createURLSchema()</code> accepts a URL schema defined with any validation lib supporting the <a href="https://github.com/standard-schema/standard-schema#readme" target="_blank">Standard Schema</a> spec, including Zod, ArkType, Valibot, or Yup.</p>
+<p>⬥ With Zod, mind the <code>.coerce</code> part in the schema for non-string parameters so that string URL components are converted to the preferred types.</p>
 <h2 id="Using_a_URL_schema">Using a URL schema</h2>
-<p>Use the functions returned from <code>createURLSchema()</code> to build and validate URLs in a type-safe manner. A type-aware code editor will highlight typos in the URLs and type mismatches in their parameters.</p>
+<p>Use the functions returned from <code>createURLSchema()</code> to build and validate URLs in a type-safe manner. A type-aware code editor highlights typos in the URLs and type mismatches in their parameters.</p>
 <pre><code class="language-ts">url("/sections/:id", { params: { id: 10 } }).href // "/sections/10"
 url("/sections/:id", { params: { id: 10 } }).toString() // "/sections/10"
 String(url("/sections/:id", { params: { id: 10 } })) // "/sections/10"
