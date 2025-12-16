@@ -21,7 +21,7 @@
 <pre><code class="language-diff">+ import { useRouteState } from "@t8/react-router";
 
   let App = () =&gt; {
--   let [{ coords }, setState] = useState({ coords: {} });
+-   let [{ coords }, setState] = useState({ coords: { x: 0, y: 0 } });
 +   let [{ query }, setState] = useRouteState("/");
 
     let setPosition = () =&gt; {

@@ -31,14 +31,19 @@
 <section class="intro">
   <div class="section-content">
     <div class="intro"><p><strong>Why?</strong> To make URL-based rendering as simple as regular conditional rendering, which it essentially is, with a single approach for both components and prop values. To repurpose well-known built-in navigation APIs for use with SPA navigation, also without reinventing an API for a link component. To manage URL parameters as state by following the React's state pattern. To keep SSR, routing middleware, and lazy routes simple. To make type safety an optional enhancement allowing for incremental adoption.</p>
-<pre><code>atRoute ? x : y
-→ at(route, x, y)
+<pre><code class="language-diff">// Core parts
 
-window.location.href = "/x";
-→ route.href = "/x";
+// Route-based rendering
+at("/", &lt;Intro/&gt;)
+&lt;header className={at("/", "full", "compact")}&gt;
 
-&lt;a href="/x"&gt;
-→ &lt;A href="/x"&gt;
+// Route navigation
+- window.location.href = "/x";
++ route.href = "/x";
+
+// Route link
+- &lt;a href="/"&gt;Intro&lt;/a&gt;
++ &lt;A href="/"&gt;Intro&lt;/A&gt;
 </code></pre></div>
     <p class="pagenav">
       <span class="next"><a href="/react-router/start">To the docs</a> <span class="icon">→</span></span>
@@ -47,6 +52,11 @@ window.location.href = "/x";
 </section>
 </main>
 </div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
