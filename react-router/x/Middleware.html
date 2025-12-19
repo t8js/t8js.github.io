@@ -49,6 +49,7 @@ let App = () =&gt; {
 </code></pre>
 <p>This example shows some common examples of what can be handled with routing middleware: preventing navigation with unsaved user input, redirecting to another location, setting the page title based on the current location.</p>
 <p>⬥ The callback of both hooks is first called when the component gets mounted if the route is already in the navigation-complete state.</p>
+<p>⬥ The optional <code>callback</code> parameter of <code>useRoute(callback?)</code> can be used as middleware defining certain actions to be taken right before or after components get notified to re-render in response to a route change. One use case for this callback is <a href="/react-router/x/Animated_view_transitions">activating view transitions</a>.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -73,6 +74,7 @@ let App = () =&gt; {
 <li data-id="Custom_routing_behavior"><a href="/react-router/x/Custom_routing_behavior">Custom routing behavior</a></li>
 <li data-id="Unknown_routes"><a href="/react-router/x/Unknown_routes">Unknown routes</a></li>
 <li data-id="Lazy_routes"><a href="/react-router/x/Lazy_routes">Lazy routes</a></li>
+<li data-id="Animated_view_transitions"><a href="/react-router/x/Animated_view_transitions">Animated view transitions</a></li>
 <li data-id="Converting_HTML_links_to_SPA_route_links"><a href="/react-router/x/Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a></li>
 </ul>
 <p class="title">Resources</p>

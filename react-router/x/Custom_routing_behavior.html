@@ -17,9 +17,9 @@
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
 <h2>Custom routing behavior</h2>
-<p>The default URL-based routing behavior is what's used in most cases, but its customization is also conceivable and possible. The <code>&lt;Router&gt;</code> component discussed above (or even multiple ones) can be used to set up customized routing behavior over a specific portion of the app (or the entire app).</p>
+<p>The default URL-based routing behavior is what's used in most cases, but it's also conceivable to have routing based on the URL in a different way or not based on the browser's URL altogether. The <code>&lt;Router&gt;</code> component discussed above (or even multiple ones) can be used to set up customized routing behavior over a specific portion of the app (or the entire app).</p>
 <p><a href="https://codesandbox.io/p/sandbox/w7rsjl?file=%252Fsrc%252FApp.tsx" target="_blank">Custom routing behavior example</a></p>
-<p>In this example, we've got a kind of a browser-in-browser with its routing based on a text input rather than the URL. It's enabled by devising a custom extension of the <code>Route</code> class, <code>InputRoute</code>, configured to interact with a text input, and passing its instance to the <code>&lt;Router&gt;</code> component.</p>
+<p>In this example, we've got a kind of a browser-in-browser component with its routing based on a text input rather than the URL. It's enabled by devising a custom extension of the <code>Route</code> class, <code>InputRoute</code>, configured to interact with a text input, and passing its instance to the <code>&lt;Router&gt;</code> component.</p>
 <p>This example also shows how the same routing code (of the <code>&lt;Content&gt;</code> component) can interact with either the URL or the text input element based on the closest <code>&lt;Router&gt;</code> context up the component tree.</p>
 <p class="pagenav">
   <span class="prev">
@@ -45,6 +45,7 @@
 <li data-id="Custom_routing_behavior"><strong>Custom routing behavior</strong></li>
 <li data-id="Unknown_routes"><a href="/react-router/x/Unknown_routes">Unknown routes</a></li>
 <li data-id="Lazy_routes"><a href="/react-router/x/Lazy_routes">Lazy routes</a></li>
+<li data-id="Animated_view_transitions"><a href="/react-router/x/Animated_view_transitions">Animated view transitions</a></li>
 <li data-id="Converting_HTML_links_to_SPA_route_links"><a href="/react-router/x/Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a></li>
 </ul>
 <p class="title">Resources</p>

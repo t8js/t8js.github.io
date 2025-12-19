@@ -3,57 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Router: Unknown routes">
-  <title>Unknown routes | T8 React Router</title>
+  <meta name="description" content="T8 React Router: Animated view transitions">
+  <title>Animated view transitions | T8 React Router</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="prefetch" href="/react-router/x/Converting_HTML_links_to_SPA_route_links">
   <link rel="prefetch" href="/react-router/x/Lazy_routes">
-  <link rel="prefetch" href="/react-router/x/Custom_routing_behavior">
 </head>
 <body>
 <div class="layout">
 <div class="body">
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
-<h2>Unknown routes</h2>
-<p>The fallback parameter of the route-matching function <code>at(route, x, y)</code> can be used as a way to handle unknown routes, as shown in the example below. In a <a href="/react-router/x/Type_safety">type-safe setup</a>, unknown routes can be handled based on whether the given route belongs to the URL schema (e.g. with <code>validate(route)</code> from <a href="/url-shape"><em>url-shape</em></a>).</p>
-<pre><code class="language-jsx">import { A, useRoute } from "@t8/react-router";
+<h2>Animated view transitions</h2>
+<p>Animated transitions between different routes can be achieved by using the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank">View Transition API</a>. The optional <code>callback</code> parameter of <code>useRoute()</code> can be used to set up such a transition.</p>
+<pre><code class="language-diff">+ import { flushSync } from "react-dom";
+  import { A, useRoute } from "@t8/react-router";
 
-const routeMap = {
-  intro: "/intro",
-  sections: /^\/sections\/(?&lt;id&gt;\d+)\/?$/,
-};
++ function renderViewTransition(render) {
++   document.startViewTransition(() =&gt; {
++     flushSync(render);
++   });
++ }
 
-const knownRoutes = Object.values(routeMap);
+  export const App = () =&gt; {
+-   let { at } = useRoute();
++   let { at } = useRoute(renderViewTransition);
 
-let App = () =&gt; {
-  let { at } = useRoute();
-
-  return (
-    &lt;&gt;
-      &lt;nav&gt;
-        &lt;A href={routeMap.intro}&gt;Intro&lt;/A&gt;
-      &lt;/nav&gt;
-      {at(routeMap.intro, &lt;Intro/&gt;)}
-      {at(routeMap.sections, ({ params }) =&gt; (
-        &lt;Section id={params.id}/&gt;
-      ))}
-      {at(knownRoutes, null, &lt;Error/&gt;)}
-    &lt;/&gt;
-  );
-};
+    return (
+      // Content
+    );
+  };
 </code></pre>
-<p>The last <code>at()</code> in this example results in <code>null</code> (that is no content) for all known routes and renders the error content for the rest unknown routes.</p>
-<p>⬥ <code>at()</code> calls don't have to maintain a specific order, and the <code>at()</code> call handling unknown routes doesn't have to be the last.</p>
-<p>⬥ <code>at()</code> calls don't have to be grouped side by side like in the example above, their collocation is not a requirement. <code>at()</code> calls are not coupled together, they can be split across separate components and files (like any other conditionally rendered components).</p>
+<p><a href="https://codesandbox.io/p/sandbox/znvrmt?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
+<p>In the example above, the <code>renderViewTransition()</code> function passed to <code>useRoute()</code> calls <code>document.startViewTransition()</code> from the View Transition API to start a view transition and React's <code>flushSync()</code> to apply the DOM changes synchronously within the view transition, with the visual effects defined with CSS.</p>
+<p>Should we need to trigger a transition only with specific links, the <code>options</code> parameter of the <code>useRoute()</code> callback can be used to add a condition for the view transitions:</p>
+<pre><code class="language-js">let viewTransitionLinkIds = new Set([/* ... */]);
+
+function renderViewTransition(render, options) {
+  // `options.id` reflects the link's `data-id`
+  if (viewTransitionLinkIds.has(options.id))
+    document.startViewTransition(() =&gt; {
+      flushSync(render);
+    });
+  else render();
+}
+</code></pre>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
-    <a href="/react-router/x/Custom_routing_behavior">Custom routing behavior</a>
+    <a href="/react-router/x/Lazy_routes">Lazy routes</a>
   </span>
   <span class="sep">|</span>
-  <span class="next"><a href="/react-router/x/Lazy_routes">Lazy routes</a> <span class="icon">→</span></span>
+  <span class="next"><a href="/react-router/x/Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a> <span class="icon">→</span></span>
 </p>
 </main>
 <hr>
@@ -69,9 +72,9 @@ let App = () =&gt; {
 <li data-id="Nested_routes"><a href="/react-router/x/Nested_routes">Nested routes</a></li>
 <li data-id="Location_provider"><a href="/react-router/x/Location_provider">Location provider</a></li>
 <li data-id="Custom_routing_behavior"><a href="/react-router/x/Custom_routing_behavior">Custom routing behavior</a></li>
-<li data-id="Unknown_routes"><strong>Unknown routes</strong></li>
+<li data-id="Unknown_routes"><a href="/react-router/x/Unknown_routes">Unknown routes</a></li>
 <li data-id="Lazy_routes"><a href="/react-router/x/Lazy_routes">Lazy routes</a></li>
-<li data-id="Animated_view_transitions"><a href="/react-router/x/Animated_view_transitions">Animated view transitions</a></li>
+<li data-id="Animated_view_transitions"><strong>Animated view transitions</strong></li>
 <li data-id="Converting_HTML_links_to_SPA_route_links"><a href="/react-router/x/Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a></li>
 </ul>
 <p class="title">Resources</p>
