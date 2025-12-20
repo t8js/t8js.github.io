@@ -33,15 +33,15 @@
     <div class="intro"><p><strong>Why?</strong> To simplify routing code. More specifically: To make URL-based rendering as simple as regular conditional rendering, which it essentially is, with a single approach for both components and prop values. To make use of the well-known built-in navigation APIs in the context of SPA navigation, also without reinventing an API for a link component. To manage URL parameters as state by following the React's state pattern. To keep SSR, routing middleware, and lazy routes simple. To make type safety an optional enhancement allowing for incremental adoption.</p>
 <pre><code class="language-diff">// Core parts
 
-// Route-based rendering
+// URL-based rendering
 at("/", &lt;Intro/&gt;)
 &lt;header className={at("/", "full", "compact")}&gt;
 
-// Route navigation
+// SPA navigation
 - window.location.href = "/x";
 + route.href = "/x";
 
-// Route link
+// SPA route link
 - &lt;a href="/"&gt;Intro&lt;/a&gt;
 + &lt;A href="/"&gt;Intro&lt;/A&gt;
 </code></pre></div>
