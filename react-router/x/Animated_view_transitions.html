@@ -22,9 +22,12 @@
   import { A, useRoute } from "@t8/react-router";
 
 + function renderViewTransition(render) {
-+   document.startViewTransition(() =&gt; {
-+     flushSync(render);
-+   });
++   if (document.startViewTransition) {
++     document.startViewTransition(() =&gt; {
++       flushSync(render);
++     });
++   }
++   else render();
 + }
 
   export const App = () =&gt; {
@@ -37,18 +40,19 @@
   };
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/znvrmt?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
-<p>In the example above, the <code>renderViewTransition()</code> function passed to <code>useRoute()</code> calls <code>document.startViewTransition()</code> from the View Transition API to start a view transition and React's <code>flushSync()</code> to apply the DOM changes synchronously within the view transition, with the visual effects defined with CSS.</p>
-<p>Should we need to trigger a transition only with specific links, the <code>options</code> parameter of the <code>useRoute()</code> callback can be used to add a condition for the view transitions:</p>
-<pre><code class="language-js">let viewTransitionLinkIds = new Set([/* ... */]);
+<p>In the example above, the <code>renderViewTransition()</code> function passed to <code>useRoute()</code> calls <code>document.startViewTransition()</code> from the View Transition API to start a view transition and React's <code>flushSync()</code> to apply the DOM changes synchronously within the view transition, with the visual effects defined with CSS. We also check whether <code>document.startViewTransition</code> is supported by the browser and resort to regular rendering if it's not.</p>
+<p>Should we need to trigger a transition only with specific links, the <code>options</code> parameter of the <code>useRoute()</code> callback can be used to add a condition for the view transitions. In the example below, we'll only trigger a view transition with the links whose <code>data-id</code> attribute, available via <code>options.id</code>, is among the listed on <code>viewTransitionLinkIds</code>.</p>
+<pre><code class="language-diff">+ let viewTransitionLinkIds = new Set([/* ... */]);
 
-function renderViewTransition(render, options) {
-  // `options.id` reflects the link's `data-id`
-  if (viewTransitionLinkIds.has(options.id))
-    document.startViewTransition(() =&gt; {
-      flushSync(render);
-    });
-  else render();
-}
+  function renderViewTransition(render, options) {
+-   if (document.startViewTransition) {
++   if (document.startViewTransition &amp;&amp; viewTransitionLinkIds.has(options.id)) {
+      document.startViewTransition(() =&gt; {
+        flushSync(render);
+      });
+    }
+    else render();
+  }
 </code></pre>
 <p class="pagenav">
   <span class="prev">
