@@ -32,13 +32,10 @@ let store2 = new Store({ counter: 0 });
 <p>The store value can be read and updated with <code>getValue()</code> and <code>setValue(update)</code>. <code>setValue(update)</code> accepts either a new value or a function <code>(value) =&gt; nextValue</code> that returns a new store value based on the current store value.</p>
 <pre><code class="language-js">let store = new Store({ counter: 0 });
 
-let value = store.getValue();
-console.log(value.counter); // 0
-
 store.setValue({ counter: 100 });
-console.log(value.counter); // 100
-
 store.setValue((value) =&gt; ({ ...value, counter: value.counter + 1 }));
+
+let value = store.getValue();
 console.log(value.counter); // 101
 </code></pre>
 <h2 id="Subscription_to_updates">Subscription to updates</h2>
