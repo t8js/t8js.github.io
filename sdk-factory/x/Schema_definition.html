@@ -20,10 +20,10 @@
 <p>The <code>APISchema</code> type used with the <a href="/sdk-factory/x/RequestService"><code>RequestService</code></a> constructor is a custom schema outlining the types of requests and responses within an API. The example below shows what such a schema may look like.</p>
 <pre><code class="language-ts">import type { Schema } from "@t8/sdk-factory";
 
-// wrapping into the `Schema` generic type is optional, but
+// Wrapping into the `Schema` generic type is optional, but
 // this helps validate the basic schema structure
 export type APISchema = Schema&lt;{
-  // a schema key can be any unique string, for an HTTP API
+  // A schema key can be any unique string, for an HTTP API
   // a pair of a method and a path can serve this purpose
   "GET /items/:id": {
     request: {
@@ -52,6 +52,7 @@ export type APISchema = Schema&lt;{
   // ... and so forth
 }&gt;;
 </code></pre>
+<p>⬥ Schema keys should be unique strings, not necessarily a pair of an HTTP method and a path, as in the example above, but this is a handy naming convention for an HTTP API. If a schema key doesn't match this pattern, <code>method</code> and <code>path</code> (or <code>url</code>) have to be explicitly specified in the schema entry.</p>
 <p>With such a schema assigned to <code>service</code>, calls to its <code>send()</code> method will be prevalidated against this schema, which means that a type-aware IDE will warn of type mismatches or typos in the parameters:</p>
 <pre><code class="language-ts">let { ok, status, body } = await service.send("GET /items/:id", {
   params: {

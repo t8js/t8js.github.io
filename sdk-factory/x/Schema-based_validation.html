@@ -28,7 +28,7 @@
 + import { apiSchema, type APISchema } from "./apiSchema"; // defined with Zod
 
   function getRequestHandler(endpoint: string): RequestHandler {
-    return function(target, request) {
+    return async function(target, request) {
 +     try {
 +       schema[target]?.request?.parse(request);
 +     }
