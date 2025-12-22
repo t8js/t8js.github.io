@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
   <link rel="prefetch" href="/react-router/x/URL_parameters">
-  <link rel="prefetch" href="/react-router/x/Optional_link_attributes">
+  <link rel="prefetch" href="/react-router/x/Link_props">
 </head>
 <body>
 <div class="layout">
@@ -17,7 +17,7 @@
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
 <h2>Middleware</h2>
-<p>The <code>useNavigationStart()</code> and <code>useNavigationComplete()</code> hooks define routing <em>middleware</em>, that is intermediate actions to be done before and after the route navigation occurs:</p>
+<p>The <code>useNavigationStart()</code> and <code>useNavigationComplete()</code> hooks define routing <em>middleware</em>, that is optional intermediate actions to be done before and after the route navigation occurs:</p>
 <pre><code class="language-jsx">import { useNavigationComplete, useNavigationStart } from "@t8/react-router";
 
 function setTitle({ href }) {
@@ -48,12 +48,13 @@ let App = () =&gt; {
 };
 </code></pre>
 <p>This example shows some common examples of what can be handled with routing middleware: preventing navigation with unsaved user input, redirecting to another location, setting the page title based on the current location.</p>
+<p>⬥ The object passed to the middleware callback defines the current navigation mode. Its <code>href</code> and <code>referrer</code> values are the navigation destination and initial URLs. The rest of its properties are aligned with the <a href="/react-router/x/Link_props">link props</a> (with <code>id</code> corresponding to the link's <code>data-id</code> and with the <code>data-</code> prefix stripped from the props' names).</p>
 <p>⬥ The callback of both hooks is first called when the component gets mounted if the route is already in the navigation-complete state.</p>
 <p>⬥ The optional <code>callback</code> parameter of <code>useRoute(callback?)</code> can be used as middleware defining certain actions to be taken right before or after components get notified to re-render in response to a route change. One use case for this callback is activating <a href="/react-router/x/Animated_view_transitions">animated view transitions</a>.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
-    <a href="/react-router/x/Optional_link_attributes">Optional link attributes</a>
+    <a href="/react-router/x/Link_props">Link props</a>
   </span>
   <span class="sep">|</span>
   <span class="next"><a href="/react-router/x/URL_parameters">URL parameters</a> <span class="icon">→</span></span>
@@ -65,7 +66,7 @@ let App = () =&gt; {
 <p class="title">Contents</p>
 <ul><li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
-<li data-id="Optional_link_attributes"><a href="/react-router/x/Optional_link_attributes">Optional link attributes</a></li>
+<li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><strong>Middleware</strong></li>
 <li data-id="URL_parameters"><a href="/react-router/x/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/x/Type_safety">Type safety</a></li>
