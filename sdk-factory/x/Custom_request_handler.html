@@ -40,20 +40,12 @@ const getRequestHandler(endpoint: string): RequestHandler {
 
     let { ok, status, statusText } = response;
 
-    if (!ok) {
-      throw new RequestError({
-        status,
-        statusText,
-      });
-    }
+    if (!ok) throw new RequestError({ status, statusText });
 
     try {
-      return {
-        ok,
-        status,
-        statusText,
-        body: await response.json(),
-      };
+      let body = await response.json();
+
+      return { ok, status, statusText, body };
     }
     catch (error) {
       throw new RequestError(error);
