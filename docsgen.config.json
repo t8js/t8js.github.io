@@ -10,12 +10,14 @@
       "dir": "react-router",
       "htmlTitle": "<a href=\"/\">T8</a> React Router",
       "repo": "https://github.com/t8js/react-router",
+      "npm": "https://www.npmjs.com/package/@t8/react-router",
       "nav": "/assets/nav_react.html"
     },
     {
       "dir": "react-store",
       "htmlTitle": "<a href=\"/\">T8</a> React Store",
       "repo": "https://github.com/t8js/react-store",
+      "npm": "https://www.npmjs.com/package/@t8/react-store",
       "nav": "/assets/nav_react.html",
       "singlePage": true
     },
@@ -23,6 +25,7 @@
       "dir": "react-pending",
       "htmlTitle": "<a href=\"/\">T8</a> React Pending",
       "repo": "https://github.com/t8js/react-pending",
+      "npm": "https://www.npmjs.com/package/@t8/react-pending",
       "nav": "/assets/nav_react.html",
       "singlePage": true
     },
@@ -30,6 +33,7 @@
       "dir": "router",
       "htmlTitle": "<a href=\"/\">T8</a> Router",
       "repo": "https://github.com/t8js/router",
+      "npm": "https://www.npmjs.com/package/@t8/router",
       "nav": "/assets/nav_vanilla.html",
       "singlePage": true
     },
@@ -37,6 +41,7 @@
       "dir": "store",
       "htmlTitle": "<a href=\"/\">T8</a> Store",
       "repo": "https://github.com/t8js/store",
+      "npm": "https://www.npmjs.com/package/@t8/store",
       "nav": "/assets/nav_vanilla.html",
       "singlePage": true
     },
@@ -45,6 +50,7 @@
       "title": "URL Shape",
       "htmlTitle": "URL&nbsp;Shape&nbsp;<sup><a href=\"/\">T8</a></sup>",
       "repo": "https://github.com/t8js/url-shape",
+      "npm": "https://www.npmjs.com/package/url-shape",
       "nav": "/assets/nav_vanilla.html",
       "singlePage": true
     },
@@ -52,6 +58,7 @@
       "dir": "sdk-factory",
       "htmlTitle": "<a href=\"/\">T8</a> SDK Factory",
       "repo": "https://github.com/t8js/sdk-factory",
+      "npm": "https://www.npmjs.com/package/@t8/sdk-factory",
       "nav": "/assets/nav_vanilla.html"
     }
   ],
