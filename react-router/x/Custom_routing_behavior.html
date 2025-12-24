@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
   <link rel="prefetch" href="/react-router/x/Unknown_routes">
-  <link rel="prefetch" href="/react-router/x/Location_provider">
+  <link rel="prefetch" href="/react-router/x/URL_provider">
 </head>
 <body>
 <div class="layout">
@@ -19,12 +19,12 @@
 <h2>Custom routing behavior</h2>
 <p>The default URL-based routing behavior is what's used in most cases, but it's also conceivable to have routing based on the URL in a different way or not based on the browser's URL altogether. The <code>&lt;Router&gt;</code> component discussed above (or even multiple ones) can be used to set up customized routing behavior over a specific portion of the app (or the entire app).</p>
 <p><a href="https://codesandbox.io/p/sandbox/w7rsjl?file=%252Fsrc%252FApp.tsx" target="_blank">Custom routing behavior example</a></p>
-<p>In this example, we've got a kind of a browser-in-browser component with its routing based on a text input rather than the URL. It's enabled by devising a custom extension of the <code>Route</code> class, <code>InputRoute</code>, configured to interact with a text input, and passing its instance to the <code>&lt;Router&gt;</code> component.</p>
+<p>In this example, we've got a kind of a browser-in-browser component with its routing based on a text input rather than the URL. It's enabled by devising a custom extension of the <code>Route</code> class, <code>InputRoute</code>, configured to interact with a text input, and passing its instance to the <code>href</code> prop of the <code>&lt;Router&gt;</code> component.</p>
 <p>This example also shows how the same routing code (of the <code>&lt;Content&gt;</code> component) can interact with either the URL or the text input element based on the closest <code>&lt;Router&gt;</code> context up the component tree.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
-    <a href="/react-router/x/Location_provider">Location provider</a>
+    <a href="/react-router/x/URL_provider">URL provider</a>
   </span>
   <span class="sep">|</span>
   <span class="next"><a href="/react-router/x/Unknown_routes">Unknown routes</a> <span class="icon">→</span></span>
@@ -41,7 +41,7 @@
 <li data-id="URL_parameters"><a href="/react-router/x/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/x/Type_safety">Type safety</a></li>
 <li data-id="Nested_routes"><a href="/react-router/x/Nested_routes">Nested routes</a></li>
-<li data-id="Location_provider"><a href="/react-router/x/Location_provider">Location provider</a></li>
+<li data-id="URL_provider"><a href="/react-router/x/URL_provider">URL provider</a></li>
 <li data-id="Custom_routing_behavior"><strong>Custom routing behavior</strong></li>
 <li data-id="Unknown_routes"><a href="/react-router/x/Unknown_routes">Unknown routes</a></li>
 <li data-id="Lazy_routes"><a href="/react-router/x/Lazy_routes">Lazy routes</a></li>

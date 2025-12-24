@@ -64,7 +64,7 @@ console.log(/^\/sections\/\d+\/?/.test(route.href));
 </code></pre>
 <pre><code class="language-js">let { ok, params } = route.match(/^\/sections\/(?&lt;id&gt;\d+)\/?/);
 
-console.log(ok, params.id);
+console.log(ok, params.id, params[0]);
 </code></pre>
 <pre><code class="language-js">header.className = route.at("/", "full", "compact");
 // at "/" ? "full" : "compact"
@@ -75,6 +75,7 @@ let sectionTitle = route.at(
 );
 // at "/sections/&lt;id&gt;" ? "Section &lt;id&gt;" : undefined
 </code></pre>
+<p>⬥ With a regular expression route pattern, <code>params</code> contains values of its capturing groups accessible by numeric indices; named capturing group values can also be retrieved by their names (like <code>params.id</code> in the examples above).</p>
 <p>⬥ Type-safe <code>params</code> can be obtained by providing a type-safe URL pattern, such as produced by <a href="/url-shape"><em>url-shape</em></a>, to <code>route.match(pattern)</code> or <code>route.at(pattern, x, y)</code>.</p>
 <h2 id="Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</h2>
 <pre><code class="language-js">route.observe(document);

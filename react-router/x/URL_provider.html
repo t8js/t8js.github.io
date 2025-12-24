@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Router: Location provider">
-  <title>Location provider | T8 React Router</title>
+  <meta name="description" content="T8 React Router: URL provider">
+  <title>URL provider | T8 React Router</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
@@ -16,9 +16,19 @@
 <div class="body">
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
-<h2>Location provider</h2>
-<p>Server-side rendering and unit tests are the examples of the environments lacking a global location object (such as <code>window.location</code>). They are the prime use cases for the location provider, <code>&lt;Router&gt;</code>.</p>
-<p>Let's consider an <em>express</em> application route as an example:</p>
+<h2>URL provider</h2>
+<p>In the browser, the routing hooks like <code>useRoute()</code> assume that the current URL is the browser's one (as exposed with <code>window.location</code>), by default. A custom initial URL value can be set with the <code>&lt;Router&gt;</code> component, which is useful for environments lacking a global URL value, like with server-side rendering or unit tests.</p>
+<pre><code class="language-jsx">&lt;Router href="/intro"&gt;
+  &lt;App/&gt;
+&lt;/Router&gt;
+</code></pre>
+<p>Now that we've set up a URL context, both <code>route</code> and <code>at()</code> returned from <code>useRoute()</code> inside the <code>&lt;App&gt;</code> component operate based on the router's <code>href</code>:</p>
+<pre><code class="language-jsx">let { route, at } = useRoute();
+
+console.log(route.href); // returns based on the router's `href`
+</code></pre>
+<p>⬥ The <code>&lt;Router&gt;</code>'s <code>href</code> prop value can be either a string URL or an instance of the <code>Route</code> class. The latter option can be used to redefine the default routing behavior (see the <a href="/react-router/x/Custom_routing_behavior">Custom routing behavior</a> section). If the <code>href</code> prop value is omitted or <code>undefined</code>, <code>&lt;Router&gt;</code> falls back to the current URL in the browser.</p>
+<p>⬥ With SSR in an <em>express</em> application, the URL context setup can be similar to the following:</p>
 <pre><code class="language-jsx">import { renderToString } from "react-dom/server";
 import { Router } from "@t8/react-router";
 
@@ -32,12 +42,6 @@ app.get("/", (req, res) =&gt; {
   res.send(html);
 });
 </code></pre>
-<p>Both <code>route</code> and <code>at()</code> returned from <code>useRoute()</code> operate based on the router's <code>href</code>:</p>
-<pre><code class="language-jsx">let { route, at } = useRoute();
-
-console.log(route.href); // returns based on the router's `href`
-</code></pre>
-<p><code>&lt;Router&gt;</code> can be used with client-side rendering as well. In most cases, it is unnecessary since by default the route context takes the global location from <code>window.location</code> if it's available.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -58,7 +62,7 @@ console.log(route.href); // returns based on the router's `href`
 <li data-id="URL_parameters"><a href="/react-router/x/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/x/Type_safety">Type safety</a></li>
 <li data-id="Nested_routes"><a href="/react-router/x/Nested_routes">Nested routes</a></li>
-<li data-id="Location_provider"><strong>Location provider</strong></li>
+<li data-id="URL_provider"><strong>URL provider</strong></li>
 <li data-id="Custom_routing_behavior"><a href="/react-router/x/Custom_routing_behavior">Custom routing behavior</a></li>
 <li data-id="Unknown_routes"><a href="/react-router/x/Unknown_routes">Unknown routes</a></li>
 <li data-id="Lazy_routes"><a href="/react-router/x/Lazy_routes">Lazy routes</a></li>
