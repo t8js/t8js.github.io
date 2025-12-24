@@ -33,7 +33,7 @@
     <div class="intro"><p>⬥ Concise API for SPA navigation</p>
 <pre><code class="language-js">let route = new Route();
 
-route.observe(document); // switch links to SPA navigation mode
+route.observe(document); // switch links to the SPA navigation mode
 </code></pre>
 <pre><code class="language-diff">- window.location.assign("/intro");
 + route.assign("/intro"); // SPA navigation
