@@ -38,6 +38,9 @@
   };
 </code></pre>
 <p>⬥ The <code>route</code> object has: <code>.assign(url)</code>, <code>.replace(url)</code>, <code>.reload()</code>, <code>.href</code>, <code>.pathname</code>, <code>.search</code>, <code>.hash</code>, <code>.back()</code>, <code>.forward()</code>, <code>.go(delta)</code> — similar to the built-in APIs of <code>window.location</code> and <code>history</code> carried over to route-based SPA navigation.</p>
+<p>⬥ For a full-featured navigation, <code>route.navigate(options)</code> can be used instead of <code>route.assign(url)</code> and <code>route.replace(url)</code> serving as a handy drop-in replacement for the similar <code>window.location</code> methods. The <code>options</code> parameter is an object combining values corresponding to the link navigation props described below, with the <code>data-</code> prefix stripped from the prop names.</p>
+<pre><code class="language-js">route.navigate({ href: "/intro", history: "replace", scroll: "off" });
+</code></pre>
 <p>⬥ There are two kinds of route link components available out of the box: <code>&lt;A&gt;</code> and <code>&lt;Area&gt;</code> with the same props and semantics as the corresponding HTML link tags <code>&lt;a&gt;</code> and <code>&lt;area&gt;</code>.</p>
 <p class="pagenav">
   <span class="prev">
