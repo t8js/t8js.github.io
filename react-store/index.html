@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Store: A state management lib for React apps aligned with React's state pattern, condensed to the essentials">
-  <title>T8 React Store | A state management lib for React apps aligned with React's state pattern, condensed to the essentials</title>
+  <meta name="description" content="T8 React Store: React app state management condensed to the essentials">
+  <title>T8 React Store | React app state management condensed to the essentials</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/index.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
@@ -18,7 +18,7 @@
   <div class="section-content">
     <h1><a href="/">T8</a> React Store</h1>
     <div class="description">
-      <p>A state management lib for React apps aligned with React's state pattern, condensed to the essentials</p>
+      <p>React app state management condensed to the essentials</p>
     </div>
     <p class="actions">
       <a href="/react-store/start" class="primary">Docs</a>
@@ -30,8 +30,8 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p><strong>Why?</strong> To get the shortest migration path from local state to shared state and a quick way to set up shared state from scratch, whether with SSR or without. Other approaches, like Redux Toolkit, Zustand, Jotai, MobX, depart from this picture to varying degrees.</p>
-<p>This picture is achieved here by (1) having a simple API introducing as few new entities as possible, (2) closely following the React's <code>useState()</code> pattern of initializing and manipulating the state to avoid boilerplate and sizable rewrites with the common task of migration from local state to shared state, (3) working smoothly with SSR with regular React Contexts without requiring a specifically designed setup and without internally making use of global stores or other global variables by default.</p>
+    <div class="intro"><p><strong>♥</strong> Quickest migration from local state&nbsp;· Familiar <code>useState()</code> pattern&nbsp;· SSR without workarounds&nbsp;· State management shaved with Occam's razor</p>
+<p><strong>✓</strong> Concise API&nbsp;· CSR&nbsp;· SSR&nbsp;· Integrable with Immer</p>
 <pre><code class="language-diff">+ let store = new Store(0);
 
   let Counter = () =&gt; {
