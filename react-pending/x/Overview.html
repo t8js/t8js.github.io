@@ -39,11 +39,11 @@
   export let Status = () =&gt; {
 +   let [state] = usePendingState("fetch-items");
 
-    if (!state.initialized) return "";
-    if (!state.complete) return "Busy";
-    if (state.error) return "Error";
+    if (!state.initialized) return null;
+    if (!state.complete) return &lt;&gt;Busy&lt;/&gt;;
+    if (state.error) return &lt;&gt;Error&lt;/&gt;;
 
-    return "OK";
+    return &lt;&gt;OK&lt;/&gt;;
   };
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/rrr9cl?file=%2Fsrc%2FItemList.tsx" target="_blank">Live demo</a></p>
