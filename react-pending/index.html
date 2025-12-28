@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Pending: A concise async action state management lib for React apps">
-  <title>T8 React Pending | A concise async action state management lib for React apps</title>
+  <meta name="description" content="T8 React Pending: Self-contained async action state management for React apps">
+  <title>T8 React Pending | Self-contained async action state management for React apps</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/index.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
@@ -18,7 +18,7 @@
   <div class="section-content">
     <h1><a href="/">T8</a> React Pending</h1>
     <div class="description">
-      <p>A concise async action state management lib for React apps</p>
+      <p>Self-contained async action state management for React apps</p>
     </div>
     <p class="actions">
       <a href="/react-pending/start" class="primary">Docs</a>
@@ -30,7 +30,7 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p><strong>Why?</strong> To manage the async action state, whether local or shared, without tightly coupling it with the app state. Decoupled pending state as described here acts like a lightweight scaffolding on top of the action's and component's successful scenario. It's easy to set up from scratch without rewriting the async actions and affecting the app state, and easy to manage further on since it's barely intertwined with other app's internals.</p>
+    <div class="intro"><p><strong>Features:</strong> Decoupled from app state management and async actions' internals&nbsp;· Local or shared async action state&nbsp;· CSR/SSR-compatible</p>
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
   export let ItemList = () =&gt; {
