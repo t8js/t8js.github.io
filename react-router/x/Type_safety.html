@@ -43,10 +43,12 @@ let App = () =&gt; {
         &lt;nav&gt;
           &lt;A href={url("/")}&gt;Intro&lt;/A&gt;{" | "}
           &lt;A href={url("/posts/:id", { params: { id: 1 } })}&gt;Start&lt;/A&gt;
+                                    // ^ { params: { id: number } }
         &lt;/nav&gt;
       &lt;/header&gt;
       {at(url("/"), &lt;Intro/&gt;)}
       {at(url("/posts/:id"), ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
+                             // ^ { params: { id: number } }
     &lt;/&gt;
   );
 };
