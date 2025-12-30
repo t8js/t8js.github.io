@@ -17,7 +17,7 @@
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
 <h2>Animated view transitions</h2>
-<p>Animated transitions between different routes can be achieved by using the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank">View Transition API</a>. The optional <code>callback</code> parameter of <code>useRoute()</code> can be used to set up such a transition.</p>
+<p>Animated transitions between different routes can be achieved by using the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank">View Transition API</a> and the optional <code>callback</code> parameter of <code>useRoute()</code> can be used to set up such a transition.</p>
 <pre><code class="language-diff">+ import { flushSync } from "react-dom";
   import { A, useRoute } from "@t8/react-router";
 
@@ -41,7 +41,7 @@
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/znvrmt?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
 <p>In the example above, the <code>renderViewTransition()</code> function passed to <code>useRoute()</code> calls <code>document.startViewTransition()</code> from the View Transition API to start a view transition and React's <code>flushSync()</code> to apply the DOM changes synchronously within the view transition, with the visual effects defined with CSS. We also check whether <code>document.startViewTransition</code> is supported by the browser and resort to regular rendering if it's not.</p>
-<p>Should we need to trigger a transition only with specific links, the <code>options</code> parameter of the <code>useRoute()</code> callback can be used to add a condition for the view transitions. In the example below, we'll only trigger a view transition with the links whose <code>data-id</code> attribute, available via <code>options.id</code>, is among the listed on <code>viewTransitionLinkIds</code>.</p>
+<p>To trigger a transition only with specific links, the <code>options</code> parameter of the <code>useRoute()</code> callback can be used to add a condition for the view transitions. In the example below, we'll only trigger a view transition with the links whose <code>data-id</code> attribute, available via <code>options.id</code>, is among the listed on <code>viewTransitionLinkIds</code>.</p>
 <pre><code class="language-diff">+ let viewTransitionLinkIds = new Set([/* ... */]);
 
   function renderViewTransition(render, options) {
@@ -67,7 +67,7 @@
 <nav class="aux">
 <section>
 <p class="title">Contents</p>
-<ul><li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
+<ul><li data-id="Zero-config_routing"><a href="/react-router/x/Zero-config_routing">Zero-config routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><a href="/react-router/x/Middleware">Middleware</a></li>

@@ -17,8 +17,8 @@
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
 <h2>Nested routes</h2>
-<p>Nested routes don't require special rendering rules. All routes are handled equally and independently from each other.</p>
-<pre><code class="language-js">let App = () =&gt; {
+<p>Nested routes don't require special handling. All routes are handled equally and independently from each other.</p>
+<pre><code class="language-jsx">let App = () =&gt; {
   let { at } = useRoute();
 
   return (
@@ -39,10 +39,10 @@ let sectionParams = z.object({
 });
 
 export const { url } = createURLSchema({
-  "/sections/:sectionId": z.object({
+  "/posts/:sectionId": z.object({
     params: sectionParams,
   }),
-  "/sections/:sectionId/stories/:storyId": z.object({
+  "/posts/:sectionId/stories/:storyId": z.object({
     params: z.object({
       ...sectionParams.shape, // Shared params
       storyId: z.string(),
@@ -65,7 +65,7 @@ export const { url } = createURLSchema({
 <nav class="aux">
 <section>
 <p class="title">Contents</p>
-<ul><li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
+<ul><li data-id="Zero-config_routing"><a href="/react-router/x/Zero-config_routing">Zero-config routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><a href="/react-router/x/Middleware">Middleware</a></li>

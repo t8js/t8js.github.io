@@ -17,14 +17,14 @@
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
 <h2>Type safety</h2>
-<p>Type-safe routing is as an optional enhancement. It's enabled by supporting route patterns created with a type-safe URL builder like <em>url-shape</em> together with a schema created with a validation library implementing the <a href="https://github.com/standard-schema/standard-schema#readme" target="_blank">Standard Schema</a> spec, like <em>zod</em>, <em>valibot</em>, <em>arktype</em>, or <em>yup</em>. This approach allows for gradual or partial adoption of type-safe routing in an application.</p>
+<p>Type-safe routing is as an optional enhancement, allowing for gradual or partial adoption. It's enabled by supporting route patterns created with a type-safe URL builder like <em>url-shape</em> together with a schema created with a validation library implementing the <a href="https://github.com/standard-schema/standard-schema#readme" target="_blank">Standard Schema</a> spec, like <em>zod</em>, <em>valibot</em>, <em>arktype</em>, or <em>yup</em>.</p>
 <pre><code class="language-tsx">import { A, useRoute } from "@t8/react-router";
 import { createURLSchema } from "url-shape";
 import { z } from "zod";
 
 const { url } = createURLSchema({
   "/": z.object({}), // Goes without parameters
-  "/sections/:id": z.object({
+  "/posts/:id": z.object({
     // Path components
     params: z.object({
       id: z.coerce.number(),
@@ -42,13 +42,11 @@ let App = () =&gt; {
         &lt;h1&gt;App&lt;/h1&gt;
         &lt;nav&gt;
           &lt;A href={url("/")}&gt;Intro&lt;/A&gt;{" | "}
-          &lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Start&lt;/A&gt;
+          &lt;A href={url("/posts/:id", { params: { id: 1 } })}&gt;Start&lt;/A&gt;
         &lt;/nav&gt;
       &lt;/header&gt;
       {at(url("/"), &lt;Intro/&gt;)}
-      {at(url("/sections/:id"), ({ params }) =&gt; (
-        &lt;Section id={params.id}/&gt;
-      ))}
+      {at(url("/posts/:id"), ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
     &lt;/&gt;
   );
 };
@@ -64,7 +62,7 @@ let App = () =&gt; {
 }
 </code></pre>
 <p>Adding this type declaration to an app effectively disallows using <code>string</code> and <code>RegExp</code> values for routes and route patterns (such as in the route link <code>href</code> prop, <code>route.assign(location)</code>, and the routing function <code>at(routePattern, x, y)</code>), only allowing values returned from the URL builder with the same routing APIs.</p>
-<p>⬥ A URL builder pattern (like <code>url("/sections/:id")</code>) can also be used with <code>useRouteState(pattern)</code> and <code>useRouteMatch(pattern)</code> to manipulate <a href="/react-router/x/URL_parameters">URL parameters</a> in a type-safe manner.</p>
+<p>⬥ A URL builder pattern (like <code>url("/posts/:id")</code>) can also be used with <code>useRouteState(pattern)</code> and <code>useRouteMatch(pattern)</code> to manipulate <a href="/react-router/x/URL_parameters">URL parameters</a> in a type-safe manner.</p>
 <p><a href="https://codesandbox.io/p/sandbox/qnd87w?file=%2Fsrc%2FShapeSection.tsx" target="_blank">Typed URL parameters state demo</a></p>
 <p>⬥ Recap: It's using typed URL patterns (like from <code>url()</code> of <em>url-shape</em>) that enables type-safe route handling, which is an optional enhancement. Plain <code>string</code> routes and <code>RegExp</code> route patterns are handled with baseline typing sufficient in many cases.</p>
 <p class="pagenav">
@@ -80,7 +78,7 @@ let App = () =&gt; {
 <nav class="aux">
 <section>
 <p class="title">Contents</p>
-<ul><li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
+<ul><li data-id="Zero-config_routing"><a href="/react-router/x/Zero-config_routing">Zero-config routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><a href="/react-router/x/Middleware">Middleware</a></li>

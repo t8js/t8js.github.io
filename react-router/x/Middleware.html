@@ -17,12 +17,12 @@
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
 <h2>Middleware</h2>
-<p>The <code>useNavigationStart()</code> and <code>useNavigationComplete()</code> hooks define routing <em>middleware</em>, that is optional intermediate actions to be done before and after the route navigation occurs:</p>
+<p>Routing middleware are optional actions to be done before and after a SPA navigation occurs.</p>
+<p>The example below shows some common examples of what can be handled with routing middleware: redirecting to another route, preventing navigation with unsaved user input, setting the page title based on the current URL.</p>
 <pre><code class="language-jsx">import { useNavigationComplete, useNavigationStart } from "@t8/react-router";
 
 function setTitle({ href }) {
-  if (href === "/intro")
-    document.title = "Intro";
+  document.title = href === "/intro" ? "Intro" : "App";
 }
 
 let App = () =&gt; {
@@ -30,11 +30,10 @@ let App = () =&gt; {
   let [hasUnsavedChanges, setUnsavedChanges] = useState(false);
 
   let handleNavigationStart = useCallback(({ href }) =&gt; {
-    if (hasUnsavedChanges)
-      return false; // prevents navigation
+    if (hasUnsavedChanges) return false; // prevents navigation
 
     if (href === "/intro") {
-      route.assign("/"); // redirection
+      route.assign("/"); // redirects
       return false;
     }
   }, [hasUnsavedChanges, route]);
@@ -42,15 +41,12 @@ let App = () =&gt; {
   useNavigationStart(handleNavigationStart);
   useNavigationComplete(setTitle);
 
-  return (
-    // app content
-  );
+  // ...
 };
 </code></pre>
-<p>This example shows some common examples of what can be handled with routing middleware: preventing navigation with unsaved user input, redirecting to another location, setting the page title based on the current location.</p>
-<p>⬥ The object passed to the middleware callback defines the current navigation mode. Its <code>href</code> and <code>referrer</code> values are the navigation destination and initial URLs. The rest of its properties are aligned with the <a href="/react-router/x/Link_props">link props</a> (with <code>id</code> corresponding to the link's <code>data-id</code> and with the <code>data-</code> prefix stripped from the props' names).</p>
+<p>⬥ The object passed to the middleware callback contains <code>href</code> and <code>referrer</code>, the navigation destination and initial URLs. The rest of the properties are aligned with the <a href="/react-router/x/Link_props">link data-* props</a>, with the <code>data-</code> prefix stripped from the props' names.</p>
 <p>⬥ The callback of both hooks is first called when the component gets mounted if the route is already in the navigation-complete state.</p>
-<p>⬥ The optional <code>callback</code> parameter of <code>useRoute(callback?)</code> can be used as middleware defining certain actions to be taken right before or after components get notified to re-render in response to a URL change. This callback receives the <code>render</code> function as a parameter that should be called at some point. Use cases for this callback include, for example, activating <a href="/react-router/x/Animated_view_transitions">animated view transitions</a> or (less likely in regular circumstances) skipping re-renders for certain URL changes.</p>
+<p>⬥ The optional <code>callback</code> parameter of <code>useRoute(callback?)</code> can be used as middleware defining actions to be taken right before or after components get notified to re-render in response to a URL change. This callback receives the <code>render</code> function as a parameter that should be called at some point. Use cases for this callback include, for example, activating <a href="/react-router/x/Animated_view_transitions">animated view transitions</a> or (less likely in regular circumstances) skipping re-renders for certain URL changes.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -64,7 +60,7 @@ let App = () =&gt; {
 <nav class="aux">
 <section>
 <p class="title">Contents</p>
-<ul><li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
+<ul><li data-id="Zero-config_routing"><a href="/react-router/x/Zero-config_routing">Zero-config routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><strong>Middleware</strong></li>

@@ -22,7 +22,7 @@
 
 const routeMap = {
   intro: "/intro",
-  sections: /^\/sections\/(?&lt;id&gt;\d+)\/?$/,
+  posts: /^\/posts\/(?&lt;id&gt;\d+)\/?$/,
 };
 
 const knownRoutes = Object.values(routeMap);
@@ -36,9 +36,7 @@ let App = () =&gt; {
         &lt;A href={routeMap.intro}&gt;Intro&lt;/A&gt;
       &lt;/nav&gt;
       {at(routeMap.intro, &lt;Intro/&gt;)}
-      {at(routeMap.sections, ({ params }) =&gt; (
-        &lt;Section id={params.id}/&gt;
-      ))}
+      {at(routeMap.posts, ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
       {at(knownRoutes, null, &lt;Error/&gt;)}
     &lt;/&gt;
   );
@@ -60,7 +58,7 @@ let App = () =&gt; {
 <nav class="aux">
 <section>
 <p class="title">Contents</p>
-<ul><li data-id="Routing"><a href="/react-router/x/Routing">Routing</a></li>
+<ul><li data-id="Zero-config_routing"><a href="/react-router/x/Zero-config_routing">Zero-config routing</a></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><a href="/react-router/x/Middleware">Middleware</a></li>

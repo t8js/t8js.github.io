@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Router: Routing">
-  <title>Routing | T8 React Router</title>
+  <meta name="description" content="T8 React Router: Zero-config routing">
+  <title>Zero-config routing | T8 React Router</title>
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
   <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
@@ -15,46 +15,24 @@
 <div class="body">
 <main>
 <h1><a href="/react-router/">T8 React Router</a></h1>
-<h2>Routing</h2>
-<p>The following example runs through the essential parts of routing code. The <code>at(route, x, y)</code> function returns a value based on whether the <code>route</code> parameter matches the current URL. It acts similarly to the conditional operator <code>atRoute ? x : y</code> and is equally applicable to components and prop values. The route link component that is used for SPA navigation acts and looks similar to the HTML link tag.</p>
-<pre><code class="language-jsx">import { A, useRoute } from "@t8/react-router";
-import { Intro } from "./Intro";
-import { Section } from "./Section";
+<h2>Zero-config routing</h2>
+<p>URL-based rendering with <code>at(route, x, y)</code> works similarly to conditional rendering with the ternary operator <code>atRoute ? x : y</code>, equally applicable to props, components and dynamic values:</p>
+<pre><code class="language-jsx">import { useRoute } from "@t8/react-router";
 
 let App = () =&gt; {
   let { at } = useRoute();
 
   return (
-    &lt;&gt;
-      &lt;header className={at("/", "full", "compact")}&gt;
-        &lt;h1&gt;App&lt;/h1&gt;
-        &lt;nav&gt;
-          &lt;A href="/"&gt;Intro&lt;/A&gt;{" | "}
-          &lt;A href="/sections/1"&gt;Section 1&lt;/A&gt;
-        &lt;/nav&gt;
-      &lt;/header&gt;
-      {at("/", &lt;Intro/&gt;)}
-      {at(/^\/sections\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; (
-        &lt;Section id={params.id}/&gt;
-      ))}
-    &lt;/&gt;
+    &lt;header className={at("/", "full", "compact")}&gt;
+      &lt;h1&gt;App&lt;/h1&gt;
+    &lt;/header&gt;
+    {at("/", &lt;Intro/&gt;)}
+    {at(/^\/posts\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
   );
 };
 </code></pre>
 <p><a href="https://codesandbox.io/p/sandbox/63xzd4?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
-<p>⬥ As mentioned above, <code>at(route, x, y)</code> acts similarly to the ternary operator <code>atRoute ? x : y</code> often used with conditional rendering, which route-based rendering essentially is: it returns <code>x</code> if the current URL matches <code>route</code>, and <code>y</code> otherwise. Having the ternary function rather than the ternary conditional operator allows for additional flexibility, like omitting an <code>undefined</code> fallback parameter (as with <code>at("/", &lt;Intro/&gt;)</code> in the example above) or resolving as a dynamic value based on <code>params</code> extracted from the route pattern (as with <code>&lt;Section id={params.id}/&gt;</code> above).</p>
-<p>While the component-, config-, and file-based approaches that many routers tend to adopt are focused on component rendering, requiring an extra route matching hook for route-based prop values, <code>at(route, x, y)</code> works equally with both components and prop values (and with any other route-based values).</p>
-<p>⬥ <code>at()</code> calls are independent from each other, they don't have to maintain a certain order, they shouldn't be necessarily grouped in a single component (although they can be, as in the example above). Components with route-based logic can be split like any other components.</p>
-<p>⬥ With a regular expression route pattern, <code>params</code> contains values of its capturing groups accessible by numeric indices; named capturing group values can also be retrieved by their names (like <code>params.id</code> in the example above).</p>
-<p>⬥ Route-based rendering with the React's <code>&lt;Activity&gt;</code> component looks similar to what we've seen in the example above:</p>
-<pre><code class="language-jsx">// Without Activity
-{at("/about", &lt;About/&gt;)}
-
-// With Activity
-&lt;Activity mode={at("/about", "visible", "hidden")}&gt;
-  &lt;About/&gt;
-&lt;/Activity&gt;
-</code></pre>
+<p>⬥ <code>params</code> in dynamic values contains the route pattern's capturing groups accessible by numeric indices. Named capturing group values can be accessed by their names, like <code>params.id</code> in the example above.</p>
 <p class="pagenav">
   <span class="prev">
     <span class="icon">←</span>
@@ -68,7 +46,7 @@ let App = () =&gt; {
 <nav class="aux">
 <section>
 <p class="title">Contents</p>
-<ul><li data-id="Routing"><strong>Routing</strong></li>
+<ul><li data-id="Zero-config_routing"><strong>Zero-config routing</strong></li>
 <li data-id="Navigation"><a href="/react-router/x/Navigation">Navigation</a></li>
 <li data-id="Link_props"><a href="/react-router/x/Link_props">Link props</a></li>
 <li data-id="Middleware"><a href="/react-router/x/Middleware">Middleware</a></li>
