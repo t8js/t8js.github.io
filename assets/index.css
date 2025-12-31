@@ -107,6 +107,9 @@ main li {
   margin: 0;
   box-sizing: border-box;
 }
+main li br {
+  display: none;
+}
 main li > span {
   display: inline-block;
 }
