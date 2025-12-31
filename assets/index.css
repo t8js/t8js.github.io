@@ -13,7 +13,7 @@
   --box-height: 5.6em;
   --icon-size: 0.65em;
 
-  font: normal 90% / 1.25 sans-serif;
+  font: normal 100% / 1.25 sans-serif;
   color: var(--content-color);
   background: var(--background);
 }
@@ -155,7 +155,6 @@ main li .links .sep {
     --box-height: auto;
 
     display: block;
-    font-size: 1.2rem;
     padding-bottom: 2rem;
   }
   main ul {
