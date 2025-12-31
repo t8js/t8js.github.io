@@ -133,54 +133,6 @@ main li .links .sep {
 }
 @media (max-width: 600px) {
   :root {
-    --padding-x: 1.5rem;
-  }
-  body {
-    align-items: flex-start;
-  }
-  .layout {
-    display: block;
-    width: 100%;
-    max-width: none;
-    padding: 0.75rem 0;
-    margin: 0;
-  }
-  header {
-    padding: .5rem 0 0;
-  }
-  header p {
-    margin-top: .75rem;
-  }
-  header p span {
-    margin-bottom: 1rem;
-  }
-  main {
-    --box-height: auto;
-
-    display: block;
-    padding-bottom: 2rem;
-  }
-  main ul {
-    display: block;
-    margin-top: 0.5em;
-  }
-  main ul + ul,
-  main li + li {
-    margin-top: 1.25em;
-  }
-  main a,
-  main a:hover,
-  main a:visited,
-  main a:active {
-    border: none;
-  }
-  main li a {
-    padding: 0;
-  }
-  main li a .name {
-    border-bottom: 0.05em solid;
-  }
-  main li a .description {
-    margin-top: 0.35em;
+    --padding-x: 1rem;
   }
 }
