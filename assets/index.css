@@ -1,8 +1,11 @@
 :root {
-  --color: white;
+  --color: #f8f8f8;
   --background: #3e2b59;
   --link-color: turquoise; /* #52ef9e; */
-  --content-color: color(from var(--color) srgb r g b / 0.5);
+  --content-color: color(from var(--color) srgb r g b / 0.75);
+  
+  --card-color: color(from var(--color) srgb r g b / 0.5);
+  --card-background: transparent;
 
   --padding-x: 2rem;
   --max-layout-width: 72rem;
@@ -40,31 +43,30 @@ a:active {
 .layout {
   display: flex;
   flex-direction: column;
-  width: 100%;
   max-width: var(--max-layout-width);
+  width: 100%;
   justify-content: center;
-  padding: 5vh 0 10vh;
   margin: 0 auto;
 }
 header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  color: color(from var(--color) srgb r g b / 0.75);
-  padding: 0.75rem var(--padding-x);
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem var(--padding-x) 1rem;
   box-sizing: border-box;
 }
 header h1 {
-  font-size: 6.4rem;
-  width: 0.8em;
-  height: 0.42em;
-  line-height: 1;
+  --d: 5rem;
+  width: var(--d);
+  height: calc(.65*var(--d));
   margin: 0;
-  opacity: 1;
   position: relative;
   overflow: hidden;
 }
 header h1 img {
-  width: 1em;
+  width: calc(1*var(--d));
   height: auto;
   position: absolute;
   left: 50%;
@@ -72,11 +74,12 @@ header h1 img {
   transform: translate(-50%, -50%);
 }
 header p {
-  margin: 0 0 0 1rem;
+  margin: .5rem 0 0 0;
 }
 header p span {
   display: block;
   white-space: nowrap;
+  margin-bottom: .5em;
 }
 header p span.sep {
   display: none;
@@ -85,7 +88,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--box-width), 1fr));
   gap: 1rem;
-  padding: 1rem var(--padding-x) 1.3rem;
+  padding: 1.5rem var(--padding-x) 3.5rem;
   box-sizing: border-box;
 }
 main ul {
@@ -94,52 +97,36 @@ main ul {
   padding: 0;
   margin: 0;
 }
-main a,
-main a:hover,
-main a:visited,
-main a:active {
-  border: 0.05em solid color(from var(--link-color) srgb r g b / 0.5);
-  transition: border-color 0.3s;
-}
-main a:hover {
-  border-color: var(--link-color);
-}
 main li {
-  padding: 0;
-  margin: 0;
-}
-main li a {
   display: flex;
-  min-height: var(--box-height);
   flex-direction: column;
-  padding: 0.5rem 0.75rem;
+  color: var(--card-color);
+  background: var(--card-background);
+  box-shadow: 0 0 .1em;
+  padding: 0.75rem 1.1rem .85rem;
+  margin: 0;
   box-sizing: border-box;
 }
-main li a[href^="https://github.com/"] .name::after {
-  content: "";
-  display: block;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  background: url("gh.svg") 50% 50% / contain no-repeat;
-  position: absolute;
-  right: calc(-1 * (var(--icon-size) + 0.45em));
-  top: 0.36em;
-  opacity: 0.25;
-}
-main li a .name {
+main li > span {
   display: inline-block;
-  font-size: 1.4em;
-  align-self: flex-start;
-  position: relative;
 }
-main li a .sep {
-  display: none;
+main li .name {
+  font-size: 1.3em;
 }
-main li a .description {
-  display: block;
-  font-size: 0.9em;
+main li .name strong {
   color: var(--content-color);
-  margin-top: 0.25em;
+}
+main li .description {
+  flex: auto;
+  font-size: .9em;
+  margin-top: .35em;
+}
+main li .links {
+  margin-top: .75em;
+}
+main li .links .sep {
+  display: inline-block;
+  margin: 0 .15em;
 }
 @media (max-width: 600px) {
   :root {
@@ -156,16 +143,20 @@ main li a .description {
     margin: 0;
   }
   header {
-    align-items: flex-start;
+    padding: .5rem 0 0;
   }
   header p {
-    margin-left: 0.75rem;
+    margin-top: .75rem;
+  }
+  header p span {
+    margin-bottom: 1rem;
   }
   main {
     --box-height: auto;
 
     display: block;
     font-size: 1.2rem;
+    padding-bottom: 2rem;
   }
   main ul {
     display: block;
