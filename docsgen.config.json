@@ -2,6 +2,7 @@
   "$schema": "https://unpkg.com/@t8/docsgen/schema.json",
   "favicon": "/assets/t8.png",
   "append": {
+    "head": "<link rel=\"stylesheet\" href=\"/assets/entry.css\">",
     "body": "<script src=\"/assets/stats.js\"></script>"
   },
   "firstLineDescription": true,
