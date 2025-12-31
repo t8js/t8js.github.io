@@ -54,7 +54,7 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1.5rem var(--padding-x) 1rem;
+  padding: 1.35rem var(--padding-x) .75rem;
   box-sizing: border-box;
 }
 header h1 {
@@ -79,7 +79,7 @@ header p {
 header p span {
   display: block;
   white-space: nowrap;
-  margin-bottom: .5em;
+  margin-bottom: .75em;
 }
 header p span.sep {
   display: none;
