@@ -1,0 +1,9 @@
+:root {
+  --max-layout-width: 38rem;
+}
+.layout strong {
+  color: var(--emphatic-color);
+}
+main {
+  padding: 0 var(--padding-x) 2rem;
+}
