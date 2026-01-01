@@ -3,7 +3,7 @@
   --background: #3e2b59;
   --link-color: turquoise; /* #52ef9e; */
   --content-color: color(from var(--color) srgb r g b / 0.75);
-  
+
   --card-color: color(from var(--color) srgb r g b / 0.5);
   --card-background: transparent;
 
@@ -54,19 +54,19 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1.35rem var(--padding-x) .75rem;
+  padding: 1.35rem var(--padding-x) 0.75rem;
   box-sizing: border-box;
 }
 header h1 {
   --d: 5rem;
   width: var(--d);
-  height: calc(.65*var(--d));
+  height: calc(0.65 * var(--d));
   margin: 0;
   position: relative;
   overflow: hidden;
 }
 header h1 img {
-  width: calc(1*var(--d));
+  width: calc(1 * var(--d));
   height: auto;
   position: absolute;
   left: 50%;
@@ -74,12 +74,12 @@ header h1 img {
   transform: translate(-50%, -50%);
 }
 header p {
-  margin: .5rem 0 0 0;
+  margin: 0.5rem 0 0 0;
 }
 header p span {
   display: block;
   white-space: nowrap;
-  margin-bottom: .75em;
+  margin-bottom: 0.75em;
 }
 header p span.sep {
   display: none;
@@ -102,8 +102,8 @@ main li {
   flex-direction: column;
   color: var(--card-color);
   background: var(--card-background);
-  box-shadow: 0 0 .1em;
-  padding: 0.75rem 1.1rem .85rem;
+  box-shadow: 0 0 0.1em;
+  padding: 0.75rem 1.1rem 0.85rem;
   margin: 0;
   box-sizing: border-box;
 }
@@ -121,15 +121,15 @@ main li .name strong {
 }
 main li .description {
   flex: auto;
-  font-size: .9em;
-  margin-top: .35em;
+  font-size: 0.9em;
+  margin-top: 0.35em;
 }
 main li .links {
-  margin-top: .75em;
+  margin-top: 0.75em;
 }
 main li .links .sep {
   display: inline-block;
-  margin: 0 .15em;
+  margin: 0 0.15em;
 }
 @media (max-width: 600px) {
   :root {
