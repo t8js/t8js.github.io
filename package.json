@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "pull": "npx @t8/docsgen",
-    "shape": "npx codeshape --check"
+    "shape": "npx codeshape --lint-format-only"
   },
   "type": "module",
   "license": "ISC",
