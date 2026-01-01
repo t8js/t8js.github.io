@@ -1,20 +1,20 @@
 :root {
-  --color: #f8f8f8;
+  --base-color: #f8f8f8;
+  --color: color(from var(--base-color) srgb r g b / 0.65);
+  --emphatic-color: color(from var(--base-color) srgb r g b / 0.75);
+  --secondary-color: color(from var(--base-color) srgb r g b / 0.5);
   --background: #3e2b59;
   --link-color: turquoise; /* #52ef9e; */
-  --content-color: color(from var(--color) srgb r g b / 0.75);
-
-  --card-color: color(from var(--color) srgb r g b / 0.5);
-  --card-background: transparent;
 
   --padding-x: 2rem;
   --max-layout-width: 72rem;
+  --max-mini-layout-width: 38rem;
   --box-width: 22rem;
   --box-height: 5.6em;
   --icon-size: 0.65em;
 
-  font: normal 100% / 1.25 sans-serif;
-  color: var(--content-color);
+  font: normal 100% / 1.35 sans-serif;
+  color: var(--color);
   background: var(--background);
 }
 html {
@@ -47,6 +47,12 @@ a:active {
   width: 100%;
   justify-content: center;
   margin: 0 auto;
+}
+.layout.mini {
+  --max-layout-width: var(--max-mini-layout-width);
+}
+.layout.mini strong {
+  color: var(--emphatic-color);
 }
 header {
   display: flex;
@@ -83,15 +89,29 @@ header p > span {
 header p > span ~ span {
   margin-top: 0.75em;
 }
+header p > span .sep {
+  display: inline-block;
+  margin: 0 0.15em;
+}
 header p br {
   display: none;
 }
+main h2 {
+  font-size: 1.25em;
+  color: var(--emphatic-color);
+  text-align: center;
+  border-bottom: .05rem solid;
+  padding-bottom: .2rem;
+}
 main {
+  padding: 1.5rem var(--padding-x) 3.5rem;
+  box-sizing: border-box;
+}
+main .board {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--box-width), 1fr));
   gap: 1rem;
-  padding: 1.5rem var(--padding-x) 3.5rem;
-  box-sizing: border-box;
+  line-height: 1.25;
 }
 main ul {
   display: contents;
@@ -102,8 +122,7 @@ main ul {
 main li {
   display: flex;
   flex-direction: column;
-  color: var(--card-color);
-  background: var(--card-background);
+  color: var(--secondary-color);
   box-shadow: 0 0 0.1em;
   padding: 0.75rem 1.1rem 0.85rem;
   margin: 0;
@@ -119,7 +138,7 @@ main li .name {
   font-size: 1.3em;
 }
 main li .name strong {
-  color: var(--content-color);
+  color: var(--emphatic-color);
 }
 main li .description {
   flex: auto;
