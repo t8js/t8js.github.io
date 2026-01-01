@@ -76,12 +76,14 @@ header h1 img {
 header p {
   margin: 0.5rem 0 0 0;
 }
-header p span {
+header p > span {
   display: block;
   white-space: nowrap;
-  margin-bottom: 0.75em;
 }
-header p span.sep {
+header p > span ~ span {
+  margin-top: 0.75em;
+}
+header p br {
   display: none;
 }
 main {
