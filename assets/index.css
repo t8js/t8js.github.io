@@ -100,8 +100,8 @@ main h2 {
   font-size: 1.25em;
   color: var(--emphatic-color);
   text-align: center;
-  border-bottom: .05rem solid;
-  padding-bottom: .2rem;
+  border-bottom: 0.05rem solid;
+  padding-bottom: 0.2rem;
 }
 main {
   padding: 1.5rem var(--padding-x) 3.5rem;
