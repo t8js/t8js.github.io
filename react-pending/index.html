@@ -36,15 +36,15 @@
 
   export let ItemList = () =&gt; {
     let [items, setItems] = useState([]);
-+   let [state, withState] = usePendingState("fetch-items");
++   let { complete, error, track } = usePendingState("fetch-items");
 
     useEffect(() =&gt; {
 -     fetchItems().then(setItems);
-+     withState(fetchItems()).then(setItems);
-    }, [fetchItems, withState]);
++     track(fetchItems()).then(setItems);
+    }, [fetchItems, track]);
 
-+   if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
-+   if (state.error) return &lt;p&gt;An error occurred&lt;/p&gt;;
++   if (!complete) return &lt;p&gt;Loading...&lt;/p&gt;;
++   if (error) return &lt;p&gt;An error occurred&lt;/p&gt;;
 
     return &lt;ul&gt;{items.map(/* ... */)}&lt;/ul&gt;;
   };

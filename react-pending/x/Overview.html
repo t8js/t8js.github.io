@@ -22,15 +22,15 @@
 
   export let ItemList = () =&gt; {
     let [items, setItems] = useState([]);
-+   let [state, withState] = usePendingState("fetch-items");
++   let { complete, error, track } = usePendingState("fetch-items");
 
     useEffect(() =&gt; {
 -     fetchItems().then(setItems);
-+     withState(fetchItems()).then(setItems);
-    }, [fetchItems, withState]);
++     track(fetchItems()).then(setItems);
+    }, [fetchItems, track]);
 
-+   if (!state.complete) return &lt;p&gt;Loading...&lt;/p&gt;;
-+   if (state.error) return &lt;p&gt;An error occurred&lt;/p&gt;;
++   if (!complete) return &lt;p&gt;Loading...&lt;/p&gt;;
++   if (error) return &lt;p&gt;An error occurred&lt;/p&gt;;
 
     return &lt;ul&gt;{items.map(/* ... */)}&lt;/ul&gt;;
   };
@@ -38,11 +38,11 @@
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
   export let Status = () =&gt; {
-+   let [state] = usePendingState("fetch-items");
++   let { initialized, complete, error } = usePendingState("fetch-items");
 
-    if (!state.initialized) return null;
-    if (!state.complete) return &lt;&gt;Busy&lt;/&gt;;
-    if (state.error) return &lt;&gt;Error&lt;/&gt;;
+    if (!initialized) return null;
+    if (!complete) return &lt;&gt;Busy&lt;/&gt;;
+    if (error) return &lt;&gt;Error&lt;/&gt;;
 
     return &lt;&gt;OK&lt;/&gt;;
   };
@@ -52,24 +52,24 @@
 <p>⬥ In the example above, the data returned from the async action is stored in the component's local state, but it can be stored in any app state of the developer's choice without affecting how the <code>usePendingState()</code> hook is used.</p>
 <h2 id="Local_pending_state">Local pending state</h2>
 <p>Omit the custom string key parameter of <code>usePendingState()</code> to scope the pending state locally within a single component:</p>
-<pre><code class="language-diff">- let [state, withState] = usePendingState("fetch-items"); // shared
-+ let [state, withState] = usePendingState(); // local
+<pre><code class="language-diff">- let { complete } = usePendingState("fetch-items"); // shared
++ let { complete } = usePendingState(); // local
 </code></pre>
 <h2 id="Silent_tracking_of_background_actions_and_optimistic_updates">Silent tracking of background actions and optimistic updates</h2>
-<pre><code class="language-diff">- withState(fetchItems())
-+ withState(fetchItems(), { silent: true })
+<pre><code class="language-diff">- track(fetchItems())
++ track(fetchItems(), { silent: true })
 </code></pre>
-<p>⬥ This option prevents <code>state.complete</code> from switching to <code>false</code> in the pending state.</p>
+<p>⬥ This option prevents <code>complete</code> from switching to <code>false</code> in the pending state.</p>
 <h2 id="Delayed_pending_state">Delayed pending state</h2>
-<pre><code class="language-diff">- withState(fetchItems())
-+ withState(fetchItems(), { delay: 500 }) // in milliseconds
+<pre><code class="language-diff">- track(fetchItems())
++ track(fetchItems(), { delay: 500 }) // in milliseconds
 </code></pre>
 <p>⬥ Use case: avoiding flashing a process indicator when the action is likely to complete by the end of a short delay.</p>
 <h2 id="Custom_rejection_handler">Custom rejection handler</h2>
-<pre><code class="language-diff">- withState(fetchItems())
-+ withState(fetchItems(), { throws: true }).catch(handleError)
+<pre><code class="language-diff">- track(fetchItems())
++ track(fetchItems(), { throws: true }).catch(handleError)
 </code></pre>
-<p>⬥ This option allows the async action to reject explicitly, along with exposing <code>state.error</code> that goes by default.</p>
+<p>⬥ This option allows the async action to reject explicitly, along with exposing <code>error</code> returned from <code>usePendingState()</code> that goes by default.</p>
 <h2 id="Providing_blank_initial_pending_state">Providing blank initial pending&nbsp;state</h2>
 <pre><code class="language-diff">+ import { PendingStateProvider } from "@t8/react-pending";
 
