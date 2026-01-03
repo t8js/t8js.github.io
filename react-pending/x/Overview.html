@@ -22,14 +22,14 @@
 
   export let ItemList = () =&gt; {
     let [items, setItems] = useState([]);
-+   let { complete, error, track } = usePendingState("fetch-items");
++   let { initial, pending, error, track } = usePendingState("fetch-items");
 
     useEffect(() =&gt; {
 -     fetchItems().then(setItems);
 +     track(fetchItems()).then(setItems);
     }, [fetchItems, track]);
 
-+   if (!complete) return &lt;p&gt;Loading...&lt;/p&gt;;
++   if (initial || pending) return &lt;p&gt;Loading...&lt;/p&gt;;
 +   if (error) return &lt;p&gt;An error occurred&lt;/p&gt;;
 
     return &lt;ul&gt;{items.map(/* ... */)}&lt;/ul&gt;;
@@ -38,10 +38,10 @@
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
   export let Status = () =&gt; {
-+   let { initialized, complete, error } = usePendingState("fetch-items");
++   let { initial, pending, error } = usePendingState("fetch-items");
 
-    if (!initialized) return null;
-    if (!complete) return &lt;&gt;Busy&lt;/&gt;;
+    if (initial) return null;
+    if (pending) return &lt;&gt;Busy&lt;/&gt;;
     if (error) return &lt;&gt;Error&lt;/&gt;;
 
     return &lt;&gt;OK&lt;/&gt;;
@@ -52,14 +52,14 @@
 <p>⬥ In the example above, the data returned from the async action is stored in the component's local state, but it can be stored in any app state of the developer's choice without affecting how the <code>usePendingState()</code> hook is used.</p>
 <h2 id="Local_pending_state">Local pending state</h2>
 <p>Omit the custom string key parameter of <code>usePendingState()</code> to scope the pending state locally within a single component:</p>
-<pre><code class="language-diff">- let { complete } = usePendingState("fetch-items"); // shared
-+ let { complete } = usePendingState(); // local
+<pre><code class="language-diff">- let { initial, pending, error } = usePendingState("fetch-items"); // shared
++ let { initial, pending, error } = usePendingState(); // local
 </code></pre>
 <h2 id="Silent_tracking_of_background_actions_and_optimistic_updates">Silent tracking of background actions and optimistic updates</h2>
 <pre><code class="language-diff">- track(fetchItems())
 + track(fetchItems(), { silent: true })
 </code></pre>
-<p>⬥ This option prevents <code>complete</code> from switching to <code>false</code> in the pending state.</p>
+<p>⬥ This option prevents the <code>pending</code> property from switching to <code>false</code> in the pending state.</p>
 <h2 id="Delayed_pending_state">Delayed pending state</h2>
 <pre><code class="language-diff">- track(fetchItems())
 + track(fetchItems(), { delay: 500 }) // in milliseconds
@@ -81,7 +81,7 @@
 <p>⬥ <code>&lt;PendingStateProvider&gt;</code> creates an isolated instance of initial shared action state. Its prime use cases are SSR and tests. It isn't required with client-side rendering, but it can be used to separate action states of larger self-contained portions of an app.</p>
 <h2 id="Providing_custom_initial_pending_state">Providing custom initial pending&nbsp;state</h2>
 <pre><code class="language-diff">+ let initialState = {
-+   "fetch-items": { initialized: true, complete: true },
++   "fetch-items": { initial: false, pending: true },
 + };
 
 - &lt;PendingStateProvider&gt;

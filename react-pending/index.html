@@ -36,14 +36,14 @@
 
   export let ItemList = () =&gt; {
     let [items, setItems] = useState([]);
-+   let { complete, error, track } = usePendingState("fetch-items");
++   let { initial, pending, error, track } = usePendingState("fetch-items");
 
     useEffect(() =&gt; {
 -     fetchItems().then(setItems);
 +     track(fetchItems()).then(setItems);
     }, [fetchItems, track]);
 
-+   if (!complete) return &lt;p&gt;Loading...&lt;/p&gt;;
++   if (initial || pending) return &lt;p&gt;Loading...&lt;/p&gt;;
 +   if (error) return &lt;p&gt;An error occurred&lt;/p&gt;;
 
     return &lt;ul&gt;{items.map(/* ... */)}&lt;/ul&gt;;
