@@ -36,7 +36,7 @@
 
   export let ItemList = () =&gt; {
     let [items, setItems] = useState([]);
-+   let { initial, pending, error, track } = usePendingState("fetch-items");
++   let { initial, pending, error, track } = usePendingState();
 
     useEffect(() =&gt; {
 -     fetchItems().then(setItems);

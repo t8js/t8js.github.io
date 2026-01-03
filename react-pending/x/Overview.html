@@ -59,7 +59,7 @@
 <pre><code class="language-diff">- track(fetchItems())
 + track(fetchItems(), { silent: true })
 </code></pre>
-<p>⬥ This option prevents the <code>pending</code> property from switching to <code>false</code> in the pending state.</p>
+<p>⬥ This option prevents the <code>pending</code> property from switching to <code>true</code> in the pending state.</p>
 <h2 id="Delayed_pending_state">Delayed pending state</h2>
 <pre><code class="language-diff">- track(fetchItems())
 + track(fetchItems(), { delay: 500 }) // in milliseconds
