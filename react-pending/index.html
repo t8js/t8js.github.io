@@ -31,7 +31,7 @@
 </section>
 <section class="intro">
   <div class="section-content">
-    <div class="intro"><p><strong>Features:</strong> Decoupled from app state management and async actions' internals&nbsp;· Local or shared async action state&nbsp;· CSR/SSR-compatible</p>
+    <div class="intro"><p><strong>Features:</strong> Concise API for async state tracking, local or shared&nbsp;· Decoupled from app state management and async actions' internals&nbsp;· CSR/SSR-compatible</p>
 <pre><code class="language-diff">+ import { usePendingState } from "@t8/react-pending";
 
   export let ItemList = () =&gt; {
