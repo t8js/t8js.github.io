@@ -2,6 +2,7 @@
   --aux-color: #9f95ac;
   --aux-background: #3e2b59;
   --aux-background-end: #312642;
+  --aux-border-color: #704aa6;
   --aux-link-color: turquoise;
   --aux-secondary-color: var(--aux-color);
   --aux-emphatic-color: #cec9d5;
@@ -12,6 +13,7 @@
     --aux-color: #9f95ac;
     --aux-background: #3e2b59;
     --aux-background-end: #312642;
+    --aux-border-color: #704aa6;
     --aux-link-color: turquoise;
     --aux-secondary-color: var(--aux-color);
     --aux-emphatic-color: #cec9d5;
