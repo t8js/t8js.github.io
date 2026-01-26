@@ -1,7 +1,7 @@
 :root {
   --aux-color: #9f95ac;
   --aux-background: #3e2b59;
-  --aux-background-end: #312642;
+  --aux-background-end: #3e2b59;
   --aux-border-color: #704aa6;
   --aux-link-color: turquoise;
   --aux-secondary-color: var(--aux-color);
@@ -12,7 +12,7 @@
   :root {
     --aux-color: #9f95ac;
     --aux-background: #3e2b59;
-    --aux-background-end: #312642;
+    --aux-background-end: #3e2b59;
     --aux-border-color: #704aa6;
     --aux-link-color: turquoise;
     --aux-secondary-color: var(--aux-color);
