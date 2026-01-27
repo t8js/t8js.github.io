@@ -147,16 +147,16 @@ main li .links .sep {
   margin: 0 0.15em;
 }
 footer {
-  font-size: .85em;
+  font-size: 0.85em;
   color: var(--secondary-color);
   text-align: center;
-  border-top: .05em dotted;
-  margin: .5rem var(--padding-x);
+  border-top: 0.05em dotted;
+  margin: 0.5rem var(--padding-x);
   box-sizing: border-box;
 }
 footer .date {
-  font-size: .8em;
-  margin-left: .5em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
 }
 @media (max-width: 600px) {
   :root {
