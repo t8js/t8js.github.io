@@ -1,8 +1,8 @@
 :root {
   --base-color: #f8f8f8;
-  --color: color(from var(--base-color) srgb r g b / 0.65);
-  --emphatic-color: color(from var(--base-color) srgb r g b / 0.75);
-  --secondary-color: color(from var(--base-color) srgb r g b / 0.5);
+  --color: #f8f8f8a6;
+  --emphatic-color: #f8f8f8c0;
+  --secondary-color: #f8f8f880;
   --background: #3e2b59;
   --link-color: turquoise; /* #52ef9e; */
 
@@ -97,7 +97,7 @@ main h2 {
   padding-bottom: 0.2rem;
 }
 main {
-  padding: 1.5rem var(--padding-x) 3.5rem;
+  padding: 1.5rem var(--padding-x);
   box-sizing: border-box;
 }
 main .board {
@@ -145,8 +145,26 @@ main li .links .sep {
   display: inline-block;
   margin: 0 0.15em;
 }
+footer {
+  font-size: .85em;
+  color: var(--secondary-color);
+  text-align: center;
+  border-top: .05em dotted;
+  margin: .5rem var(--padding-x);
+  box-sizing: border-box;
+}
+footer .date {
+  font-size: .8em;
+  margin-left: .5em;
+}
 @media (max-width: 600px) {
   :root {
     --padding-x: 1rem;
+  }
+  footer {
+    border-top: none;
+  }
+  footer p {
+    margin-top: 0;
   }
 }
