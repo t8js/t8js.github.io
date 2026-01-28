@@ -1,4 +1,8 @@
 :root {
+  --background: #ecebef; /* = #3e2b5918 */
+  --code-block-background: #fff8;
+  --line-color: #3e2b5920;
+
   --aux-color: #9f95ac;
   --aux-background: #3e2b59;
   --aux-background-end: #3e2b59;
