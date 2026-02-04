@@ -7,10 +7,11 @@
   --link-color: turquoise; /* #52ef9e; */
 
   --padding-x: 2rem;
-  --max-layout-width: 72rem;
+  --box-gap: 1.5rem;
   --box-width: 22rem;
   --box-height: 5.6em;
   --icon-size: 0.65em;
+  --max-layout-width: calc(3 * var(--box-width) + 2 * var(--box-gap) + 2 * var(--padding-x));
 
   font: normal 100% / 1.35 sans-serif;
   color: var(--color);
@@ -103,7 +104,7 @@ main {
 main .board {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--box-width), 1fr));
-  gap: 1rem;
+  gap: var(--box-gap);
   line-height: 1.25;
 }
 main ul {
@@ -161,6 +162,7 @@ footer .date {
 @media (max-width: 600px) {
   :root {
     --padding-x: 1rem;
+    --box-gap: 1.25rem;
   }
   footer {
     border-top: none;
