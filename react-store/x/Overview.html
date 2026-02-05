@@ -140,11 +140,7 @@ let counterStore = new PersistentStore(0, { key: "counter" });
 <p>⬥ The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be redefined by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, options)</code>. By default, these options act like <code>JSON.stringify()</code> and <code>JSON.parse()</code> respectively.</p>
 <p>⬥ <code>PersistentStore</code> skips interaction with the browser storage in non-browser environments, which makes it equally usable with SSR.</p>
 <p class="pagenav">
-  <span class="prev">
-    <span class="icon">←</span>
-    <a href="/react-store/">Intro</a>
-  </span>
-  <span class="sep">|</span>
+  
   <span class="repo"><a href="https://github.com/t8js/react-store" target="_blank">GitHub</a></span>
 </p>
 </main>
