@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="T8 Router: Overview">
   <title>Overview | T8 Router</title>
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
   <link rel="stylesheet" href="/assets/entry.css">
 </head>
 <body>
 <div class="layout">
+<header class="aux">
+  <h1><a href="/">T8</a> Router</h1>
+  <div class="description">
+    <p>Vanilla JS/TS router</p>
+  </div>
+</header>
 <div class="body">
 <main>
-<h1><a href="/router/">T8 Router</a></h1>
 <h2 id="Initialization">Initialization</h2>
 <p>A <code>Route</code> instance exposes methods for URL navigation without full-page reloads resembling the methods exposed by <code>window.location</code> for regular URL navigation.</p>
 <pre><code class="language-js">import { Route } from "@t8/router";
@@ -105,7 +110,15 @@ let sectionTitle = route.at(
 </p>
 </main>
 <hr>
-<nav class="aux">
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> Router</h1>
+    <div class="description">
+      <p>Vanilla JS/TS router</p>
+      <p class="installation"><code>npm i @t8/router</code></p>
+    </div>
+  </div>
+<nav>
 <section>
 <p class="title">Contents</p>
 <ul><li><a href="/router/x/Overview#Initialization">Initialization</a></li>
@@ -135,11 +148,12 @@ let sectionTitle = route.at(
   </ul>
 </section>
 </nav>
+</aside>
 </div>
 </div>
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
 <script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>

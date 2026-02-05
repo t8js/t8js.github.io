@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="URL Shape: Overview">
   <title>Overview | URL Shape</title>
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
   <link rel="stylesheet" href="/assets/entry.css">
 </head>
 <body>
 <div class="layout">
+<header class="aux">
+  <h1>URL&nbsp;Shape&nbsp;<sup><a href="/">T8</a></sup></h1>
+  <div class="description">
+    <p>Type-safe schema-based URL builder</p>
+  </div>
+</header>
 <div class="body">
 <main>
-<h1><a href="/url-shape/">URL Shape</a></h1>
 <h2 id="Creating_a_URL_schema_with_validation_libs_like_Zod">Creating a URL schema with validation libs like Zod</h2>
 <pre><code class="language-ts">import { createURLSchema } from "url-shape";
 import { z } from "zod";
@@ -69,7 +74,15 @@ validate("/x") // true, all URLs are fine when there's no schema
 </p>
 </main>
 <hr>
-<nav class="aux">
+<aside class="aux">
+  <div class="header" hidden>
+    <h1>URL&nbsp;Shape&nbsp;<sup><a href="/">T8</a></sup></h1>
+    <div class="description">
+      <p>Type-safe schema-based URL builder</p>
+      <p class="installation"><code>npm i url-shape</code></p>
+    </div>
+  </div>
+<nav>
 <section>
 <p class="title">Contents</p>
 <ul><li><a href="/url-shape/x/Overview#Creating_a_URL_schema_with_validation_libs_like_Zod">Creating a URL schema with validation libs like Zod</a></li>
@@ -97,11 +110,12 @@ validate("/x") // true, all URLs are fine when there's no schema
   </ul>
 </section>
 </nav>
+</aside>
 </div>
 </div>
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
 <script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>

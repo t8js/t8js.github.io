@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="T8 React Pending: Overview">
   <title>Overview | T8 React Pending</title>
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/section.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
   <link rel="stylesheet" href="/assets/entry.css">
 </head>
 <body>
 <div class="layout">
+<header class="aux">
+  <h1><a href="/">T8</a> React Pending</h1>
+  <div class="description">
+    <p>Self-contained async action state management for React apps</p>
+  </div>
+</header>
 <div class="body">
 <main>
-<h1><a href="/react-pending/">T8 React Pending</a></h1>
 <h2 id="Shared_pending_state">Shared pending state</h2>
 <p>Objective: Track the pending state of the asynchronous action <code>fetchItems()</code> to tell the user whether the UI is busy handling the async action or encountered an error, without rewriting the action and the app's state management.</p>
 <p>In our setup, there are two components rendering their content with regard to the current state of <code>fetchItems()</code>, so the pending state is shared between these components:</p>
@@ -101,7 +106,15 @@
 </p>
 </main>
 <hr>
-<nav class="aux">
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> React Pending</h1>
+    <div class="description">
+      <p>Self-contained async action state management for React apps</p>
+      <p class="installation"><code>npm i @t8/react-pending</code></p>
+    </div>
+  </div>
+<nav>
 <section>
 <p class="title">Contents</p>
 <ul><li><a href="/react-pending/x/Overview#Shared_pending_state">Shared pending state</a></li>
@@ -132,11 +145,12 @@
   </ul>
 </section>
 </nav>
+</aside>
 </div>
 </div>
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
 <script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>

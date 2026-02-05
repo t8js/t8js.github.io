@@ -1,62 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-layout="index">
+<html lang="en" data-layout="start" class="blank">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="T8 React Store: React app state management condensed to the essentials">
-  <title>T8 React Store | React app state management condensed to the essentials</title>
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/base.css">
-  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/index.css">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="refresh" content="0; URL=/react-store/x/Overview">
+  <title>T8 React Store</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
   <link rel="icon" type="image/png" href="/assets/t8.png">
-  <link rel="prefetch" href="/react-store/start">
-  <link rel="prefetch" href="/react-store/x/Overview">
+  <script>window.location.replace("/react-store/x/Overview");</script>
   <link rel="stylesheet" href="/assets/entry.css">
 </head>
 <body>
 <div class="layout">
-<main>
-<section class="aux intro-title">
-  <div class="section-content">
-    <h1><a href="/">T8</a> React Store</h1>
-    <div class="description">
-      <p>React app state management condensed to the essentials</p>
-    </div>
-    <p class="actions">
-      <a href="/react-store/start" class="primary">Docs</a>
-      <span class="sep"> • </span>
-      <a href="https://github.com/t8js/react-store" target="_blank">GitHub</a>
-    </p>
-    <p class="installation"><code>npm i @t8/react-store</code></p>
-  </div>
-</section>
-<section class="intro">
-  <div class="section-content">
-    <div class="intro"><p><strong>Features:</strong> Quickest migration from local state&nbsp;· Single pattern for shared and local state&nbsp;· CSR/SSR without workarounds&nbsp;· Integrable with Immer&nbsp;· Quickly pluggable persistence across page reloads</p>
-<pre><code class="language-diff">+ let store = new Store(0);
-
-  let Counter = () =&gt; {
--   let [counter, setCounter] = useState(0);
-+   let [counter, setCounter] = useStore(store);
-
-    let handleClick = () =&gt; {
-      setCounter(value =&gt; value + 1);
-    };
-
-    return &lt;button onClick={handleClick}&gt;+ {counter}&lt;/button&gt;;
-  };
-</code></pre></div>
-    <p class="pagenav">
-      <span class="next"><a href="/react-store/start">To the docs</a> <span class="icon">→</span></span>
-    </p>
-  </div>
-</section>
-</main>
+  <h1>T8 React Store</h1>
 </div>
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
-<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.3/dist/css/code.css">
-<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
-<script>hljs.highlightAll()</script>
 <script src="/assets/stats.js"></script>
 </body>
 </html>
