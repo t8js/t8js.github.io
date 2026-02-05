@@ -1,8 +1,4 @@
 :root {
-  --background: #f0eff4;
-  --code-block-background: #fff8;
-  --line-color: #3e2b5920;
-
   --aux-color: #9f95ac;
   --aux-background: #3e2b59;
   --aux-background-end: #3e2b59;
@@ -22,6 +18,13 @@
     --aux-secondary-color: var(--aux-color);
     --aux-emphatic-color: #cec9d5;
     --aux-line-color: var(--aux-color);
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #f0eff4;
+    --code-block-background: #fff8;
+    --line-color: #3e2b5920;
   }
 }
 [data-layout="index"] p.glyph {
