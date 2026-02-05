@@ -26,6 +26,9 @@
     --code-block-background: #fff8;
     --line-color: #3e2b5920;
   }
+  pre {
+    box-shadow: 0 0 0.05rem 0 var(--code-block-color);
+  }
 }
 [data-layout="index"] p.glyph {
   margin: 0;
