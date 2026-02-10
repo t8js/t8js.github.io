@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="section">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="T8 React Router: Custom routing behavior">
+  <title>Custom routing behavior | T8 React Router</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="prefetch" href="/react-router/docs/Unknown_routes">
+  <link rel="prefetch" href="/react-router/docs/URL_provider">
+  <link rel="stylesheet" href="/assets/entry.css">
+</head>
+<body>
+<div class="layout">
+<header class="compact">
+  <h1><a href="/react-router/">T8 React Router</a></h1>
+</header>
+<div class="body">
+<main>
+<h2>Custom routing behavior</h2>
+<p>The default URL-based routing behavior is what's used in most cases, but it's also conceivable to have routing based on the URL in a different way or not based on the browser's URL altogether. The <code>&lt;Router&gt;</code> component discussed above (or even multiple ones) can be used to set up customized routing behavior over a specific portion of the app (or the entire app).</p>
+<p><a href="https://codesandbox.io/p/sandbox/w7rsjl?file=%252Fsrc%252FApp.tsx" target="_blank">Custom routing behavior example</a></p>
+<p>In this example, we've got a kind of a browser-in-browser component with its routing based on a text input rather than the URL. It's enabled by devising a custom extension of the <code>Route</code> class, <code>InputRoute</code>, configured to interact with a text input, and passing its instance to the <code>href</code> prop of the <code>&lt;Router&gt;</code> component.</p>
+<p>This example also shows how the same routing code (of the <code>&lt;Content&gt;</code> component) can interact with either the URL or the text input element based on the closest <code>&lt;Router&gt;</code> context up the component tree.</p>
+<p class="pagenav">
+  <span class="prev"><span class="icon">←</span> <a href="/react-router/docs/URL_provider">URL provider</a></span>
+  <span class="sep">|</span>
+  <span class="next"><a href="/react-router/docs/Unknown_routes">Unknown routes</a> <span class="icon">→</span></span>
+</p>
+</main>
+<hr>
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> React Router</h1>
+    <div class="description">
+      <p>Concise router for React apps</p>
+      <p class="installation"><code>npm i @t8/react-router</code></p>
+    </div>
+  </div>
+<nav>
+<section>
+<p class="title">Contents</p>
+<ul><li data-id="Routing"><a href="/react-router/docs/Routing">Routing</a></li>
+<li data-id="Navigation"><a href="/react-router/docs/Navigation">Navigation</a></li>
+<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a></li>
+<li data-id="Middleware"><a href="/react-router/docs/Middleware">Middleware</a></li>
+<li data-id="URL_parameters"><a href="/react-router/docs/URL_parameters">URL parameters</a></li>
+<li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>
+<li data-id="Nested_routes"><a href="/react-router/docs/Nested_routes">Nested routes</a></li>
+<li data-id="URL_provider"><a href="/react-router/docs/URL_provider">URL provider</a></li>
+<li data-id="Custom_routing_behavior"><strong>Custom routing behavior</strong></li>
+<li data-id="Unknown_routes"><a href="/react-router/docs/Unknown_routes">Unknown routes</a></li>
+<li data-id="Lazy_routes"><a href="/react-router/docs/Lazy_routes">Lazy routes</a></li>
+<li data-id="Animated_view_transitions"><a href="/react-router/docs/Animated_view_transitions">Animated view transitions</a></li>
+<li data-id="Converting_HTML_links_to_SPA_route_links"><a href="/react-router/docs/Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a></li>
+</ul>
+<p class="title">Resources</p>
+<ul>
+  <li><a href="https://github.com/t8js/react-router" target="_blank">GitHub</a></li>
+  <li><a href="https://www.npmjs.com/package/@t8/react-router" target="_blank">npm</a></li>
+</ul>
+</section>
+<section class="related">
+  <p class="title">Also with React</p>
+  <ul>
+    <li><a href="/react-store" data-name="@t8/react-store">T8 React Store</a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 React Pending</a></li>
+  </ul>
+  <p class="title">Vanilla TS/JS</p>
+  <ul>
+    <li><a href="/router" data-name="@t8/router">T8 Router</a></li>
+    <li><a href="/store" data-name="@t8/store">T8 Store</a></li>
+    <li><a href="https://github.com/t8js/persistent-store" data-name="@t8/persistent-store">T8 Persistent Store</a></li>
+  </ul>
+</section>
+</nav>
+</aside>
+</div>
+</div>
+<script src="/assets/stats.js"></script>
+</body>
+</html>

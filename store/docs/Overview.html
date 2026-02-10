@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="section">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="T8 Store: Overview">
+  <title>Overview | T8 Store</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="stylesheet" href="/assets/entry.css">
+</head>
+<body>
+<div class="layout">
+<header class="full">
+  <h1><a href="/">T8</a> Store</h1>
+  <div class="description"><p>A lightweight data container allowing for subscription to its updates</p></div>
+</header>
+<div class="body">
+<main>
+<h2 id="Store">Store</h2>
+<p>An instance of the <code>Store</code> class exported from this package is a thin container for data of arbitrary type, exposing methods to get and set the contained value and allowing to subscribe to its value updates. It can be used as a data storage, or state, shared by multiple independent parts of code that need to be notified when the data gets updated.</p>
+<p>Stores can be used as state shared across application components with libraries like React. See <a href="/react-store">T8 React Store</a> exposing a ready-to-use hook for shared state management.</p>
+<h2 id="Initialization">Initialization</h2>
+<p>Stores accept data of any kind.</p>
+<pre><code class="language-js">import { Store } from "@t8/store";
+
+// With a primitive value
+let store1 = new Store(0);
+
+// With a nonprimitive value
+let store2 = new Store({ counter: 0 });
+</code></pre>
+<p>Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(value)</code> rather than with a factory function.</p>
+<h2 id="Value_manipulation">Value manipulation</h2>
+<p>The store value can be read and updated with <code>getValue()</code> and <code>setValue(update)</code>. <code>setValue(update)</code> accepts either a new value or a function <code>(value) =&gt; nextValue</code> that returns a new store value based on the current store value.</p>
+<pre><code class="language-js">let store = new Store({ counter: 0 });
+
+store.setValue({ counter: 100 });
+store.setValue((value) =&gt; ({ ...value, counter: value.counter + 1 }));
+
+let value = store.getValue();
+console.log(value.counter); // 101
+</code></pre>
+<h2 id="Subscription_to_updates">Subscription to updates</h2>
+<p>Each time the store value is updated via <code>setValue(value)</code> the store emits an <code>"update"</code> event allowing for subscriptions:</p>
+<pre><code class="language-js">let unsubscribe = store.on("update", ({ current, previous }) =&gt; {
+  console.log(current, previous);
+});
+</code></pre>
+<p>Each subscription returns an unsubscription function. Once it's invoked, the given <code>callback</code> is removed from the store and no longer called when the store is updated.</p>
+<hr>
+<ul>
+<li><a href="https://github.com/t8js/persistent-store" target="_blank">T8 Persistent Store</a></li>
+<li><a href="/react-store">T8 React Store</a></li>
+</ul>
+<p class="pagenav">
+  
+  <span class="repo"><a href="https://github.com/t8js/store" target="_blank">GitHub</a></span>
+</p>
+</main>
+<hr>
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> Store</h1>
+    <div class="description">
+      <p>A lightweight data container allowing for subscription to its updates</p>
+      <p class="installation"><code>npm i @t8/store</code></p>
+    </div>
+  </div>
+<nav>
+<section>
+<p class="title">Contents</p>
+<ul><li><a href="/store/docs/Overview#Store">Store</a></li>
+<li><a href="/store/docs/Overview#Initialization">Initialization</a></li>
+<li><a href="/store/docs/Overview#Value_manipulation">Value manipulation</a></li>
+<li><a href="/store/docs/Overview#Subscription_to_updates">Subscription to updates</a></li>
+</ul>
+<p class="title">Resources</p>
+<ul>
+  <li><a href="https://github.com/t8js/store" target="_blank">GitHub</a></li>
+  <li><a href="https://www.npmjs.com/package/@t8/store" target="_blank">npm</a></li>
+</ul>
+</section>
+<section class="related">
+  <p class="title">Also with vanilla TS/JS</p>
+  <ul>
+    <li><a href="/router" data-name="@t8/router">T8 Router</a></li>
+    <li><a href="https://github.com/t8js/persistent-store" data-name="@t8/persistent-store">T8 Persistent Store</a></li>
+  </ul>
+  <p class="title">With React</p>
+  <ul>
+    <li><a href="/react-router" data-name="@t8/react-router">T8 React Router</a></li>
+    <li><a href="/react-store" data-name="@t8/react-store">T8 React Store</a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 React Pending</a></li>
+  </ul>
+</section>
+</nav>
+</aside>
+</div>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
+<script src="/assets/stats.js"></script>
+</body>
+</html>

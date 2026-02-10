@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="section">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="T8 React Router: Converting HTML links to SPA route links">
+  <title>Converting HTML links to SPA route links | T8 React Router</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="prefetch" href="/react-router/docs/Animated_view_transitions">
+  <link rel="stylesheet" href="/assets/entry.css">
+</head>
+<body>
+<div class="layout">
+<header class="compact">
+  <h1><a href="/react-router/">T8 React Router</a></h1>
+</header>
+<div class="body">
+<main>
+<h2>Converting HTML links to SPA route links</h2>
+<p>A chunk of static HTML content is an example where the route link component can't be directly used but it still might be desirable to make plain HTML links in that content behave as SPA route links. The <code>useRouteLinks()</code> hook can be helpful here:</p>
+<pre><code class="language-jsx">import { useRef } from "react";
+import { useRouteLinks } from "@t8/react-router";
+
+let Content = ({ value }) =&gt; {
+  let containerRef = useRef(null);
+
+  useRouteLinks(containerRef);
+
+  return (
+    &lt;div ref={containerRef}&gt;
+      {value}
+    &lt;/div&gt;
+  );
+};
+</code></pre>
+<p>In this example, the <code>useRouteLinks()</code> hook makes all HTML links inside the container referenced by <code>containerRef</code> act as SPA route links.</p>
+<p>A selector, or an HTML element, or a collection thereof, can be passed as the second parameter of <code>useRouteLinks()</code> to narrow down the relevant link elements:</p>
+<pre><code class="language-js">useRouteLinks(containerRef, ".content a");
+</code></pre>
+<p class="pagenav">
+  <span class="prev"><span class="icon">←</span> <a href="/react-router/docs/Animated_view_transitions">Animated view transitions</a></span>
+  <span class="sep">|</span>
+  <span class="repo"><a href="https://github.com/t8js/react-router" target="_blank">GitHub</a></span>
+</p>
+</main>
+<hr>
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> React Router</h1>
+    <div class="description">
+      <p>Concise router for React apps</p>
+      <p class="installation"><code>npm i @t8/react-router</code></p>
+    </div>
+  </div>
+<nav>
+<section>
+<p class="title">Contents</p>
+<ul><li data-id="Routing"><a href="/react-router/docs/Routing">Routing</a></li>
+<li data-id="Navigation"><a href="/react-router/docs/Navigation">Navigation</a></li>
+<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a></li>
+<li data-id="Middleware"><a href="/react-router/docs/Middleware">Middleware</a></li>
+<li data-id="URL_parameters"><a href="/react-router/docs/URL_parameters">URL parameters</a></li>
+<li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>
+<li data-id="Nested_routes"><a href="/react-router/docs/Nested_routes">Nested routes</a></li>
+<li data-id="URL_provider"><a href="/react-router/docs/URL_provider">URL provider</a></li>
+<li data-id="Custom_routing_behavior"><a href="/react-router/docs/Custom_routing_behavior">Custom routing behavior</a></li>
+<li data-id="Unknown_routes"><a href="/react-router/docs/Unknown_routes">Unknown routes</a></li>
+<li data-id="Lazy_routes"><a href="/react-router/docs/Lazy_routes">Lazy routes</a></li>
+<li data-id="Animated_view_transitions"><a href="/react-router/docs/Animated_view_transitions">Animated view transitions</a></li>
+<li data-id="Converting_HTML_links_to_SPA_route_links"><strong>Converting HTML links to SPA route links</strong></li>
+</ul>
+<p class="title">Resources</p>
+<ul>
+  <li><a href="https://github.com/t8js/react-router" target="_blank">GitHub</a></li>
+  <li><a href="https://www.npmjs.com/package/@t8/react-router" target="_blank">npm</a></li>
+</ul>
+</section>
+<section class="related">
+  <p class="title">Also with React</p>
+  <ul>
+    <li><a href="/react-store" data-name="@t8/react-store">T8 React Store</a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 React Pending</a></li>
+  </ul>
+  <p class="title">Vanilla TS/JS</p>
+  <ul>
+    <li><a href="/router" data-name="@t8/router">T8 Router</a></li>
+    <li><a href="/store" data-name="@t8/store">T8 Store</a></li>
+    <li><a href="https://github.com/t8js/persistent-store" data-name="@t8/persistent-store">T8 Persistent Store</a></li>
+  </ul>
+</section>
+</nav>
+</aside>
+</div>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
+<script src="/assets/stats.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="section">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="T8 SDK Factory: Custom request handler">
+  <title>Custom request handler | T8 SDK Factory</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="prefetch" href="/sdk-factory/docs/Schema-based_validation">
+  <link rel="prefetch" href="/sdk-factory/docs/Shorthand_methods">
+  <link rel="stylesheet" href="/assets/entry.css">
+</head>
+<body>
+<div class="layout">
+<header class="compact">
+  <h1><a href="/sdk-factory/">T8 SDK Factory</a></h1>
+</header>
+<div class="body">
+<main>
+<h2>Custom request handler</h2>
+<p>As shown above, the <code>RequestService</code> constructor takes a custom request handler as a parameter. Internal independence of <code>RequestService</code> from a fixed built-in request handler allows to handle requests of all sorts and environments (the browser or node) without locking in with a certain approach to handling requests.</p>
+<p>Here's an example of a basic JSON request handler that can be passed to <code>RequestService</code>:</p>
+<pre><code class="language-ts">import {
+  RequestHandler,
+  RequestError,
+  RequestService,
+  getRequestAction,
+  toStringValueMap,
+} from "@t8/sdk-factory";
+import type { APISchema } from "./APISchema";
+
+function getRequestHandler(endpoint: string): RequestHandler {
+  return async function(target, request) {
+    let { method, url } = getRequestAction({ request, target, endpoint });
+
+    let response = await fetch(url, {
+      method,
+      headers: toStringValueMap(request?.headers),
+      body: request?.body ? JSON.stringify(request?.body) : null,
+    });
+
+    let { ok, status, statusText } = response;
+
+    if (!ok) throw new RequestError({ status, statusText });
+
+    try {
+      let body = await response.json();
+
+      return { ok, status, statusText, body };
+    }
+    catch (error) {
+      throw new RequestError(error);
+    }
+  };
+}
+
+export const serverService = new RequestService&lt;APISchema&gt;(
+  getRequestHandler("https://api.example.com")
+);
+
+// Assuming that the given API is proxied by the server to
+// the browser via `/api`
+export const browserService = new RequestService&lt;APISchema&gt;(
+  getRequestHandler("/api")
+);
+</code></pre>
+<p>To meet the needs of a specific use case, the request handler's code can certainly depart from the example above (which is the primary reason why it's not hardwired into the package).</p>
+<p class="pagenav">
+  <span class="prev"><span class="icon">←</span> <a href="/sdk-factory/docs/Shorthand_methods">Shorthand methods</a></span>
+  <span class="sep">|</span>
+  <span class="next"><a href="/sdk-factory/docs/Schema-based_validation">Schema-based validation</a> <span class="icon">→</span></span>
+</p>
+</main>
+<hr>
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> SDK Factory</h1>
+    <div class="description">
+      <p>Typed SDK factory for web APIs</p>
+      <p class="installation"><code>npm i @t8/sdk-factory</code></p>
+    </div>
+  </div>
+<nav>
+<section>
+<p class="title">Contents</p>
+<ul><li data-id="RequestService"><a href="/sdk-factory/docs/RequestService"><code>RequestService</code></a></li>
+<li data-id="Schema_definition"><a href="/sdk-factory/docs/Schema_definition">Schema definition</a></li>
+<li data-id="Shorthand_methods"><a href="/sdk-factory/docs/Shorthand_methods">Shorthand methods</a></li>
+<li data-id="Custom_request_handler"><strong>Custom request handler</strong></li>
+<li data-id="Schema-based_validation"><a href="/sdk-factory/docs/Schema-based_validation">Schema-based validation</a></li>
+</ul>
+<p class="title">Resources</p>
+<ul>
+  <li><a href="https://github.com/t8js/sdk-factory" target="_blank">GitHub</a></li>
+  <li><a href="https://www.npmjs.com/package/@t8/sdk-factory" target="_blank">npm</a></li>
+</ul>
+</section>
+<section class="related">
+  <p class="title">Also with vanilla TS/JS</p>
+  <ul>
+    <li><a href="/router" data-name="@t8/router">T8 Router</a></li>
+    <li><a href="/store" data-name="@t8/store">T8 Store</a></li>
+    <li><a href="https://github.com/t8js/persistent-store" data-name="@t8/persistent-store">T8 Persistent Store</a></li>
+  </ul>
+  <p class="title">With React</p>
+  <ul>
+    <li><a href="/react-router" data-name="@t8/react-router">T8 React Router</a></li>
+    <li><a href="/react-store" data-name="@t8/react-store">T8 React Store</a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 React Pending</a></li>
+  </ul>
+</section>
+</nav>
+</aside>
+</div>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
+<script src="/assets/stats.js"></script>
+</body>
+</html>

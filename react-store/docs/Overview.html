@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="section">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="T8 React Store: Overview">
+  <title>Overview | T8 React Store</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="stylesheet" href="/assets/entry.css">
+</head>
+<body>
+<div class="layout">
+<header class="full">
+  <h1><a href="/">T8</a> React Store</h1>
+  <div class="description"><p>React app state management condensed to the essentials</p></div>
+</header>
+<div class="body">
+<main>
+<h2 id="Shared_state_setup">Shared state setup</h2>
+<p>Moving local state to the full-fledged shared state:</p>
+<pre><code class="language-diff">+ import { Store, useStore } from "@t8/react-store";
++
++ let counterStore = new Store(0);
+
+  let Counter = () =&gt; {
+-   let [counter, setCounter] = useState(0);
++   let [counter, setCounter] = useStore(counterStore);
+
+    let handleClick = () =&gt; {
+      setCounter(value =&gt; value + 1);
+    };
+
+    return &lt;button onClick={handleClick}&gt;+ {counter}&lt;/button&gt;;
+  };
+
+  let ResetButton = () =&gt; {
+-   let [, setCounter] = useState(0);
++   let [, setCounter] = useStore(counterStore, false);
+
+    let handleClick = () =&gt; {
+      setCounter(0);
+    };
+
+    return &lt;button onClick={handleClick}&gt;×&lt;/button&gt;;
+  };
+
+  let App = () =&gt; &lt;&gt;&lt;Counter/&gt;{" "}&lt;ResetButton/&gt;&lt;/&gt;;
+</code></pre>
+<p><a href="https://codesandbox.io/p/sandbox/szhdnw?file=%252Fsrc%252FApp.tsx" target="_blank">Live counter demo</a><br>
+<a href="https://codesandbox.io/p/sandbox/tq852v?file=%252Fsrc%252FApp.tsx" target="_blank">Tic-tac-toe</a></p>
+<p>⬥ The shared state setup shown above is very similar to <code>useState()</code> allowing for quick migration from local state to shared state or the other way around.</p>
+<p>⬥ The optional <code>false</code> parameter in <code>useStore(store, false)</code> (as in <code>&lt;ResetButton&gt;</code> above) tells the hook not to subscribe the component to tracking the store updates. The common use case is when a component makes use of the store value setter without using the store value.</p>
+<p>⬥ With SSR, it's common practice to put shared values into React Context rather than module-level variables to avoid cross-request data sharing. The same applies to stores, see the examples in the <a href="/react-store/docs/Overview#Sharing_state_via_Context">Sharing state via Context</a> section below.</p>
+<p>⬥ Similarly to instances of the built-in data container classes, such as <code>Set</code> and <code>Map</code>, stores are created as <code>new Store(data)</code> rather than with a factory function.</p>
+<h2 id="Single_store_or_multiple_stores">Single store or multiple stores</h2>
+<p>An application can have as many stores as needed.</p>
+<p>⬥ Splitting data into multiple stores is one of the strategies to maintain more targeted subscriptions to data changes in components. The other strategy is filtering store updates at the component level, which is discussed below.</p>
+<h2 id="Filtering_store_updates">Filtering store updates</h2>
+<p>When only the store value setter is required, without the store value, we can opt out from subscription to store changes by passing <code>false</code> as the parameter of <code>useStore()</code>:</p>
+<pre><code class="language-js">let [, setValue] = useStore(store, false);
+</code></pre>
+<p>Apart from a boolean, <code>useStore(store, shouldUpdate)</code> accepts a function of <code>(nextValue, prevValue) =&gt; boolean</code> as the optional second parameter to filter store value updates to respond to:</p>
+<pre><code class="language-jsx">import { useStore } from "@t8/react-store";
+
+let ItemCard = ({ id }) =&gt; {
+  let [items, setItems] = useStore(itemStore, (nextItems, prevItems) =&gt; {
+    // Assuming that items have a `revision` property
+    return nextItems[id].revision !== prevItems[id].revision;
+  });
+
+  return (
+    // Content
+  );
+};
+</code></pre>
+<p>While <code>useStore(itemStore)</code> in this component would trigger a re-render in response to any changes in the <code>itemStore</code> (which can be fine with a small store), with <code>useStore(itemStore, shouldUpdate)</code> the <code>ItemCard</code> component has a more targeted subscription to the store: in this example, a re-render will only be triggered if the <code>revision</code> property of the item with the given <code>id</code> has changed.</p>
+<h2 id="Sharing_state_via_Context">Sharing state via Context</h2>
+<p>Shared state can be provided to the app by means of a regular React Context provider:</p>
+<pre><code class="language-diff">+ import { createContext, useContext } from "react";
+  import { Store, useStore } from "@t8/react-store";
+
+- let counterStore = new Store(0);
++ let AppContext = createContext(new Store(0));
+
+  let Counter = () =&gt; {
+-   let [counter, setCounter] = useStore(counterStore);
++   let [counter, setCounter] = useStore(useContext(AppContext));
+
+    // Rendering
+  };
+
+  let App = () =&gt; (
+-   &lt;&gt;
++   &lt;AppContext.Provider value={new Store(42)}&gt;
+      &lt;PlusButton/&gt;{" "}&lt;Display/&gt;
++   &lt;/AppContext.Provider&gt;
+-   &lt;/&gt;
+  );
+</code></pre>
+<p><a href="https://codesandbox.io/p/sandbox/rtng37?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Live counter demo with Context</a></p>
+<p>⬥ In a multi-store setup, stores can be located in a single Context or split across multiple Contexts, just like any application data.</p>
+<pre><code class="language-jsx">import { createContext, useContext } from "react";
+import { Store, useStore } from "@t8/react-store";
+
+// Multiple stores in a single Context
+let AppContext = createContext({
+  users: new Store(/* ... */),
+  items: new Store(/* ... */),
+});
+
+let ItemCard = ({ id }) =&gt; {
+  let [items, setItems] = useStore(useContext(AppContext).items);
+
+  // Rendering
+};
+</code></pre>
+<p>⬥ Note that updating the store value doesn't change the store reference sitting in the React Context and therefore doesn't cause updates of the entire Context. Only the components subscribed to updates in the particular store by means of <code>useStore(store)</code> will be notified to re-render.</p>
+<h2 id="Store_data">Store data</h2>
+<p>A store can contain data of any kind, whether of a primitive type or nonprimitive.</p>
+<p>Live demos:<br>
+<a href="https://codesandbox.io/p/sandbox/rtng37?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Primitive value state</a><br>
+<a href="https://codesandbox.io/p/sandbox/y7wt2j?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Object value state</a></p>
+<h2 id="With_Immer">With Immer</h2>
+<p>Immer can be used with <code>useStore()</code> just the same way as <a href="https://immerjs.github.io/immer/example-setstate#usestate--immer" target="_blank">with <code>useState()</code></a> to facilitate deeply nested data changes.</p>
+<p><a href="https://codesandbox.io/p/sandbox/rn4qsr?file=%2Fsrc%2FPlusButton.jsx" target="_blank">Live demo with Immer</a></p>
+<h2 id="Shared_loading_state">Shared loading state</h2>
+<p>The ready-to-use hook from <a href="/react-pending">React Pending</a> helps manage shared async action state without rearranging the app's state management and actions' code.</p>
+<h2 id="Persistence_across_remounts">Persistence across remounts</h2>
+<p>A standalone store initialized outside a component can be used by the component as remount-persistent state, whether used by other components or not.</p>
+<h2 id="Persistence_across_page_reloads">Persistence across page reloads</h2>
+<p>Replacing <code>new Store(data)</code> with <code>new PersistentStore(data, { key })</code> as shown below gets the store's value initially restored from and saved whenever updated to the specified <code>key</code> in <code>localStorage</code>. (Pass <code>session: true</code> to the second parameter of the constructor to use <code>sessionStorage</code> instead of <code>localStorage</code>.) Otherwise, persistent stores work pretty much like regular stores described above.</p>
+<pre><code class="language-js">import { PersistentStore } from "@t8/persistent-store";
+
+let counterStore = new PersistentStore(0, { key: "counter" });
+</code></pre>
+<p>⬥ The way data gets saved to and restored from a browser storage entry (including filtering out certain data or otherwise rearranging the saved data) can be redefined by setting <code>options.serialize</code> and <code>options.deserialize</code> in <code>new PersistentStore(data, options)</code>. By default, these options act like <code>JSON.stringify()</code> and <code>JSON.parse()</code> respectively.</p>
+<p>⬥ <code>PersistentStore</code> skips interaction with the browser storage in non-browser environments, which makes it equally usable with SSR.</p>
+<p class="pagenav">
+  
+  <span class="repo"><a href="https://github.com/t8js/react-store" target="_blank">GitHub</a></span>
+</p>
+</main>
+<hr>
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> React Store</h1>
+    <div class="description">
+      <p>React app state management condensed to the essentials</p>
+      <p class="installation"><code>npm i @t8/react-store</code></p>
+    </div>
+  </div>
+<nav>
+<section>
+<p class="title">Contents</p>
+<ul><li><a href="/react-store/docs/Overview#Shared_state_setup">Shared state setup</a></li>
+<li><a href="/react-store/docs/Overview#Single_store_or_multiple_stores">Single store or multiple stores</a></li>
+<li><a href="/react-store/docs/Overview#Filtering_store_updates">Filtering store updates</a></li>
+<li><a href="/react-store/docs/Overview#Sharing_state_via_Context">Sharing state via Context</a></li>
+<li><a href="/react-store/docs/Overview#Store_data">Store data</a></li>
+<li><a href="/react-store/docs/Overview#With_Immer">With Immer</a></li>
+<li><a href="/react-store/docs/Overview#Shared_loading_state">Shared loading state</a></li>
+<li><a href="/react-store/docs/Overview#Persistence_across_remounts">Persistence across remounts</a></li>
+<li><a href="/react-store/docs/Overview#Persistence_across_page_reloads">Persistence across page reloads</a></li>
+</ul>
+<p class="title">Resources</p>
+<ul>
+  <li><a href="https://github.com/t8js/react-store" target="_blank">GitHub</a></li>
+  <li><a href="https://www.npmjs.com/package/@t8/react-store" target="_blank">npm</a></li>
+</ul>
+</section>
+<section class="related">
+  <p class="title">Also with React</p>
+  <ul>
+    <li><a href="/react-router" data-name="@t8/react-router">T8 React Router</a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 React Pending</a></li>
+  </ul>
+  <p class="title">Vanilla TS/JS</p>
+  <ul>
+    <li><a href="/router" data-name="@t8/router">T8 Router</a></li>
+    <li><a href="/store" data-name="@t8/store">T8 Store</a></li>
+    <li><a href="https://github.com/t8js/persistent-store" data-name="@t8/persistent-store">T8 Persistent Store</a></li>
+  </ul>
+</section>
+</nav>
+</aside>
+</div>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
+<script src="/assets/stats.js"></script>
+</body>
+</html>

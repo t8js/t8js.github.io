@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="section">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="T8 React Router: Routing">
+  <title>Routing | T8 React Router</title>
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/base.css">
+  <link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/section.css">
+  <link rel="icon" type="image/png" href="/assets/t8.png">
+  <link rel="prefetch" href="/react-router/docs/Navigation">
+  <link rel="stylesheet" href="/assets/entry.css">
+</head>
+<body>
+<div class="layout">
+<header class="full">
+  <h1><a href="/">T8</a> React Router</h1>
+  <div class="description"><p>Concise router for React apps</p></div>
+</header>
+<div class="body">
+<main>
+<h2>Routing</h2>
+<p>URL-based rendering with <code>at(route, x, y)</code> works similarly to conditional rendering with the ternary operator <code>atRoute ? x : y</code>, equally applicable to props, components and dynamic values:</p>
+<pre><code class="language-jsx">import { useRoute } from "@t8/react-router";
+
+let App = () =&gt; {
+  let { at } = useRoute();
+
+  return (
+    &lt;header className={at("/", "full", "compact")}&gt;
+      &lt;h1&gt;App&lt;/h1&gt;
+    &lt;/header&gt;
+    {at("/", &lt;Intro/&gt;)}
+    {at(/^\/posts\/(?&lt;id&gt;\d+)\/?$/, ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
+  );
+};
+</code></pre>
+<p><a href="https://codesandbox.io/p/sandbox/63xzd4?file=%252Fsrc%252FApp.tsx" target="_blank">Live demo</a></p>
+<p>⬥ <code>params</code> in dynamic values contains the route pattern's capturing groups accessible by numeric indices. Named capturing group values can be accessed by their names, like <code>params.id</code> in the example above.</p>
+<p class="pagenav">
+  
+  <span class="next"><a href="/react-router/docs/Navigation">Navigation</a> <span class="icon">→</span></span>
+</p>
+</main>
+<hr>
+<aside class="aux">
+  <div class="header" hidden>
+    <h1><a href="/">T8</a> React Router</h1>
+    <div class="description">
+      <p>Concise router for React apps</p>
+      <p class="installation"><code>npm i @t8/react-router</code></p>
+    </div>
+  </div>
+<nav>
+<section>
+<p class="title">Contents</p>
+<ul><li data-id="Routing"><strong>Routing</strong></li>
+<li data-id="Navigation"><a href="/react-router/docs/Navigation">Navigation</a></li>
+<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a></li>
+<li data-id="Middleware"><a href="/react-router/docs/Middleware">Middleware</a></li>
+<li data-id="URL_parameters"><a href="/react-router/docs/URL_parameters">URL parameters</a></li>
+<li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>
+<li data-id="Nested_routes"><a href="/react-router/docs/Nested_routes">Nested routes</a></li>
+<li data-id="URL_provider"><a href="/react-router/docs/URL_provider">URL provider</a></li>
+<li data-id="Custom_routing_behavior"><a href="/react-router/docs/Custom_routing_behavior">Custom routing behavior</a></li>
+<li data-id="Unknown_routes"><a href="/react-router/docs/Unknown_routes">Unknown routes</a></li>
+<li data-id="Lazy_routes"><a href="/react-router/docs/Lazy_routes">Lazy routes</a></li>
+<li data-id="Animated_view_transitions"><a href="/react-router/docs/Animated_view_transitions">Animated view transitions</a></li>
+<li data-id="Converting_HTML_links_to_SPA_route_links"><a href="/react-router/docs/Converting_HTML_links_to_SPA_route_links">Converting HTML links to SPA route links</a></li>
+</ul>
+<p class="title">Resources</p>
+<ul>
+  <li><a href="https://github.com/t8js/react-router" target="_blank">GitHub</a></li>
+  <li><a href="https://www.npmjs.com/package/@t8/react-router" target="_blank">npm</a></li>
+</ul>
+</section>
+<section class="related">
+  <p class="title">Also with React</p>
+  <ul>
+    <li><a href="/react-store" data-name="@t8/react-store">T8 React Store</a></li>
+    <li><a href="/react-pending" data-name="@t8/react-pending">T8 React Pending</a></li>
+  </ul>
+  <p class="title">Vanilla TS/JS</p>
+  <ul>
+    <li><a href="/router" data-name="@t8/router">T8 Router</a></li>
+    <li><a href="/store" data-name="@t8/store">T8 Store</a></li>
+    <li><a href="https://github.com/t8js/persistent-store" data-name="@t8/persistent-store">T8 Persistent Store</a></li>
+  </ul>
+</section>
+</nav>
+</aside>
+</div>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/stackoverflow-light.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/base16/material.min.css" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://unpkg.com/@t8/docsgen@0.4/dist/css/code.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js"></script>
+<script>hljs.highlightAll()</script>
+<script src="/assets/stats.js"></script>
+</body>
+</html>
