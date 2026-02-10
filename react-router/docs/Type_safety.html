@@ -54,7 +54,7 @@ let App = () =&gt; {
   );
 };
 </code></pre>
-<fieldset><legend>Type-safe routing live demo</legend><iframe src="https://codesandbox.io/embed/vgt64k?view=preview&amp;module=%2Fsrc%2FApp.tsx" title="Type-safe routing live demo" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
+<fieldset><legend>Type-safe routing live demo</legend><iframe src="https://codesandbox.io/embed/vgt64k?view=preview&amp;module=%2Fsrc%2FApp.tsx" title="Type-safe routing live demo" style="height: 320px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
 <p>⬥ The <code>url()</code> function is a type-safe URL builder. It creates a URL with a URL pattern defined in the schema and typed parameters that are prevalidated against the given schema: typos and type mismatches are highlighted in a type-aware code editor. <a href="/url-shape">See <em>url-shape</em></a> for more details.</p>
 <p>⬥ A URL schema doesn't have to cover the entire app. Standalone portions of an app can have their own URL schemas.</p>
 <p>⬥ Optionally, application-wide type safety can be achieved by disallowing URLs and URL patterns other than provided by the URL builder (the <code>url()</code> function in the example above):</p>
@@ -66,7 +66,7 @@ let App = () =&gt; {
 </code></pre>
 <p>Adding this type declaration to an app effectively disallows using <code>string</code> and <code>RegExp</code> values for routes and route patterns (such as in the route link <code>href</code> prop, <code>route.assign(location)</code>, and the routing function <code>at(routePattern, x, y)</code>), only allowing values returned from the URL builder with the same routing APIs.</p>
 <p>⬥ A URL builder pattern (like <code>url("/posts/:id")</code>) can also be used with <code>useRouteState(pattern)</code> and <code>useRouteMatch(pattern)</code> to manipulate <a href="/react-router/docs/URL_parameters">URL parameters</a> in a type-safe manner.</p>
-<fieldset><legend>Typed URL parameters state demo</legend><iframe src="https://codesandbox.io/embed/qnd87w?view=preview&amp;module=%2Fsrc%2FShapeSection.tsx" title="Typed URL parameters state demo" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
+<fieldset><legend>Typed URL parameters state demo</legend><iframe src="https://codesandbox.io/embed/qnd87w?view=preview&amp;module=%2Fsrc%2FShapeSection.tsx" title="Typed URL parameters state demo" style="height: 450px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
 <p>⬥ Recap: It's using typed URL patterns (like from <code>url()</code> of <em>url-shape</em>) that enables type-safe route handling, which is an optional enhancement. Plain <code>string</code> routes and <code>RegExp</code> route patterns are handled with baseline typing sufficient in many cases.</p>
 <p class="pagenav">
   <span class="prev"><span class="icon">←</span> <a href="/react-router/docs/URL_parameters">URL parameters</a></span>
