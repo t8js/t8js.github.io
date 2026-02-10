@@ -1,4 +1,8 @@
 :root {
+  --background: #f0eff4;
+  --code-block-background: #fff8;
+  --line-color: #3e2b5920;
+
   --aux-color: #9f95ac;
   --aux-background: #3e2b59;
   --aux-background-end: #3e2b59;
@@ -10,6 +14,10 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --background: #1a1a1a;
+    --code-block-background: #1d2331;
+    --line-color: #383a3e;
+
     --aux-color: #9f95ac;
     --aux-background: #3e2b59;
     --aux-background-end: #3e2b59;
@@ -21,11 +29,6 @@
   }
 }
 @media (prefers-color-scheme: light) {
-  :root {
-    --background: #f0eff4;
-    --code-block-background: #fff8;
-    --line-color: #3e2b5920;
-  }
   pre {
     box-shadow: 0 0 0.05rem 0 var(--code-block-color);
   }
