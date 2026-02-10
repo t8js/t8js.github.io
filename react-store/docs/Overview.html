@@ -12,11 +12,9 @@
 </head>
 <body>
 <div class="layout">
-<header class="compact">
-  <h1><a href="/react-store/">T8 React Store</a></h1>
-</header>
 <div class="body">
 <main>
+<h1><a href="/react-store/">T8 React Store</a></h1>
 <h2 id="Shared_state_setup">Shared state setup</h2>
 <p>Moving local state to the full-fledged shared state:</p>
 <pre><code class="language-diff">+ import { Store, useStore } from "@t8/react-store";
@@ -143,13 +141,6 @@ let counterStore = new PersistentStore(0, { key: "counter" });
 </main>
 <hr>
 <aside class="aux">
-  <div class="header" hidden>
-    <h1><a href="/">T8</a> React Store</h1>
-    <div class="description">
-      <p>React app state management condensed to the essentials</p>
-      <p class="installation"><code>npm i @t8/react-store</code></p>
-    </div>
-  </div>
 <nav>
 <section>
 <p class="title">Contents</p>

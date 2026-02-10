@@ -14,11 +14,9 @@
 </head>
 <body>
 <div class="layout">
-<header class="compact">
-  <h1><a href="/sdk-factory/">T8 SDK Factory</a></h1>
-</header>
 <div class="body">
 <main>
+<h1><a href="/sdk-factory/">T8 SDK Factory</a></h1>
 <h2>Custom request handler</h2>
 <p>As shown above, the <code>RequestService</code> constructor takes a custom request handler as a parameter. Internal independence of <code>RequestService</code> from a fixed built-in request handler allows to handle requests of all sorts and environments (the browser or node) without locking in with a certain approach to handling requests.</p>
 <p>Here's an example of a basic JSON request handler that can be passed to <code>RequestService</code>:</p>
@@ -75,13 +73,6 @@ export const browserService = new RequestService&lt;APISchema&gt;(
 </main>
 <hr>
 <aside class="aux">
-  <div class="header" hidden>
-    <h1><a href="/">T8</a> SDK Factory</h1>
-    <div class="description">
-      <p>Typed SDK factory for web APIs</p>
-      <p class="installation"><code>npm i @t8/sdk-factory</code></p>
-    </div>
-  </div>
 <nav>
 <section>
 <p class="title">Contents</p>
