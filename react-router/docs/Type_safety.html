@@ -25,7 +25,7 @@ import { z } from "zod";
 
 const { url } = createURLSchema({
   "/": z.object({}), // Goes without parameters
-  "/posts/:id": z.object({
+  "/sections/:id": z.object({
     // Path components
     params: z.object({
       id: z.coerce.number(),
@@ -43,13 +43,13 @@ let App = () =&gt; {
         &lt;h1&gt;App&lt;/h1&gt;
         &lt;nav&gt;
           &lt;A href={url("/")}&gt;Intro&lt;/A&gt;{" | "}
-          &lt;A href={url("/posts/:id", { params: { id: 1 } })}&gt;Start&lt;/A&gt;
-                                    // ^ { params: { id: number } }
+          &lt;A href={url("/sections/:id", { params: { id: 1 } })}&gt;Start&lt;/A&gt;
+                                       // ^ { params: { id: number } }
         &lt;/nav&gt;
       &lt;/header&gt;
       {at(url("/"), &lt;Intro/&gt;)}
-      {at(url("/posts/:id"), ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
-                             // ^ { params: { id: number } }
+      {at(url("/sections/:id"), ({ params }) =&gt; &lt;Section id={params.id}/&gt;)}
+                                // ^ { params: { id: number } }
     &lt;/&gt;
   );
 };
@@ -65,7 +65,7 @@ let App = () =&gt; {
 }
 </code></pre>
 <p>Adding this type declaration to an app effectively disallows using <code>string</code> and <code>RegExp</code> values for routes and route patterns (such as in the route link <code>href</code> prop, <code>route.assign(location)</code>, and the routing function <code>at(routePattern, x, y)</code>), only allowing values returned from the URL builder with the same routing APIs.</p>
-<p>⬥ A URL builder pattern (like <code>url("/posts/:id")</code>) can also be used with <code>useRouteState(pattern)</code> and <code>useRouteMatch(pattern)</code> to manipulate <a href="/react-router/docs/URL_parameters">URL parameters</a> in a type-safe manner.</p>
+<p>⬥ A URL builder pattern (like <code>url("/sections/:id")</code>) can also be used with <code>useRouteState(pattern)</code> and <code>useRouteMatch(pattern)</code> to manipulate <a href="/react-router/docs/URL_parameters">URL parameters</a> in a type-safe manner.</p>
 <fieldset><legend>Typed URL parameters state demo</legend><iframe src="https://codesandbox.io/embed/qnd87w?view=preview&amp;module=%2Fsrc%2FShapeSection.tsx" title="Typed URL parameters state demo" style="height: 450px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
 <p>⬥ Recap: It's using typed URL patterns (like from <code>url()</code> of <em>url-shape</em>) that enables type-safe route handling, which is an optional enhancement. Plain <code>string</code> routes and <code>RegExp</code> route patterns are handled with baseline typing sufficient in many cases.</p>
 <p class="pagenav">

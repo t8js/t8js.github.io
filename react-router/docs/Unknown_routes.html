@@ -23,7 +23,7 @@
 
 const routeMap = {
   intro: "/intro",
-  posts: /^\/posts\/(?&lt;id&gt;\d+)\/?$/,
+  sections: /^\/sections\/(?&lt;id&gt;\d+)\/?$/,
 };
 
 const knownRoutes = Object.values(routeMap);
@@ -37,7 +37,7 @@ let App = () =&gt; {
         &lt;A href={routeMap.intro}&gt;Intro&lt;/A&gt;
       &lt;/nav&gt;
       {at(routeMap.intro, &lt;Intro/&gt;)}
-      {at(routeMap.posts, ({ params }) =&gt; &lt;Post id={params.id}/&gt;)}
+      {at(routeMap.sections, ({ params }) =&gt; &lt;Section id={params.id}/&gt;)}
       {at(knownRoutes, null, &lt;Error/&gt;)}
     &lt;/&gt;
   );

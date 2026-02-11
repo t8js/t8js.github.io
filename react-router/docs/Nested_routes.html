@@ -40,10 +40,10 @@ let sectionParams = z.object({
 });
 
 export const { url } = createURLSchema({
-  "/posts/:sectionId": z.object({
+  "/sections/:sectionId": z.object({
     params: sectionParams,
   }),
-  "/posts/:sectionId/stories/:storyId": z.object({
+  "/sections/:sectionId/stories/:storyId": z.object({
     params: z.object({
       ...sectionParams.shape, // Shared params
       storyId: z.string(),
