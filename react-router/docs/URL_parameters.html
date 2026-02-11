@@ -47,6 +47,7 @@
   };
 </code></pre>
 <fieldset><legend>Route state live demo</legend><iframe src="https://codesandbox.io/embed/sgvdfg?view=preview&amp;module=%252Fsrc%252FApp.tsx" title="Route state live demo" style="height: 360px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset><fieldset><legend>Type-safe route state live demo</legend><iframe src="https://codesandbox.io/embed/qnd87w?view=preview&amp;module=%2Fsrc%2FShapeSection.tsx" title="Type-safe route state live demo" style="height: 450px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
+<p>⬥ <code>useRouteState(url, options?)</code> has an optional second parameter in the shape of the <a href="/react-router/docs/Link_props#Navigation_options">navigation options</a>. For example, we might want to pass <code>{ scroll: "off" }</code> as <code>options</code> if we'd like to opt out from the default scroll-to-the-top behavior when the URL changes.</p>
 <p class="pagenav">
   <span class="prev"><span class="icon">←</span> <a href="/react-router/docs/Middleware">Middleware</a></span>
   <span class="sep">|</span>
@@ -60,7 +61,11 @@
 <p class="title">Contents</p>
 <ul><li data-id="Routing"><a href="/react-router/docs/Routing">Routing</a></li>
 <li data-id="Navigation"><a href="/react-router/docs/Navigation">Navigation</a></li>
-<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a></li>
+<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a>
+  <ul>
+    <li><a href="/react-router/docs/Link_props#Navigation_options">Navigation options</a></li>
+  </ul>
+</li>
 <li data-id="Middleware"><a href="/react-router/docs/Middleware">Middleware</a></li>
 <li data-id="URL_parameters"><strong>URL parameters</strong></li>
 <li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>

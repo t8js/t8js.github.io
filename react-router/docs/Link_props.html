@@ -22,6 +22,9 @@
 <p>⬥ <code>data-history="replace"</code> prevents the user from returning to the current URL by pressing the browser's <em>Back</em> button after clicking a link with this prop.</p>
 <p>⬥ <code>data-spa="off"</code> turns off SPA navigation and triggers a full-page reload.</p>
 <p>⬥ <code>data-scroll="off"</code> turns off the default scrolling to the element matching the URL fragment or to the top of the page when the link is clicked.</p>
+<p>⬥ <code>data-id="..."</code> is available as <code>options.id</code> in routing middleware, so it can be used as a way to distinguish certain links requiring special handling inside the middleware (unlike <code>id</code>, <code>data-id</code> doesn't have to be strictly unique).</p>
+<h3 id="Navigation_options">Navigation options</h3>
+<p>The imperative navigation APIs like <code>route.navigate(options)</code>, <code>useRouteState(url, options?)</code> and routing middleware make use of the navigation options similar to the link props outlined above, with the <code>data-</code> prefix stripped from their names: <code>{ history, spa, scroll, id }</code>. On top of these, the navigation options can include <code>href</code> and <code>referrer</code>, the navigation destination and initial URLs, as well as <code>target</code>, equivalent to the HTML link <code>target</code> attribute.</p>
 <p class="pagenav">
   <span class="prev"><span class="icon">←</span> <a href="/react-router/docs/Navigation">Navigation</a></span>
   <span class="sep">|</span>
@@ -35,7 +38,11 @@
 <p class="title">Contents</p>
 <ul><li data-id="Routing"><a href="/react-router/docs/Routing">Routing</a></li>
 <li data-id="Navigation"><a href="/react-router/docs/Navigation">Navigation</a></li>
-<li data-id="Link_props"><strong>Link props</strong></li>
+<li data-id="Link_props"><strong>Link props</strong>
+  <ul>
+    <li><a href="/react-router/docs/Link_props#Navigation_options">Navigation options</a></li>
+  </ul>
+</li>
 <li data-id="Middleware"><a href="/react-router/docs/Middleware">Middleware</a></li>
 <li data-id="URL_parameters"><a href="/react-router/docs/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>

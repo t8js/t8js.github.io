@@ -43,7 +43,7 @@
 <p>⬥ <code>route.navigate(options)</code> combines and extends <code>route.assign(url)</code> and <code>route.replace(url)</code> serving as a handy drop-in replacement for the similar <code>window.location</code> methods:</p>
 <pre><code class="language-js">route.navigate({ href: "/intro", history: "replace", scroll: "off" });
 </code></pre>
-<p>The <code>options</code> parameter is an object combining values corresponding to the link navigation props described in the <a href="/react-router/docs/Link_props">Link props</a> section below, with the <code>data-</code> prefix stripped from the prop names.</p>
+<p>The <code>options</code> parameter takes the shape of the <a href="/react-router/docs/Link_props#Navigation_options">navigation options</a>.</p>
 <p class="pagenav">
   <span class="prev"><span class="icon">←</span> <a href="/react-router/docs/Routing">Routing</a></span>
   <span class="sep">|</span>
@@ -57,7 +57,11 @@
 <p class="title">Contents</p>
 <ul><li data-id="Routing"><a href="/react-router/docs/Routing">Routing</a></li>
 <li data-id="Navigation"><strong>Navigation</strong></li>
-<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a></li>
+<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a>
+  <ul>
+    <li><a href="/react-router/docs/Link_props#Navigation_options">Navigation options</a></li>
+  </ul>
+</li>
 <li data-id="Middleware"><a href="/react-router/docs/Middleware">Middleware</a></li>
 <li data-id="URL_parameters"><a href="/react-router/docs/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>

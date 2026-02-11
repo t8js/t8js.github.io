@@ -45,7 +45,7 @@ let App = () =&gt; {
   // ...
 };
 </code></pre>
-<p>⬥ The object passed to the middleware callback contains <code>href</code> and <code>referrer</code>, the navigation destination and initial URLs. The rest of the properties are aligned with the <a href="/react-router/docs/Link_props">link data-* props</a>, with the <code>data-</code> prefix stripped from the props' names.</p>
+<p>⬥ The object passed to the middleware callback has the shape of the <a href="/react-router/docs/Link_props#Navigation_options">navigation options</a>.</p>
 <p>⬥ The callback of both hooks is first called when the component gets mounted if the route is already in the navigation-complete state.</p>
 <p>⬥ The optional <code>callback</code> parameter of <code>useRoute(callback?)</code> can be used as middleware defining actions to be taken right before or after components get notified to re-render in response to a URL change. This callback receives the <code>render</code> function as a parameter that should be called at some point. Use cases for this callback include, for example, activating <a href="/react-router/docs/Animated_view_transitions">animated view transitions</a> or (less likely in regular circumstances) skipping re-renders for certain URL changes.</p>
 <p class="pagenav">
@@ -61,7 +61,11 @@ let App = () =&gt; {
 <p class="title">Contents</p>
 <ul><li data-id="Routing"><a href="/react-router/docs/Routing">Routing</a></li>
 <li data-id="Navigation"><a href="/react-router/docs/Navigation">Navigation</a></li>
-<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a></li>
+<li data-id="Link_props"><a href="/react-router/docs/Link_props">Link props</a>
+  <ul>
+    <li><a href="/react-router/docs/Link_props#Navigation_options">Navigation options</a></li>
+  </ul>
+</li>
 <li data-id="Middleware"><strong>Middleware</strong></li>
 <li data-id="URL_parameters"><a href="/react-router/docs/URL_parameters">URL parameters</a></li>
 <li data-id="Type_safety"><a href="/react-router/docs/Type_safety">Type safety</a></li>
