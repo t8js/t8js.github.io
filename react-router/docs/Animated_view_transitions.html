@@ -40,7 +40,7 @@
     );
   };
 </code></pre>
-<fieldset><legend>Live demo</legend><iframe class="csb" src="https://codesandbox.io/embed/znvrmt?view=preview&amp;hidedevtools=1&amp;theme=dark&amp;module=%252Fsrc%252FApp.tsx" title="Live demo" style="height: 380px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
+<fieldset><legend>Live demo</legend><iframe class="csb" src="https://codesandbox.io/embed/znvrmt?view=preview&amp;hidedevtools=1&amp;theme=dark&amp;fontsize=12&amp;module=%252Fsrc%252FApp.tsx" title="Live demo" style="height: 380px;" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe></fieldset>
 <p>In the example above, the <code>renderViewTransition()</code> function passed to <code>useRoute()</code> calls <code>document.startViewTransition()</code> from the View Transition API to start a view transition and React's <code>flushSync()</code> to apply the DOM changes synchronously within the view transition, with the visual effects defined with CSS. We also check whether <code>document.startViewTransition</code> is supported by the browser and resort to regular rendering if it's not.</p>
 <p>To trigger a transition only with specific links, the <code>options</code> parameter of the <code>useRoute()</code> callback can be used to add a condition for the view transitions. In the example below, we'll only trigger a view transition with the links whose <code>data-id</code> attribute, available via <code>options.id</code>, is among the listed on <code>viewTransitionLinkIds</code>.</p>
 <pre><code class="language-diff">+ let viewTransitionLinkIds = new Set([/* ... */]);
